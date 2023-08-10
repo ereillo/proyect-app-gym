@@ -44,7 +44,7 @@ router.post("/signup", async (req, res, next) => {
     return;
   }
 
-//   //! contraseña segura  OK
+  //! contraseña segura  OK
   const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
   if (regexPassword.test(password) === false) {
     res.status(400).render("auth/signup.hbs", {

@@ -34,7 +34,7 @@ router.post("/signup", async (req, res, next) => {
 
   //validación requisitos del formulario
 
-  //! misma contraseña
+  //! misma contraseña  OK
   if (password === confirmPassword) {
     next();
   } else {
@@ -44,7 +44,7 @@ router.post("/signup", async (req, res, next) => {
     return;
   }
 
-  //! contraseña segura
+//   //! contraseña segura  OK
   const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
   if (regexPassword.test(password) === false) {
     res.status(400).render("auth/signup.hbs", {
@@ -53,11 +53,6 @@ router.post("/signup", async (req, res, next) => {
     });
     return;
   }
-
-  //! cifrado de la contraseña
-  const salt = await bcrypt.genSalt(10);
-  const passwordHash = await bcrypt.hash(password, salt);
-  console.log(passwordHash);
 
   //! que el email no esté ya registrado
   try {
@@ -69,6 +64,11 @@ router.post("/signup", async (req, res, next) => {
       });
     }
 
+ //! cifrado de la contraseña  OK
+ const salt = await bcrypt.genSalt(10);
+ const passwordHash = await bcrypt.hash(password, salt);
+ console.log(passwordHash);
+
 
     //TODO: creación de nuevo usuario
   await User.create({
@@ -77,7 +77,7 @@ router.post("/signup", async (req, res, next) => {
     email, 
     password: passwordHash
   })
-  res.redirect("/auth/login")
+  res.render("/auth/login.hbs")
   } catch (error) {
     next(error);
   }

@@ -55,6 +55,7 @@ router.post("/signup", async (req, res, next) => {
   }
 
   //! que el email no esté ya registrado
+
   try {
     const foundEmail = await User.findOne({ email: email });
     console.log(foundEmail);
@@ -62,6 +63,7 @@ router.post("/signup", async (req, res, next) => {
         res.status(400).render("auth/signup.hbs", {
         errorMessage: "Correo electrónico ya en uso"
       });
+    return;
     }
 
  //! cifrado de la contraseña  OK
@@ -83,4 +85,14 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
-module.exports = router;
+//GET "/auth/login"
+router.get("/login", (req, res, next) => {
+    res.render("auth/login.hbs")
+})
+
+
+
+module.exports = router
+
+
+

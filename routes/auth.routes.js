@@ -59,8 +59,8 @@ router.post("/signup", async (req, res, next) => {
     const foundEmail = await User.findOne({ email: email });
     console.log(foundEmail);
     if (foundEmail !== null) {
-      res.status(400).render("auth/signup.hbs", {
-        errorMessage: "Correo electrónico ya en uso",
+        res.status(400).render("auth/signup.hbs", {
+        errorMessage: "Correo electrónico ya en uso"
       });
     }
 
@@ -77,7 +77,7 @@ router.post("/signup", async (req, res, next) => {
     email, 
     password: passwordHash
   })
-  res.render("/auth/login.hbs")
+  res.redirect("/auth/login")
   } catch (error) {
     next(error);
   }

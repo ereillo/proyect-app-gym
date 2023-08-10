@@ -6,4 +6,8 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
+
+const authRouter = require("./auth.routes.js")
+router.use("/auth", authRouter)
+
 module.exports = router;

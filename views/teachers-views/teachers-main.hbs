@@ -1,6 +1,14 @@
 <div>
 
-<h2>Hola, {{user.name}}</h2>
+<h2>Hola, {{teacher.name}} ¡bienvenid@!</h2>
+
+<h3>Esta semana tienes estas clases</h3>
+{{#each}}
+
+<li>{{className}}</li>
+<li>{{weekDay}}</li>
+
+{{/each}}
 
 
 

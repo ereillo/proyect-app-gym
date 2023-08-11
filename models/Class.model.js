@@ -17,6 +17,7 @@ const classSchema = new Schema({
   ],
   weekDay: String,
   time: String,
+  classPic: String
 });
 
 const Class = model("Class", classSchema);

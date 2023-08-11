@@ -18,7 +18,7 @@ router.get("/main", isLoggedIn, async (req, res, next) => {
     });
 
  const classInfo = await Class.find({students: {$in: req.session.loggedUser._id} }).select({className: 1, weekDay: 1})
- console.log(classInfo)
+//  console.log(classInfo)
 
 
 

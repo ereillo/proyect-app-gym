@@ -13,4 +13,7 @@ router.use("/auth", authRouter)
 const clientRouter = require("./client.routes.js")
 router.use("/client", clientRouter)
 
+const teacherRouter = require("./teachers.routes.js")
+router.use("/teacher", teacherRouter)
+
 module.exports = router;

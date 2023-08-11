@@ -1,5 +1,19 @@
 <div>
 
-<h3>Esta es la main del usuario registrado</h3>
+<h2>Hola, {{user.name}} ¡bienvenido!</h2>
+
+{{#if suscriptionTrue}}
+<p>{{suscriptionTrue}}</p>
+{{/if}}
+{{#if suscriptionFalse}}
+<p>{{suscriptionFalse}}</p>
+
+<button>Suscríbete</button>
+{{/if}}
+
+
+
+
+
 
 </div>

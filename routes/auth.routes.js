@@ -137,7 +137,7 @@ router.post("/login", async (req, res, next) => {
     };
 
     req.session.save(() => {
-      res.redirect("/");
+      res.redirect("/client/main");
     });
   } catch (error) {
     next(error);

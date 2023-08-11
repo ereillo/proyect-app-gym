@@ -12,9 +12,25 @@
    <body>
 
       <nav>
-         <a href="/">Inicio</a>
-         <a href="/auth/signup">Regístrate</a>
-         <a href="/auth/login">Accede</a>
+ <a href="/">Inicio</a>
+ <a href="">Nuestras Clases</a>
+ <a href="">Nuestros Profresores</a>
+ {{#if isUserNotLoggedIn}}
+ <a href="/auth/signup">Regístrate</a>
+ <a href="/auth/login">Accede</a>
+ {{/if}}
+{{#if isUserClient}}
+<a href="/client/main">Area Personal</a>
+<a href="">Calendario</a>
+<a href="/auth/logout">Cerrar sesión</a>
+{{/if}}
+        
+{{#if isUserTeacher}}
+<a href="/teachers/main">Area Personal</a>
+<a href="">Calendario</a>
+<a href="/auth/logout">Cerra sesión</a>
+{{/if}}        
+        
       </nav>
 
       {{{body}}}

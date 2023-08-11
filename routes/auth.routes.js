@@ -38,7 +38,7 @@ router.post("/signup", async (req, res, next) => {
   if (password !== confirmPassword) {
     res.status(400).render("auth/signup.hbs", {
       previousName: name,
-      previousSurname : surname,
+      previousSurname: surname,
       previousEmail: email,
       errorMessage: "Las contraseñas no coinciden",
     });
@@ -50,7 +50,7 @@ router.post("/signup", async (req, res, next) => {
   if (regexPassword.test(password) === false) {
     res.status(400).render("auth/signup.hbs", {
       previousName: name,
-      previousSurname : surname,
+      previousSurname: surname,
       previousEmail: email,
       errorMessage:
         "La contraseña debe tener al menos, una mayuscula, una minuscula, un caracter especial y tener 8 caracteres o más",
@@ -135,10 +135,19 @@ router.post("/login", async (req, res, next) => {
       email: foundUser.email,
       role: foundUser.role,
     };
-
-    req.session.save(() => {
-      res.redirect("/client/main");
-    });
+    if (req.session.loggedUser.role === "teacher") {
+      req.session.save(() => {
+        res.redirect("/teachers/main");
+      })
+    } else if (req.session.loggedUser.rol === "admin") {
+      req.session.save(() => {
+        red.redirect("/admin/main");
+      })
+    } else {
+      req.session.save(() => {
+        res.redirect("/client/main");
+      })
+    }
   } catch (error) {
     next(error);
   }

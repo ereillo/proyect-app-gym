@@ -7,14 +7,7 @@ const db = require("../db/index.js")
 //Hacemos el seeding
 
 const teachers = [
-{
-name: "Antonio",
-surname: "Machado",
-email: "antonio@antonio.com",
-password: "123456789aA*",
-profilePic: "",
-role: "teacher",
-},
+
 {
     name: "Biel",
     surname: "Pérez",

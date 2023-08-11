@@ -14,6 +14,6 @@ const clientRouter = require("./client.routes.js")
 router.use("/client", clientRouter)
 
 const teacherRouter = require("./teachers.routes.js")
-router.use("/teacher", teacherRouter)
+router.use("/teachers", teacherRouter)
 
 module.exports = router;

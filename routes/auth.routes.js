@@ -34,13 +34,11 @@ router.post("/signup", async (req, res, next) => {
 
   //validación requisitos del formulario
 
-  //! misma contraseña  OK
-  if (password === confirmPassword) {
-    next();
-  } else {
+  //! misma contraseña  OK ¿¿EXPLÍQUENOS ESTO PARFAVAR??
+  if (password !== confirmPassword) {
     res.status(400).render("auth/signup.hbs", {
-      errorMessage: "Las contraseñas no coinciden",
-    });
+        errorMessage: "Las contraseñas no coinciden",
+      })
     return;
   }
 

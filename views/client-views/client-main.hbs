@@ -1,19 +1,24 @@
 <div>
 
-<h2>Hola, {{user.name}} ¡bienvenido!</h2>
+  <h2>Hola, {{user.name}} ¡bienvenid@!</h2>
 
-{{#if suscriptionTrue}}
-<p>{{suscriptionTrue}}</p>
-{{/if}}
-{{#if suscriptionFalse}}
-<p>{{suscriptionFalse}}</p>
+  {{#if suscriptionTrue}}
 
-<button>Suscríbete</button>
-{{/if}}
+    <p>{{suscriptionTrue}}</p>
+    <button>Apúntate a una clase</button>
+    {{#each classInfo}}
 
+      <li>{{className}}</li>
+      <li>{{weekDay}}</li>
 
+    {{/each}}
 
+  {{/if}}
 
+  {{#if suscriptionFalse}}
+    <p>{{suscriptionFalse}}</p>
 
+    <button>Suscríbete</button>
+  {{/if}}
 
 </div>

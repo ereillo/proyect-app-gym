@@ -41,5 +41,5 @@ module.exports = {
     isLoggedIn,
     isTeacher,
     isAdmin,
-    updateLocals
+    updateLocals,
 }

@@ -59,11 +59,10 @@ router.post("/edit-profile", isLoggedIn, isTeacher, async (req, res, next) => {
 if (
   name === "" ||
   surname === "" ||
-  email === "" ||
-  password === "" 
+  email === "" 
 ) {
   res.status(400).render("teachers-views/teachers-edit-profile.hbs", {
-    errorMessage: "Nombre, apellido, correo y contraseña son obligatorios",
+    errorMessage: "Nombre, apellido y correo son obligatorios",
     teacherId
   });
   return;
@@ -71,22 +70,28 @@ if (
 
 //validación requisitos del formulario
 
-//! validación contraseña correcta
 
-const isPasswordCorrect = await bcrypt.compare(
-  password,
-  teacherId.password
-);
-//  console.log(isPasswordCorrect);
-if (isPasswordCorrect === false) {
-  res.status(400).render("teachers-views/teachers-edit-profile.hbs", {
-    teacherId,
-    errorMessage: "La contraseña no es correcta",
-  });
-  return;
-}
+
+
 
 //! newPassword y confirmPassword tienen que ser la misma
+if (newPassword !== "") {
+
+
+  //! validación contraseña correcta
+
+  const isPasswordCorrect = await bcrypt.compare(
+    password,
+    teacherId.password
+  );
+  //  console.log(isPasswordCorrect);
+  if (isPasswordCorrect === false) {
+    res.status(400).render("teachers-views/teachers-edit-profile.hbs", {
+      teacherId,
+      errorMessage: "La contraseña no es correcta",
+    });
+    return;
+  }
 
 if (newPassword !== confirmNewPassword) {
   res.status(400).render("teachers-views/teachers-edit-profile.hbs", {
@@ -96,11 +101,33 @@ if (newPassword !== confirmNewPassword) {
   return;
 }
 
+//! Validacion de requisitos contraseña segura
+
+const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm;
+
+  if (regexPassword.test(newPassword) === false) {
+    res.status(400).render("teachers-views/teachers-edit-profile.hbs", {
+      teacherId,
+      errorMessage:
+        "La nueva contraseña debe tener una mayusucula, una minuscula, un caracter especial y tener 8 o más caracteres",
+    });
+
+    return; // detener la ejecucion de la ruta
+  }
+
+//! cifrado de la contraseña
+const salt = await bcrypt.genSalt(10);
+const passwordHash = await bcrypt.hash(newPassword, salt);
+// console.log(passwordHash);
+
+}
+
 //! que el nuevo email no esté ya registrado
+
 try {
 const foundEmail = await User.findOne({ email: email });
     // console.log(foundEmail);
-    if (foundEmail !== null) {
+    if (foundEmail !== null && email !== teacherId.email) {
       res.status(400).render("teachers-views/teachers-edit-profile.hbs", {
         errorMessage: "Correo electrónico ya en uso",
         teacherId
@@ -108,22 +135,35 @@ const foundEmail = await User.findOne({ email: email });
       return;
 }
 
-//! cifrado de la contraseña
-const salt = await bcrypt.genSalt(10);
-const passwordHash = await bcrypt.hash(newPassword, salt);
-// console.log(passwordHash);
-
 
 
 //TODO: edición del perfil del profesor
-await User.findByIdAndUpdate(req.session.loggedUser._id, {
-  name,
-  surname,
-  email,
-  password: newPassword,
-  profilePic
-})
-res.redirect("/teachers/main")
+
+if(newPassword === "") {
+
+  await User.findByIdAndUpdate(req.session.loggedUser._id, {
+    name,
+    surname,
+    email,
+    password: teacherId.password,
+    profilePic
+  })
+  res.redirect("/teachers/main")
+
+} else {
+
+  await User.findByIdAndUpdate(req.session.loggedUser._id, {
+    name,
+    surname,
+    email,
+    password: newPassword,
+    profilePic
+  })
+  res.redirect("/teachers/main")
+
+}
+
+
 } catch (error) {
   next(error)
 }

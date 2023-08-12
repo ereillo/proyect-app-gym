@@ -55,14 +55,41 @@ router.get("/calendar", isLoggedIn, async (req, res, next)=> {
 try {
   
 const calendarDetails = await Calendar.findById("64d797df1365c0b4f43508c2")
-console.log(calendarDetails)
- const info = calendarDetails.forEach(element => {
 
- element
+const classDetails = await Class.find().populate("teacher")
+
+
+let populateMonday = await calendarDetails.monday.populate("at9 at12 at15 at18")
+let populateTuesday= await calendarDetails.tuesday.populate("at9 at12 at15 at18")
+let populateWednesday = await calendarDetails.wednesday.populate("at9 at12 at15 at18")
+let populateThrusday = await calendarDetails.thursday.populate("at9 at12 at15 at18")
+let populateFriday = await calendarDetails.friday.populate("at9 at12 at15 at18")
+
+
+//console.log(classDetails)
+//console.log(calendarDetails.monday.at9[0])
+
+//PROFESORES
+
+const classProffesorMondayAt9 = await Class.findById(calendarDetails.monday.at9[0]._id).populate("teacher")
+let professroMondayAt9 = classProffesorMondayAt9.teacher
+//console.log(classProffesorMondayAt9.teacher)
+
+//VACANTES
+
+
+let plazasVacantesLunesAt9 = calendarDetails.monday.at9[0].capacity - calendarDetails.monday.at9[0].students.length
+
+res.render("client-views/calendar-view.hbs", {
   
+  calendarDetails,
+   plazasVacantesLunesAt9,
+   professroMondayAt9
+  
+})
 
-});
-console.log(info)
+
+
 
 } catch (error) {
   next(error)

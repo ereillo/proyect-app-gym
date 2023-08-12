@@ -1,5 +1,50 @@
 <div>
 
-<h2>CALENDARIO</h2>
+  <h2>CALENDARIO</h2>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          {{#each calendarDetails.monday.at9}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professroMondayAt9}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{plazasVacantesLunesAt9}}</p>
+
+        </td>
+
+        <td>Cell 2x1</td>
+        <td>Cell 3x1</td>
+        <td>Cell 4x1</td>
+        <td>Cell 5x1</td>
+      </tr>
+      <tr>
+        <td>Cell 1x2</td>
+        <td>Cell 2x2</td>
+        <td>Cell 3x2</td>
+        <td>Cell 4x2</td>
+        <td>Cell 5x2</td>
+      </tr>
+      <tr>
+        <td>Cell 1x3</td>
+        <td>Cell 2x3</td>
+        <td>Cell 3x3</td>
+        <td>Cell 4x3</td>
+        <td>Cell 5x3</td>
+      </tr>
+      <tr>
+        <td>Cell 1x4</td>
+        <td>Cell 2x4</td>
+        <td>Cell 3x4</td>
+        <td>Cell 4x4</td>
+        <td>Cell 5x4</td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>

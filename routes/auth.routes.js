@@ -141,7 +141,7 @@ router.post("/login", async (req, res, next) => {
       })
     } else if (req.session.loggedUser.role === "admin") {
       req.session.save(() => {
-        red.redirect("/admin/main");
+        res.redirect("/admin/main");
       })
     } else {
       req.session.save(() => {

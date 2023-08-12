@@ -28,8 +28,14 @@
 {{#if isUserTeacher}}
 <a href="/teachers/main">Area Personal</a>
 <a href="">Calendario</a>
-<a href="/auth/logout">Cerra sesión</a>
-{{/if}}        
+<a href="/auth/logout">Cerrar sesión</a>
+{{/if}}      
+
+{{#if isUserAdmin}}
+<a href="/admin/main">Area Personal</a>
+<a href="">Calendario</a>
+<a href="/auth/logout">Cerrar sesión</a>
+{{/if}}   
         
       </nav>
 

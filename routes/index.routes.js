@@ -18,4 +18,7 @@ router.use("/client", clientRouter)
 const teacherRouter = require("./teachers.routes.js")
 router.use("/teachers", teacherRouter)
 
+const adminRouter = require("./admin.routes.js")
+router.use("/admin", adminRouter)
+
 module.exports = router;

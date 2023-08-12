@@ -172,11 +172,4 @@ if(newPassword === "") {
 
 })
 
-
-
-
-
-
-
-
 module.exports = router;

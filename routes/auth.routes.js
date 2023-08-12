@@ -99,7 +99,7 @@ router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
 
   //Validacion de requisitos formulario
-  console.log("ESTE CONSOLE LOG" + email);
+  //console.log("ESTE CONSOLE LOG" + email);
   try {
     //! Validacion correo electronico
 

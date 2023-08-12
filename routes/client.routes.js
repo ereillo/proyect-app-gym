@@ -4,12 +4,15 @@ const router = express.Router();
 //TODO: importación de modelos
 const User = require("../models/User.model.js");
 const Class = require("../models/Class.model.js");
+const Calendar = require("../models/Calendar.model.js")
 
 const { isLoggedIn } = require("../middlewares/auth.middlewares.js");
 
 //TODO: RUTAS
 //GET ("/client/main") => página personal del cliente
 router.get("/main", isLoggedIn, async (req, res, next) => {
+
+ // console.log(req.session.loggedUser._id)
   try {
     const userId = await User.findById(req.session.loggedUser._id).select({
       name: 1,
@@ -41,21 +44,32 @@ router.get("/main", isLoggedIn, async (req, res, next) => {
 });
 
 
-//GET
-// router.get("/:classId/update", async (req, res, next) => {
-//     try {
-//       const response = await Class.findById(req.params.classId);
-//       const allUsers = await User.find().select({email: 1})
+
+
+
+
+// GET ("/client/calendar") => pagina calendario con las clases 
+router.get("/calendar", isLoggedIn, async (req, res, next)=> {
+
+
+try {
   
-//       const cloneallUsers = JSON.parse(JSON.stringify(allUsers))
-//       // clonamos el array porque los array de documentos mongo a veces no nos permite modificarlos
-//       res.render("books/edit-form.hbs", {
-//         classToUpdate: response,
-//         allUsers : cloneallUsers
-//       });
-//     } catch (err) {
-//       next(err);
-//     }
-//   });
+const calendarDetails = await Calendar.findById("64d797df1365c0b4f43508c2")
+console.log(calendarDetails)
+ const info = calendarDetails.forEach(element => {
+
+ element
+  
+
+});
+console.log(info)
+
+} catch (error) {
+  next(error)
+}
+
+})
+
+
 
 module.exports = router;

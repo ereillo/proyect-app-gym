@@ -112,3 +112,7 @@ const calendarSchema = new Schema({
       }]
   },
 });
+
+const Calendar = model("Calendar", calendarSchema);
+
+module.exports = Calendar;

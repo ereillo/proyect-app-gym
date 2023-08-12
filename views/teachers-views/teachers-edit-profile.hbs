@@ -1,0 +1,56 @@
+<div>
+
+  <h3>Tus datos personales:</h3>
+
+  <form action="/teachers/edit-profile" method="post">
+
+    <label for="name">Nombre</label>
+    <input type="text" name="name" value="{{teacherId.name}}" />
+
+    <br />
+
+    <label for="surname">Apellido</label>
+    <input type="text" name="surname" value="{{teacherId.surname}}" />
+
+    <br />
+
+    <label for="email">Correo electrónico</label>
+    <input type="text" name="email" value="{{teacherId.email}}" />
+
+    <br />
+
+    <label for="profilePic">Cambiar foto de perfil</label>
+    <input type="file" name="movie-cover-image">
+
+    <br>
+
+    <h5>Cambiar contraseña</h5>
+
+    <br/>
+
+    <label for="password">Contraseña actual</label>
+    <input type="password" name="password" />
+
+    <br />
+
+    <label for="password">Nueva contraseña</label>
+    <input type="password" name="newPassword" />
+
+    <br/>
+
+    <label for="confirmPassword">Confirmar nueva contraseña</label>
+    <input type="password" name="confirmNewPassword" />
+
+    <br />
+
+    <button>Actualizar perfil</button>
+
+    <br />
+    
+    {{#if this.errorMessage}}
+      <p>{{this.errorMessage}}</p>
+    {{/if}}
+
+  </form>
+
+</div>

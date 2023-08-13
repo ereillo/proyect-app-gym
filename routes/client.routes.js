@@ -54,7 +54,7 @@ router.get("/calendar", isLoggedIn, async (req, res, next)=> {
   
 try {
   
-const calendarDetails = await Calendar.findById("64d797df1365c0b4f43508c2")
+const calendarDetails = await Calendar.findById("64d7a378106b5e05b18ec421")
 
 // const classDetails = await Class.find().populate("teacher")
 
@@ -156,17 +156,17 @@ let vacanciesWednesdayAt18 = calendarDetails.wednesday.at18[0].capacity - calend
 
 // JUEVES
 
-let vacaciesThursdayAt9 = calendarDetails.thursday.at9[0].capacity - calendarDetails.thursday.at9[0].students.length
-let vacaciesThursdayAt12 = calendarDetails.thursday.at12[0].capacity - calendarDetails.thursday.at12[0].students.length
-let vacaciesThursdayAt15 = calendarDetails.thursday.at15[0].capacity - calendarDetails.thursday.at15[0].students.length
-let vacaciesThursdayAt18 = calendarDetails.thursday.at18[0].capacity - calendarDetails.thursday.at18[0].students.length
+let vacanciesThursdayAt9 = calendarDetails.thursday.at9[0].capacity - calendarDetails.thursday.at9[0].students.length
+let vacanciesThursdayAt12 = calendarDetails.thursday.at12[0].capacity - calendarDetails.thursday.at12[0].students.length
+let vacanciesThursdayAt15 = calendarDetails.thursday.at15[0].capacity - calendarDetails.thursday.at15[0].students.length
+let vacanciesThursdayAt18 = calendarDetails.thursday.at18[0].capacity - calendarDetails.thursday.at18[0].students.length
 
 // VIERNES
 
-let vacaciesFridayAt9 = calendarDetails.friday.at9[0].capacity - calendarDetails.friday.at9[0].students.length
-let vacaciesFridayAt12 = calendarDetails.friday.at12[0].capacity - calendarDetails.friday.at12[0].students.length
-let vacaciesFridayAt15 = calendarDetails.friday.at15[0].capacity - calendarDetails.friday.at15[0].students.length
-let vacaciesFridayAt18 = calendarDetails.friday.at18[0].capacity - calendarDetails.friday.at18[0].students.length
+let vacanciesFridayAt9 = calendarDetails.friday.at9[0].capacity - calendarDetails.friday.at9[0].students.length
+let vacanciesFridayAt12 = calendarDetails.friday.at12[0].capacity - calendarDetails.friday.at12[0].students.length
+let vacanciesFridayAt15 = calendarDetails.friday.at15[0].capacity - calendarDetails.friday.at15[0].students.length
+let vacanciesFridayAt18 = calendarDetails.friday.at18[0].capacity - calendarDetails.friday.at18[0].students.length
 
 //?----------------------------------------------------------------------------------------------------------------------
 
@@ -218,20 +218,17 @@ vacanciesWednesdayAt12,
 vacanciesWednesdayAt15,
 vacanciesWednesdayAt18,
 //----
-vacaciesThursdayAt9,
-vacaciesThursdayAt12,
-vacaciesThursdayAt15,
-vacaciesThursdayAt18,
+vacanciesThursdayAt9,
+vacanciesThursdayAt12,
+vacanciesThursdayAt15,
+vacanciesThursdayAt18,
 //----
-vacaciesFridayAt9,
-vacaciesFridayAt12,
-vacaciesFridayAt15,
-vacaciesFridayAt18,
+vacanciesFridayAt9,
+vacanciesFridayAt12,
+vacanciesFridayAt15,
+vacanciesFridayAt18,
 
 })
-
-
-
 
 } catch (error) {
   next(error)

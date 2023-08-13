@@ -5,6 +5,17 @@
   <table>
     <tbody>
       <tr>
+        <td></td>
+        <td>Lunes</td>
+        <td>Martes</td>
+        <td>Miércoles</td>
+        <td>Jueves</td>
+        <td>Viernes</td>
+      </tr>
+      <tr>
+        <td>
+          <h4>9:00</h4>
+        </td>
         <td>
           <button>
           {{#each calendarDetails.monday.at9}}
@@ -12,38 +23,238 @@
             <p>{{className}}</p>
           {{/each }}
           
-          {{#each professroMondayAt9}}
+          {{#each professorMondayAt9}}
           <p>Profesor: {{name}}</p>
           {{/each}}
-          <p>Plazas restantes: {{plazasVacantesLunesAt9}}</p>
+          <p>Plazas restantes: {{vacanciesMondayAt9}}</p>
 </button>
         </td>
+         
+        <td> <button>
+          {{#each calendarDetails.tuesday.at9}}
 
-        <td>Cell 2x1</td>
-        <td>Cell 3x1</td>
-        <td>Cell 4x1</td>
-        <td>Cell 5x1</td>
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorTuesdayAt9}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesTuesdayAt9}}</p>
+</button>
+</td>
+        <td> <button>
+          {{#each calendarDetails.wednesday.at9}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorWednesdayAt9}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesWednesdayAt9}}</p>
+</button></td>
+        <td> <button>
+          {{#each calendarDetails.thursday.at9}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorThursdayAt9}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesThursdayAt9}}</p>
+</button></td>
+        <td> <button>
+          {{#each calendarDetails.friday.at9}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorFridayAt9}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesFridayAt9}}</p>
+</button></td>
       </tr>
       <tr>
-        <td>Cell 1x2</td>
-        <td>Cell 2x2</td>
-        <td>Cell 3x2</td>
-        <td>Cell 4x2</td>
-        <td>Cell 5x2</td>
+        <td>
+          <h4>12:00</h4>
+        </td>
+        <td><button>
+          {{#each calendarDetails.monday.at12}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorMondayAt12}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesMondayAt12}}</p>
+</button></td>
+        <td><button>
+          {{#each calendarDetails.tuesday.at12}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorTuesdayAt12}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesTuesdayAt12}}</p>
+</button></td>
+        <td><button>
+          {{#each calendarDetails.wednesday.at12}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorWednesdayAt12}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesWednesdayAt12}}</p>
+</button></td>
+        <td><button>
+          {{#each calendarDetails.thursday.at12}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorThursdayAt12}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesThursdayAt12}}</p>
+</button></td>
+        <td><button>
+          {{#each calendarDetails.friday.at12}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorFridayAt12}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesFridayAt12}}</p>
+</button></td>
       </tr>
       <tr>
-        <td>Cell 1x3</td>
-        <td>Cell 2x3</td>
-        <td>Cell 3x3</td>
-        <td>Cell 4x3</td>
-        <td>Cell 5x3</td>
+        <td>
+          <h4>15:00</h4>
+        </td>
+        <td><button>
+          {{#each calendarDetails.monday.at15}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorMondayAt15}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesMondayAt15}}</p>
+</button></td>
+        <td><button>
+          {{#each calendarDetails.tuesday.at15}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorTuesdayAt15}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesTuesdayAt15}}</p>
+</button></td>
+        <td><button>
+          {{#each calendarDetails.wednesday.at15}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorWednesdayAt15}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesWednesdayAt15}}</p>
+</button></td>
+        <td><button>
+          {{#each calendarDetails.thursday.at15}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorThursdayAt15}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesThursdayAt15}}</p>
+</button></td>
+        <td><button>
+          {{#each calendarDetails.friday.at15}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorFridayAt15}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesFridayAt15}}</p>
+</button></td>
       </tr>
       <tr>
-        <td>Cell 1x4</td>
-        <td>Cell 2x4</td>
-        <td>Cell 3x4</td>
-        <td>Cell 4x4</td>
-        <td>Cell 5x4</td>
+         <td>
+          <h4>18:00</h4>
+        </td>
+        <td><button>
+          {{#each calendarDetails.monday.at18}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorMondayAt18}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesMondayAt18}}</p>
+</button></td>
+        <td><button>
+          {{#each calendarDetails.tuesday.at18}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorTuesdayAt18}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesTuesdayAt18}}</p>
+</button></td>
+        <td><button>
+          {{#each calendarDetails.wednesday.at18}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorWednesdayAt18}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesWednesdayAt18}}</p>
+</button></td>
+        <td><button>
+          {{#each calendarDetails.thursday.at18}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorThursdayAt18}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesThursdayAt18}}</p>
+</button></td>
+        <td><button>
+          {{#each calendarDetails.friday.at18}}
+
+            <p>{{className}}</p>
+          {{/each }}
+          
+          {{#each professorFridayAt18}}
+          <p>Profesor: {{name}}</p>
+          {{/each}}
+          <p>Plazas restantes: {{vacanciesFridayAt18}}</p>
+</button></td>
       </tr>
     </tbody>
   </table>

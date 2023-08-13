@@ -51,12 +51,12 @@ router.get("/main", isLoggedIn, async (req, res, next) => {
 // GET ("/client/calendar") => pagina calendario con las clases 
 router.get("/calendar", isLoggedIn, async (req, res, next)=> {
 
-
+  
 try {
   
 const calendarDetails = await Calendar.findById("64d797df1365c0b4f43508c2")
 
-const classDetails = await Class.find().populate("teacher")
+// const classDetails = await Class.find().populate("teacher")
 
 
 let populateMonday = await calendarDetails.monday.populate("at9 at12 at15 at18")
@@ -69,23 +69,165 @@ let populateFriday = await calendarDetails.friday.populate("at9 at12 at15 at18")
 //console.log(classDetails)
 //console.log(calendarDetails.monday.at9[0])
 
-//PROFESORES
+// TODO PROFESORES------------------------------------------------------------------------------------------
 
-const classProffesorMondayAt9 = await Class.findById(calendarDetails.monday.at9[0]._id).populate("teacher")
-let professroMondayAt9 = classProffesorMondayAt9.teacher
-//console.log(classProffesorMondayAt9.teacher)
+//LUNES
+//console.log(classProffesorMondayAt9)
 
-//VACANTES
+const classProfessorMondayAt9 = await Class.findById(calendarDetails.monday.at9[0]._id).populate("teacher")
+let professorMondayAt9 = classProfessorMondayAt9.teacher
+const classProfessorMondayAt12 = await Class.findById(calendarDetails.monday.at12[0]._id).populate("teacher")
+let professorMondayAt12 = classProfessorMondayAt12.teacher
+const classProfessorMondayAt15 = await Class.findById(calendarDetails.monday.at15[0]._id).populate("teacher")
+let professorMondayAt15 = classProfessorMondayAt15.teacher
+const classProfessorMondayAt18 = await Class.findById(calendarDetails.monday.at18[0]._id).populate("teacher")
+let professorMondayAt18 = classProfessorMondayAt18.teacher
 
 
-let plazasVacantesLunesAt9 = calendarDetails.monday.at9[0].capacity - calendarDetails.monday.at9[0].students.length
+// MARTES
+
+const classProfessorTuesdayAt9 = await Class.findById(calendarDetails.tuesday.at9[0]._id).populate("teacher")
+let professorTuesdayAt9 = classProfessorTuesdayAt9.teacher
+const classProfessorTuesdayAt12 = await Class.findById(calendarDetails.tuesday.at12[0]._id).populate("teacher")
+let professorTuesdayAt12 = classProfessorTuesdayAt12.teacher
+const classProfessorTuesdayAt15 = await Class.findById(calendarDetails.tuesday.at15[0]._id).populate("teacher")
+let professorTuesdayAt15 = classProfessorTuesdayAt15.teacher
+const classProfessorTuesdayAt18 = await Class.findById(calendarDetails.tuesday.at18[0]._id).populate("teacher")
+let professorTuesdayAt18 = classProfessorTuesdayAt18.teacher
+
+// MIERCOLES
+
+const classProfessorWednesdayAt9 = await Class.findById(calendarDetails.wednesday.at9[0]._id).populate("teacher")
+let professorWednesdayAt9 = classProfessorWednesdayAt9.teacher
+const classProfessorWednesdayAt12 = await Class.findById(calendarDetails.wednesday.at12[0]._id).populate("teacher")
+let professorWednesdayAt12 = classProfessorWednesdayAt12.teacher
+const classProfessorWednesdayAt15 = await Class.findById(calendarDetails.wednesday.at15[0]._id).populate("teacher")
+let professorWednesdayAt15 = classProfessorWednesdayAt15.teacher
+const classProfessorWednesdayAt18 = await Class.findById(calendarDetails.wednesday.at18[0]._id).populate("teacher")
+let professorWednesdayAt18 = classProfessorWednesdayAt18.teacher
+
+// JUEVES
+
+const classProfessorThursdayAt9 = await Class.findById(calendarDetails.thursday.at9[0]._id).populate("teacher")
+let professorThursdayAt9 = classProfessorThursdayAt9.teacher
+const classProfessorThursdayAt12 = await Class.findById(calendarDetails.thursday.at12[0]._id).populate("teacher")
+let professorThursdayAt12 = classProfessorThursdayAt12.teacher
+const classProfessorThursdayAt15 = await Class.findById(calendarDetails.thursday.at15[0]._id).populate("teacher")
+let professorThursdayAt15 = classProfessorThursdayAt15.teacher
+const classProfessorThursdayAt18 = await Class.findById(calendarDetails.thursday.at18[0]._id).populate("teacher")
+let professorThursdayAt18 = classProfessorThursdayAt18.teacher
+
+// VIERNES
+
+const classProfessorFridayAt9 = await Class.findById(calendarDetails.friday.at9[0]._id).populate("teacher")
+let professorFridayAt9 = classProfessorFridayAt9.teacher
+const classProfessorFridayAt12 = await Class.findById(calendarDetails.friday.at12[0]._id).populate("teacher")
+let professorFridayAt12 = classProfessorFridayAt12.teacher
+const classProfessorFridayAt15 = await Class.findById(calendarDetails.friday.at15[0]._id).populate("teacher")
+let professorFridayAt15 = classProfessorFridayAt15.teacher
+const classProfessorFridayAt18 = await Class.findById(calendarDetails.friday.at18[0]._id).populate("teacher")
+let professorFridayAt18 = classProfessorFridayAt18.teacher
+
+// todo --------------------------------------------------------------------------------------
+
+
+//? PLAZAS VACANTES
+
+// LUNES
+
+let vacanciesMondayAt9 = calendarDetails.monday.at9[0].capacity - calendarDetails.monday.at9[0].students.length
+let vacanciesMondayAt12 = calendarDetails.monday.at12[0].capacity - calendarDetails.monday.at12[0].students.length
+let vacanciesMondayAt15 = calendarDetails.monday.at15[0].capacity - calendarDetails.monday.at15[0].students.length
+let vacanciesMondayAt18 = calendarDetails.monday.at18[0].capacity - calendarDetails.monday.at18[0].students.length
+
+// MARTES
+
+let vacanciesTuesdayAt9 = calendarDetails.tuesday.at9[0].capacity - calendarDetails.tuesday.at9[0].students.length
+let vacanciesTuesdayAt12 = calendarDetails.tuesday.at12[0].capacity - calendarDetails.tuesday.at12[0].students.length
+let vacanciesTuesdayAt15 = calendarDetails.tuesday.at15[0].capacity - calendarDetails.tuesday.at15[0].students.length
+let vacanciesTuesdayAt18 = calendarDetails.tuesday.at18[0].capacity - calendarDetails.tuesday.at18[0].students.length
+
+// MIERCOLES
+
+let vacanciesWednesdayAt9 = calendarDetails.wednesday.at9[0].capacity - calendarDetails.wednesday.at9[0].students.length
+let vacanciesWednesdayAt12 = calendarDetails.wednesday.at12[0].capacity - calendarDetails.wednesday.at12[0].students.length
+let vacanciesWednesdayAt15 = calendarDetails.wednesday.at15[0].capacity - calendarDetails.wednesday.at15[0].students.length
+let vacanciesWednesdayAt18 = calendarDetails.wednesday.at18[0].capacity - calendarDetails.wednesday.at18[0].students.length
+
+// JUEVES
+
+let vacaciesThursdayAt9 = calendarDetails.thursday.at9[0].capacity - calendarDetails.thursday.at9[0].students.length
+let vacaciesThursdayAt12 = calendarDetails.thursday.at12[0].capacity - calendarDetails.thursday.at12[0].students.length
+let vacaciesThursdayAt15 = calendarDetails.thursday.at15[0].capacity - calendarDetails.thursday.at15[0].students.length
+let vacaciesThursdayAt18 = calendarDetails.thursday.at18[0].capacity - calendarDetails.thursday.at18[0].students.length
+
+// VIERNES
+
+let vacaciesFridayAt9 = calendarDetails.friday.at9[0].capacity - calendarDetails.friday.at9[0].students.length
+let vacaciesFridayAt12 = calendarDetails.friday.at12[0].capacity - calendarDetails.friday.at12[0].students.length
+let vacaciesFridayAt15 = calendarDetails.friday.at15[0].capacity - calendarDetails.friday.at15[0].students.length
+let vacaciesFridayAt18 = calendarDetails.friday.at18[0].capacity - calendarDetails.friday.at18[0].students.length
+
+//?----------------------------------------------------------------------------------------------------------------------
 
 res.render("client-views/calendar-view.hbs", {
   
   calendarDetails,
-   plazasVacantesLunesAt9,
-   professroMondayAt9
+
+  //PROFESORES
+//----
+professorMondayAt9,
+professorMondayAt12,
+professorMondayAt15,
+professorMondayAt18,
+//----
+professorTuesdayAt9,
+professorTuesdayAt12,
+professorTuesdayAt15,
+professorTuesdayAt18,
+//----
+professorWednesdayAt9,
+professorWednesdayAt12,
+professorWednesdayAt15,
+professorWednesdayAt18,
+//----
+professorThursdayAt9,
+professorThursdayAt12,
+professorThursdayAt15,
+professorThursdayAt18,
+//----
+professorFridayAt9,
+professorFridayAt12,
+professorFridayAt15,
+professorFridayAt18,
+
+// VACANTES
   
+vacanciesMondayAt9,
+vacanciesMondayAt12,
+vacanciesMondayAt15,
+vacanciesMondayAt18,
+//----
+vacanciesTuesdayAt9,
+vacanciesTuesdayAt12,
+vacanciesTuesdayAt15,
+vacanciesTuesdayAt18,
+//----
+vacanciesWednesdayAt9,
+vacanciesWednesdayAt12,
+vacanciesWednesdayAt15,
+vacanciesWednesdayAt18,
+//----
+vacaciesThursdayAt9,
+vacaciesThursdayAt12,
+vacaciesThursdayAt15,
+vacaciesThursdayAt18,
+//----
+vacaciesFridayAt9,
+vacaciesFridayAt12,
+vacaciesFridayAt15,
+vacaciesFridayAt18,
+
 })
 
 

@@ -237,5 +237,39 @@ vacanciesFridayAt18,
 })
 
 
+// POST ("/client/calendar") => renderizar los datos del calendario y añadirlos a la DB
+router.post("/calendar", isLoggedIn, async (req, res, next)=> {
+
+try {
+  const calendarDetails = await Calendar.findById("64d7a378106b5e05b18ec421")
+
+  const clientSessionId =  req.session.loggedUser._id
+  console.log(clientSessionId)
+
+  const mondayClassAt9Id = await calendarDetails.monday.populate("at9")
+  console.log(mondayClassAt9Id)
+
+  const patata = mondayClassAt9Id.at9[0]
+
+  patata.students.push("64d5f4987c7f800990c0c0be")
+  console.log(patata.students)
+
+  const jamon = await patata.populate("students") 
+  console.log(jamon)
+
+  //!queremos comprobar si metiéndole a joinAClass los parámetros adecuados, el botón funciona
+  function joinAClass(mondayClassAt9Id, clientSessionId) {
+
+    mondayClassAt9Id.students.push(clientSessionId)
+   
+  }
+  res.redirect("/client/calendar")
+} catch (error) {
+  next(error)
+}
+
+})
+
+
 
 module.exports = router;

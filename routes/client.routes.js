@@ -53,6 +53,9 @@ router.get("/teachers", (req, res, next) => {
 
 // GET ("/client/calendar") => pagina calendario con las clases
 router.get("/calendar", isLoggedIn, async (req, res, next) => {
+
+// week Lucas: 64da35b47a1247b56b3042b4
+
   try {
     const weekDetails = await Week.findById("64da35b47a1247b56b3042b4").populate({
       path: "monday tuesday wednesday thursday friday",
@@ -70,30 +73,11 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
     })
   
   
-      console.log(weekDetails.wednesday.at9.students)
-    // calendario Eve: 64d7a378106b5e05b18ec421
-    // calendario Lucas: 64d797df1365c0b4f43508c2
+      console.log(weekDetails.monday.at9.className)
+    
+    
 
-    // const classDetails = await Class.find().populate("teacher")
-
-    // let populateMonday = await calendarDetails.monday.populate(
-    //   "at9 at12 at15 at18"
-    // );
-    // let populateTuesday = await calendarDetails.tuesday.populate(
-    //   "at9 at12 at15 at18"
-    // );
-    // let populateWednesday = await calendarDetails.wednesday.populate(
-    //   "at9 at12 at15 at18"
-    // );
-    // let populateThursday = await calendarDetails.thursday.populate(
-    //   "at9 at12 at15 at18"
-    // );
-    // let populateFriday = await calendarDetails.friday.populate(
-    //   "at9 at12 at15 at18"
-    // );
-
-    //console.log(classDetails)
-    //console.log(calendarDetails.monday.at9[0])
+  
 
     // TODO PROFESORES------------------------------------------------------------------------------------------
 
@@ -233,7 +217,7 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
 
     // //?----------------------------------------------------------------------------------------------------------------------
 
-     res.render("client-views/calendar-view.hbs")
+     res.render("client-views/calendar-view.hbs",{ weekDetails})
     //  , {
     //   calendarDetails,
 

@@ -2,12 +2,12 @@ const { Schema, model } = require("mongoose");
 
 const classSchema = new Schema({
   className: String,
-  teacher: [
+  teacher: 
     {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-  ],
+  
   capacity: Number,
   students: [
     {
@@ -16,7 +16,6 @@ const classSchema = new Schema({
     },
   ],
   weekDay: String,
-  time: String,
   classPic: String
 });
 

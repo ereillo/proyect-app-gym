@@ -1,43 +1,44 @@
-const Calendar = require("../models/Calendar.model.js");
+const Week = require("../models/Week.model.js");
 
 //CONECTAMOS CON DB
 const db = require("../db/index.js");
 
-const calendario = {
+const semana = {
 
-    monday: {
-        at9: [],
-        at12: [],
-        at15: [],
-        at18:[],
+    monday: { 
+        at9: "64d794ce10ef937100a7b218",
+        at12: "64d794ce10ef937100a7b218",
+        at15: "64d794ce10ef937100a7b218",
+        at18: "64d794ce10ef937100a7b218"
+    
       },
       tuesday: {
-        at9: [],
-        at12: [],
-        at15: [],
-        at18:[],
+        at9: "64d794ce10ef937100a7b218",
+        at12: "64d794ce10ef937100a7b218",
+        at15: "64d794ce10ef937100a7b218",
+        at18: "64d794ce10ef937100a7b218"
       },
       wednesday: {
-        at9: [],
-        at12: [],
-        at15: [],
-        at18:[],
+        at9: "64d794ce10ef937100a7b218",
+        at12: "64d794ce10ef937100a7b218",
+        at15: "64d794ce10ef937100a7b218",
+        at18: "64d794ce10ef937100a7b218"
       },
       thursday: {
-        at9: [],
-        at12: [],
-        at15: [],
-        at18:[],
+        at9: "64d794ce10ef937100a7b218",
+        at12: "64d794ce10ef937100a7b218",
+        at15: "64d794ce10ef937100a7b218",
+        at18: "64d794ce10ef937100a7b218"
       },
       friday: {
-        at9: [],
-        at12: [],
-        at15: [],
-        at18:[],
+        at9: "64d794ce10ef937100a7b218",
+        at12: "64d794ce10ef937100a7b218",
+        at15: "64d794ce10ef937100a7b218",
+        at18: "64d794ce10ef937100a7b218"
       },
       
       
 
 }
 
-Calendar.insertMany(calendario)
+Week.insertMany(semana)

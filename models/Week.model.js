@@ -1,118 +1,118 @@
 const { Schema, model } = require("mongoose");
 
-const calendarSchema = new Schema({
+const weekSchema = new Schema({
   monday: {
-    at9: [
+    at9: 
       {
         type: Schema.Types.ObjectId,
         ref: "Class",
       },
-    ],
-    at12: [{
+    
+    at12: {
         type: Schema.Types.ObjectId,
         ref: "Class",
-    }],
-    at15: [
+    },
+    at15: 
         {
           type: Schema.Types.ObjectId,
           ref: "Class",
         },
-      ],
-      at18: [{
+      
+      at18: {
           type: Schema.Types.ObjectId,
           ref: "Class",
-      }]
+      }
   },
   tuesday: {
-    at9: [
+    at9: 
       {
         type: Schema.Types.ObjectId,
         ref: "Class",
       },
-    ],
-    at12: [{
+    
+    at12: {
         type: Schema.Types.ObjectId,
         ref: "Class",
-    }],
-    at15: [
+    },
+    at15: 
         {
           type: Schema.Types.ObjectId,
           ref: "Class",
         },
-      ],
-    at18: [{
+      
+    at18: {
           type: Schema.Types.ObjectId,
           ref: "Class",
-      }]
+      }
   },
   wednesday: {
-    at9: [
+    at9: 
       {
         type: Schema.Types.ObjectId,
         ref: "Class",
       },
-    ],
-    at12: [{
+    
+    at12: {
         type: Schema.Types.ObjectId,
         ref: "Class",
-    }],
-    at15: [
+    },
+    at15: 
         {
           type: Schema.Types.ObjectId,
           ref: "Class",
         },
-      ],
-      at18: [{
+      
+      at18: {
           type: Schema.Types.ObjectId,
           ref: "Class",
-      }]
+      }
   },
   thursday: {
-    at9: [
+    at9: 
       {
         type: Schema.Types.ObjectId,
         ref: "Class",
       },
-    ],
-    at12: [{
+    
+    at12: {
         type: Schema.Types.ObjectId,
         ref: "Class",
-    }],
-    at15: [
+    },
+    at15: 
         {
           type: Schema.Types.ObjectId,
           ref: "Class",
         },
-      ],
-      at18: [{
+      
+      at18: {
           type: Schema.Types.ObjectId,
           ref: "Class",
-      }]
+      }
   },
   friday: {
-    at9: [
+    at9: 
       {
         type: Schema.Types.ObjectId,
         ref: "Class",
       },
-    ],
-    at12: [{
+    
+    at12: {
         type: Schema.Types.ObjectId,
         ref: "Class",
-    }],
-    at15: [
+    },
+    at15: 
         {
           type: Schema.Types.ObjectId,
           ref: "Class",
         },
-      ],
-      at18: [{
+      
+      at18: {
           type: Schema.Types.ObjectId,
           ref: "Class",
-      }]
+      }
   },
 });
 
-const Calendar = model("Calendar", calendarSchema);
+const Week = model("Week", weekSchema);
 
-module.exports = Calendar;
+module.exports = Week;

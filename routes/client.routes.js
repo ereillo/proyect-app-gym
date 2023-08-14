@@ -62,7 +62,7 @@ router.get("/calendar", isLoggedIn, async (req, res, next)=> {
   
 try {
   
-const calendarDetails = await Calendar.findById("64d7a378106b5e05b18ec421")
+const calendarDetails = await Calendar.findById("64d797df1365c0b4f43508c2")
 
 // const classDetails = await Class.find().populate("teacher")
 
@@ -143,38 +143,37 @@ let professorFridayAt18 = classProfessorFridayAt18.teacher
 
 // LUNES
 
-let vacanciesMondayAt9 = calendarDetails.monday.at9[0].capacity - calendarDetails.monday.at9[0].students.length
-let vacanciesMondayAt12 = calendarDetails.monday.at12[0].capacity - calendarDetails.monday.at12[0].students.length
-let vacanciesMondayAt15 = calendarDetails.monday.at15[0].capacity - calendarDetails.monday.at15[0].students.length
-let vacanciesMondayAt18 = calendarDetails.monday.at18[0].capacity - calendarDetails.monday.at18[0].students.length
+let vacanciesMondayAt9 = calendarDetails.monday.at9[0].capacity
+let vacanciesMondayAt12 = calendarDetails.monday.at12[0].capacity 
+let vacanciesMondayAt15 = calendarDetails.monday.at15[0].capacity 
+let vacanciesMondayAt18 = calendarDetails.monday.at18[0].capacity 
 
 // MARTES
 
-let vacanciesTuesdayAt9 = calendarDetails.tuesday.at9[0].capacity - calendarDetails.tuesday.at9[0].students.length
-let vacanciesTuesdayAt12 = calendarDetails.tuesday.at12[0].capacity - calendarDetails.tuesday.at12[0].students.length
-let vacanciesTuesdayAt15 = calendarDetails.tuesday.at15[0].capacity - calendarDetails.tuesday.at15[0].students.length
-let vacanciesTuesdayAt18 = calendarDetails.tuesday.at18[0].capacity - calendarDetails.tuesday.at18[0].students.length
-
+let vacanciesTuesdayAt9 = calendarDetails.tuesday.at9[0].capacity 
+let vacanciesTuesdayAt12 = calendarDetails.tuesday.at12[0].capacity 
+let vacanciesTuesdayAt15 = calendarDetails.tuesday.at15[0].capacity 
+let vacanciesTuesdayAt18 = calendarDetails.tuesday.at18[0].capacity 
 // MIERCOLES
 
-let vacanciesWednesdayAt9 = calendarDetails.wednesday.at9[0].capacity - calendarDetails.wednesday.at9[0].students.length
-let vacanciesWednesdayAt12 = calendarDetails.wednesday.at12[0].capacity - calendarDetails.wednesday.at12[0].students.length
-let vacanciesWednesdayAt15 = calendarDetails.wednesday.at15[0].capacity - calendarDetails.wednesday.at15[0].students.length
-let vacanciesWednesdayAt18 = calendarDetails.wednesday.at18[0].capacity - calendarDetails.wednesday.at18[0].students.length
+let vacanciesWednesdayAt9 = calendarDetails.wednesday.at9[0].capacity 
+let vacanciesWednesdayAt12 = calendarDetails.wednesday.at12[0].capacity 
+let vacanciesWednesdayAt15 = calendarDetails.wednesday.at15[0].capacity 
+let vacanciesWednesdayAt18 = calendarDetails.wednesday.at18[0].capacity 
 
 // JUEVES
 
-let vacanciesThursdayAt9 = calendarDetails.thursday.at9[0].capacity - calendarDetails.thursday.at9[0].students.length
-let vacanciesThursdayAt12 = calendarDetails.thursday.at12[0].capacity - calendarDetails.thursday.at12[0].students.length
-let vacanciesThursdayAt15 = calendarDetails.thursday.at15[0].capacity - calendarDetails.thursday.at15[0].students.length
-let vacanciesThursdayAt18 = calendarDetails.thursday.at18[0].capacity - calendarDetails.thursday.at18[0].students.length
+let vacanciesThursdayAt9 = calendarDetails.thursday.at9[0].capacity 
+let vacanciesThursdayAt12 = calendarDetails.thursday.at12[0].capacity 
+let vacanciesThursdayAt15 = calendarDetails.thursday.at15[0].capacity 
+let vacanciesThursdayAt18 = calendarDetails.thursday.at18[0].capacity 
 
 // VIERNES
 
-let vacanciesFridayAt9 = calendarDetails.friday.at9[0].capacity - calendarDetails.friday.at9[0].students.length
-let vacanciesFridayAt12 = calendarDetails.friday.at12[0].capacity - calendarDetails.friday.at12[0].students.length
-let vacanciesFridayAt15 = calendarDetails.friday.at15[0].capacity - calendarDetails.friday.at15[0].students.length
-let vacanciesFridayAt18 = calendarDetails.friday.at18[0].capacity - calendarDetails.friday.at18[0].students.length
+let vacanciesFridayAt9 = calendarDetails.friday.at9[0].capacity 
+let vacanciesFridayAt12 = calendarDetails.friday.at12[0].capacity 
+let vacanciesFridayAt15 = calendarDetails.friday.at15[0].capacity 
+let vacanciesFridayAt18 = calendarDetails.friday.at18[0].capacity 
 
 //?----------------------------------------------------------------------------------------------------------------------
 
@@ -249,28 +248,40 @@ vacanciesFridayAt18,
 router.post("/calendar", isLoggedIn, async (req, res, next)=> {
 
 try {
-  const calendarDetails = await Calendar.findById("64d7a378106b5e05b18ec421")
+  const calendarDetails = await Calendar.findById("64d797df1365c0b4f43508c2")
 
   const clientSessionId =  req.session.loggedUser._id
-  console.log(clientSessionId)
+  console.log(clientSessionId + "ESTO QUIERO")
 
-  const mondayClassAt9Id = await calendarDetails.monday.populate("at9")
+  const mondayClassAt9Id = calendarDetails.monday.at9[0]._id
   console.log(mondayClassAt9Id)
 
-  const patata = mondayClassAt9Id.at9[0]
 
-  patata.students.push("64d5f4987c7f800990c0c0be")
-  console.log(patata.students)
+  // function updateDB(id, capacity2) {
 
-  const jamon = await patata.populate("students") 
-  console.log(jamon)
+  //   await Class.findByIdAndUpdate(id, {
+  //     capacity : capacity2 })
 
-  //!queremos comprobar si metiéndole a joinAClass los parámetros adecuados, el botón funciona
-  function joinAClass(mondayClassAt9Id, clientSessionId) {
+  // }
 
-    mondayClassAt9Id.students.push(clientSessionId)
-   
-  }
+  let newCapacity = calendarDetails.monday.at9[0].capacity - 1
+  
+    mondayClassAt9Id.students.push(clientSessionId)  
+
+
+  await Class.findByIdAndUpdate(mondayClassAt9Id, {
+    capacity : newCapacity })
+
+
+
+//   //!queremos comprobar si metiéndole a joinAClass los parámetros adecuados, el botón funciona
+  //  function joinAClass(mondayClassAt9Id, clientSessionId) {
+
+  //   let newCapacity = calendarDetails.monday.at9[0].capacity - 1
+  //   mondayClassAt9Id.students.push(clientSessionId)  
+
+  //   realizarCosa
+  // }
   res.redirect("/client/calendar")
 } catch (error) {
   next(error)

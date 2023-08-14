@@ -3,6 +3,7 @@
   <h2>CALENDARIO</h2>
     <table>
       <tbody>
+        <script src="routes/client.routes.js"></script>
         <tr>
           <td></td>
           <td>Lunes</td>
@@ -18,26 +19,29 @@
           <td>
          <form action="/client/calendar" method="post">
 
-           <button  name="mondayAt9">
+           <button class="boton" id="mondayAt9">
 
               <p>{{weekDetails.monday.at9.className}}</p>
               <p>Profesor: {{weekDetails.monday.at9.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.monday.at9.capacity}}</p>
-              <p>{{weekDetails.monday.at9._id}}</p>
+              {{!-- <p>{{weekDetails.monday.at9._id}}</p> --}}
             </button>
           </form> 
           </td>
 
           <td>
-            <button onclick="joinAClass()" name="boton1">
+            <form action="/client/calendar" method="post">
+            <button>
 
               <p>{{weekDetails.tuesday.at9.className}}</p>
               <p>Profesor: {{weekDetails.tuesday.at9.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.tuesday.at9.capacity}}</p>
             </button>
+            </form>
+            </td>
           </td>
           <td>
-            <button onclick="joinAClass()" name="boton1">
+            <button>
 
               <p>{{weekDetails.wednesday.at9.className}}</p>
               <p>Profesor: {{weekDetails.wednesday.at9.teacher.name}}</p>
@@ -45,7 +49,7 @@
             </button>
           </td>
           <td>
-            <button onclick="joinAClass()" name="boton1">
+            <button>
 
               <p>{{weekDetails.thursday.at9.className}}</p>
               <p>Profesor: {{weekDetails.thursday.at9.teacher.name}}</p>
@@ -53,7 +57,7 @@
             </button>
           </td>
           <td>
-            <button onclick="joinAClass()" name="boton1">
+            <button>
 
               <p>{{weekDetails.friday.at9.className}}</p>
               <p>Profesor: {{weekDetails.friday.at9.teacher.name}}</p>
@@ -65,31 +69,31 @@
           <td>
             <h4>12:00</h4>
           </td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.monday.at12.className}}</p>
               <p>Profesor: {{weekDetails.monday.at12.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.monday.at12.capacity}}</p>
             </button></td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.tuesday.at12.className}}</p>
               <p>Profesor: {{weekDetails.tuesday.at12.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.tuesday.at12.capacity}}</p>
             </button></td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.wednesday.at12.className}}</p>
               <p>Profesor: {{weekDetails.wednesday.at12.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.wednesday.at12.capacity}}</p>
             </button></td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.thursday.at12.className}}</p>
               <p>Profesor: {{weekDetails.thursday.at12.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.thursday.at12.capacity}}</p>
             </button></td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.friday.at12.className}}</p>
               <p>Profesor: {{weekDetails.friday.at12.teacher.name}}</p>
@@ -100,31 +104,31 @@
           <td>
             <h4>15:00</h4>
           </td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.monday.at15.className}}</p>
               <p>Profesor: {{weekDetails.monday.at15.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.monday.at15.capacity}}</p>
             </button></td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.tuesday.at15.className}}</p>
               <p>Profesor: {{weekDetails.tuesday.at15.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.tuesday.at15.capacity}}</p>
             </button></td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.wednesday.at15.className}}</p>
               <p>Profesor: {{weekDetails.wednesday.at15.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.wednesday.at15.capacity}}</p>
             </button></td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.thursday.at15.className}}</p>
               <p>Profesor: {{weekDetails.thursday.at15.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.thursday.at15.capacity}}</p>
             </button></td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.friday.at15.className}}</p>
               <p>Profesor: {{weekDetails.friday.at15.teacher.name}}</p>
@@ -135,31 +139,31 @@
           <td>
             <h4>18:00</h4>
           </td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.monday.at18.className}}</p>
               <p>Profesor: {{weekDetails.monday.at18.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.monday.at18.capacity}}</p>
             </button></td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.tuesday.at18.className}}</p>
               <p>Profesor: {{weekDetails.tuesday.at18.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.tuesday.at18.capacity}}</p>
             </button></td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.wednesday.at18.className}}</p>
               <p>Profesor: {{weekDetails.wednesday.at18.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.wednesday.at18.capacity}}</p>
             </button></td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.thursday.at18.className}}</p>
               <p>Profesor: {{weekDetails.thursday.at18.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.thursday.at18.capacity}}</p>
             </button></td>
-          <td><button onclick="joinAClass()" name="boton1">
+          <td><button>
 
               <p>{{weekDetails.friday.at18.className}}</p>
               <p>Profesor: {{weekDetails.friday.at18.teacher.name}}</p>

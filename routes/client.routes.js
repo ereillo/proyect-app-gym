@@ -87,10 +87,9 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
 // POST ("/client/calendar") => renderizar los datos del calendario y añadirlos a la DB
 router.post("/calendar", isLoggedIn, async (req, res, next) => {
 
-const {name} = req.body
-let mondayAt9Id = req.body.weekDetails.monday.at9._id
-console.log("ESTE CONSOLELOG" + mondayAt9Id)
-
+// const {name} = req.body
+// let mondayAt9Id = req.body.weekDetails.monday.at9._id
+// console.log("ESTE CONSOLELOG" + mondayAt9Id)
 
 const clientSessionId = req.session.loggedUser._id;
 
@@ -111,53 +110,62 @@ const clientSessionId = req.session.loggedUser._id;
         }
     })
 
+    //! CON ESTO HE CONSEGUIDO QUE SE AÑADA AL USUARIO LOGEADO EN CLASES DIFERENTES. LA DE ZUMBA DEL LUNES A LAS 9 Y LA DE YOGA DEL MARTES A LAS 9.
+    const classMondayAt9ToUpdate = await Class.findById(weekDetails.monday.at9._id);
+    classMondayAt9ToUpdate.students.push(clientSessionId);
+    console.log("ESTE CONSOLE" + clientSessionId)
+    await classMondayAt9ToUpdate.save()
 
-    let newCapacity = weekDetails.monday.at9.capacity -1
+    const classTuesdayAt9ToUpdate = await Class.findById(weekDetails.tuesday.at9._id);
+    classTuesdayAt9ToUpdate.students.push(clientSessionId);
+    console.log("ESTE CONSOLE" + weekDetails.tuesday.at9.className)
+    await classTuesdayAt9ToUpdate.save()
+
+  //   let newCapacity = weekDetails.monday.at9.capacity -1
     
-    weekDetails.monday.at9.students.push(clientSessionId)
+  //   weekDetails.monday.at9.students.push(clientSessionId)
    
-    await Class.findByIdAndUpdate(mondayAt9Id, {
+  //   await Class.findByIdAndUpdate(mondayAt9Id, {
 
-    })
+  //   })
 
-    await Class.findByIdAndUpdate(weekDetails.monday.at9._id, {
-      capacity: newCapacity
-    })
+  //   await Class.findByIdAndUpdate(weekDetails.monday.at9._id, {
+  //     capacity: newCapacity
+  //   })
     
     
-   console.log(weekDetails.monday.at9.students)
+  //  console.log(weekDetails.monday.at9.students)
   //  console.log("ESTO ES" + clientSessionId)
 
-    // if (weekDetails.students.includes(clientSessionId)) {
-    //   res.status(400).render("client-views/calendar-view.hbs", {
-    //     errorMessage: "Ya estas apuntado a esta clase",
-    //   });
-    //   return;
-    // } else {
-    //   mondayClassAt9.students.push(clientSessionId);
-    // }
+  //   if (weekDetails.students.includes(clientSessionId)) {
+  //     res.status(400).render("client-views/calendar-view.hbs", {
+  //       errorMessage: "Ya estas apuntado a esta clase",
+  //     });
+  //     return;
+  //   } else {
+  //     mondayClassAt9.students.push(clientSessionId);
+  //   }
 
-    // console.log("LSITA ESTUDIANTES ACTUALIZADA" + mondayClassAt9.students);
-    // let newStudentList = mondayClassAt9.students;
-    // console.log("ID DE CLASE ACTUAL" + mondayClassAt9);
-    // //console.log("ARRAY DE ESTUDIANTES" + mondayClassAt9.students)
+  //   console.log("LSITA ESTUDIANTES ACTUALIZADA" + mondayClassAt9.students);
+  //   let newStudentList = mondayClassAt9.students;
+  //   console.log("ID DE CLASE ACTUAL" + mondayClassAt9);
+  //   //console.log("ARRAY DE ESTUDIANTES" + mondayClassAt9.students)
 
-    // let newCapacity =
-    //   calendarDetails.monday.at9[0].capacity - newStudentList.length;
+  //   let newCapacit = calendarDetails.monday.at9[0].capacity - newStudentList.length;
 
-    // await Class.findByIdAndUpdate(mondayClassAt9Id, {
-    //   students: newStudentList,
-    //   capacity: newCapacity,
-    // });
+  //   await Class.findByIdAndUpdate(mondayClassAt9Id, {
+  //     students: newStudentList,
+  //     capacity: newCapacity,
+  //   });
 
-    //   //!queremos comprobar si metiéndole a joinAClass los parámetros adecuados, el botón funciona
-    //  function joinAClass(mondayClassAt9Id, clientSessionId) {
+  //     //!queremos comprobar si metiéndole a joinAClass los parámetros adecuados, el botón funciona
+  //    function joinAClass(mondayClassAt9Id, clientSessionId) {
 
-    //   let newCapacity = calendarDetails.monday.at9[0].capacity - 1
-    //   mondayClassAt9Id.students.push(clientSessionId)
+  //     let newCapacity = calendarDetails.monday.at9[0].capacity - 1
+  //     mondayClassAt9Id.students.push(clientSessionId)
 
-    //   realizarCosa
-    // }
+  //     realizarCosa
+  //   }
     res.redirect("/client/calendar");
   } catch (error) {
     next(error);

@@ -1,270 +1,176 @@
 <div>
 
   <h2>CALENDARIO</h2>
-<form action="/client/calendar" method="post">
-  <table>
-    <tbody>
-      <tr>
-        <td></td>
-        <td>Lunes</td>
-        <td>Martes</td>
-        <td>Miércoles</td>
-        <td>Jueves</td>
-        <td>Viernes</td>
-      </tr>
-      <tr>
-        <td>
-          <h4>9:00</h4>
-        </td>
-        <td>
-          <button onclick="joinAClass()" name="boton1">
-            
+    <table>
+      <tbody>
+        <tr>
+          <td></td>
+          <td>Lunes</td>
+          <td>Martes</td>
+          <td>Miércoles</td>
+          <td>Jueves</td>
+          <td>Viernes</td>
+        </tr>
+        <tr>
+          <td>
+            <h4>9:00</h4>
+          </td>
+          <td>
+         <form action="/client/calendar" method="post">
+
+           <button  name="mondayAt9">
 
               <p>{{weekDetails.monday.at9.className}}</p>
-            
+              <p>Profesor: {{weekDetails.monday.at9.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.monday.at9.capacity}}</p>
+              <p>{{weekDetails.monday.at9._id}}</p>
+            </button>
+          </form> 
+          </td>
 
-            {{#each professorMondayAt9}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesMondayAt9}}</p>
-          </button>
-        </td>
+          <td>
+            <button onclick="joinAClass()" name="boton1">
 
-        <td>
-          <button name="boton2">
-            {{#each calendarDetails.tuesday.at9}}
+              <p>{{weekDetails.tuesday.at9.className}}</p>
+              <p>Profesor: {{weekDetails.tuesday.at9.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.tuesday.at9.capacity}}</p>
+            </button>
+          </td>
+          <td>
+            <button onclick="joinAClass()" name="boton1">
 
-              <p>{{className}}</p>
-            {{/each}}
+              <p>{{weekDetails.wednesday.at9.className}}</p>
+              <p>Profesor: {{weekDetails.wednesday.at9.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.wednesday.at9.capacity}}</p>
+            </button>
+          </td>
+          <td>
+            <button onclick="joinAClass()" name="boton1">
 
-            {{#each professorTuesdayAt9}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesTuesdayAt9}}</p>
-          </button>
-        </td>
-        <td>
-          <button>
-            {{#each calendarDetails.wednesday.at9}}
+              <p>{{weekDetails.thursday.at9.className}}</p>
+              <p>Profesor: {{weekDetails.thursday.at9.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.thursday.at9.capacity}}</p>
+            </button>
+          </td>
+          <td>
+            <button onclick="joinAClass()" name="boton1">
 
-              <p>{{className}}</p>
-            {{/each}}
+              <p>{{weekDetails.friday.at9.className}}</p>
+              <p>Profesor: {{weekDetails.friday.at9.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.friday.at9.capacity}}</p>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4>12:00</h4>
+          </td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-            {{#each professorWednesdayAt9}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesWednesdayAt9}}</p>
-          </button></td>
-        <td>
-          <button>
-            {{#each calendarDetails.thursday.at9}}
+              <p>{{weekDetails.monday.at12.className}}</p>
+              <p>Profesor: {{weekDetails.monday.at12.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.monday.at12.capacity}}</p>
+            </button></td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-              <p>{{className}}</p>
-            {{/each}}
+              <p>{{weekDetails.tuesday.at12.className}}</p>
+              <p>Profesor: {{weekDetails.tuesday.at12.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.tuesday.at12.capacity}}</p>
+            </button></td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-            {{#each professorThursdayAt9}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesThursdayAt9}}</p>
-          </button></td>
-        <td>
-          <button>
-            {{#each calendarDetails.friday.at9}}
+              <p>{{weekDetails.wednesday.at12.className}}</p>
+              <p>Profesor: {{weekDetails.wednesday.at12.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.wednesday.at12.capacity}}</p>
+            </button></td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-              <p>{{className}}</p>
-            {{/each}}
+              <p>{{weekDetails.thursday.at12.className}}</p>
+              <p>Profesor: {{weekDetails.thursday.at12.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.thursday.at12.capacity}}</p>
+            </button></td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-            {{#each professorFridayAt9}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesFridayAt9}}</p>
-          </button></td>
-      </tr>
-      <tr>
-        <td>
-          <h4>12:00</h4>
-        </td>
-        <td><button>
-            {{#each calendarDetails.monday.at12}}
+              <p>{{weekDetails.friday.at12.className}}</p>
+              <p>Profesor: {{weekDetails.friday.at12.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.friday.at12.capacity}}</p>
+            </button></td>
+        </tr>
+        <tr>
+          <td>
+            <h4>15:00</h4>
+          </td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-              <p>{{className}}</p>
-            {{/each}}
+              <p>{{weekDetails.monday.at15.className}}</p>
+              <p>Profesor: {{weekDetails.monday.at15.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.monday.at15.capacity}}</p>
+            </button></td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-            {{#each professorMondayAt12}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesMondayAt12}}</p>
-          </button></td>
-        <td><button>
-            {{#each calendarDetails.tuesday.at12}}
+              <p>{{weekDetails.tuesday.at15.className}}</p>
+              <p>Profesor: {{weekDetails.tuesday.at15.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.tuesday.at15.capacity}}</p>
+            </button></td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-              <p>{{className}}</p>
-            {{/each}}
+              <p>{{weekDetails.wednesday.at15.className}}</p>
+              <p>Profesor: {{weekDetails.wednesday.at15.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.wednesday.at15.capacity}}</p>
+            </button></td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-            {{#each professorTuesdayAt12}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesTuesdayAt12}}</p>
-          </button></td>
-        <td><button>
-            {{#each calendarDetails.wednesday.at12}}
+              <p>{{weekDetails.thursday.at15.className}}</p>
+              <p>Profesor: {{weekDetails.thursday.at15.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.thursday.at15.capacity}}</p>
+            </button></td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-              <p>{{className}}</p>
-            {{/each}}
+              <p>{{weekDetails.friday.at15.className}}</p>
+              <p>Profesor: {{weekDetails.friday.at15.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.friday.at15.capacity}}</p>
+            </button></td>
+        </tr>
+        <tr>
+          <td>
+            <h4>18:00</h4>
+          </td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-            {{#each professorWednesdayAt12}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesWednesdayAt12}}</p>
-          </button></td>
-        <td><button>
-            {{#each calendarDetails.thursday.at12}}
+              <p>{{weekDetails.monday.at18.className}}</p>
+              <p>Profesor: {{weekDetails.monday.at18.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.monday.at18.capacity}}</p>
+            </button></td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-              <p>{{className}}</p>
-            {{/each}}
+              <p>{{weekDetails.tuesday.at18.className}}</p>
+              <p>Profesor: {{weekDetails.tuesday.at18.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.tuesday.at18.capacity}}</p>
+            </button></td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-            {{#each professorThursdayAt12}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesThursdayAt12}}</p>
-          </button></td>
-        <td><button>
-            {{#each calendarDetails.friday.at12}}
+              <p>{{weekDetails.wednesday.at18.className}}</p>
+              <p>Profesor: {{weekDetails.wednesday.at18.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.wednesday.at18.capacity}}</p>
+            </button></td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-              <p>{{className}}</p>
-            {{/each}}
+              <p>{{weekDetails.thursday.at18.className}}</p>
+              <p>Profesor: {{weekDetails.thursday.at18.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.thursday.at18.capacity}}</p>
+            </button></td>
+          <td><button onclick="joinAClass()" name="boton1">
 
-            {{#each professorFridayAt12}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesFridayAt12}}</p>
-          </button></td>
-      </tr>
-      <tr>
-        <td>
-          <h4>15:00</h4>
-        </td>
-        <td><button>
-            {{#each calendarDetails.monday.at15}}
-
-              <p>{{className}}</p>
-            {{/each}}
-
-            {{#each professorMondayAt15}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesMondayAt15}}</p>
-          </button></td>
-        <td><button>
-            {{#each calendarDetails.tuesday.at15}}
-
-              <p>{{className}}</p>
-            {{/each}}
-
-            {{#each professorTuesdayAt15}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesTuesdayAt15}}</p>
-          </button></td>
-        <td><button>
-            {{#each calendarDetails.wednesday.at15}}
-
-              <p>{{className}}</p>
-            {{/each}}
-
-            {{#each professorWednesdayAt15}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesWednesdayAt15}}</p>
-          </button></td>
-        <td><button>
-            {{#each calendarDetails.thursday.at15}}
-
-              <p>{{className}}</p>
-            {{/each}}
-
-            {{#each professorThursdayAt15}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesThursdayAt15}}</p>
-          </button></td>
-        <td><button>
-            {{#each calendarDetails.friday.at15}}
-
-              <p>{{className}}</p>
-            {{/each}}
-
-            {{#each professorFridayAt15}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesFridayAt15}}</p>
-          </button></td>
-      </tr>
-      <tr>
-        <td>
-          <h4>18:00</h4>
-        </td>
-        <td><button>
-            {{#each calendarDetails.monday.at18}}
-
-              <p>{{className}}</p>
-            {{/each}}
-
-            {{#each professorMondayAt18}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesMondayAt18}}</p>
-          </button></td>
-        <td><button>
-            {{#each calendarDetails.tuesday.at18}}
-
-              <p>{{className}}</p>
-            {{/each}}
-
-            {{#each professorTuesdayAt18}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesTuesdayAt18}}</p>
-          </button></td>
-        <td><button>
-            {{#each calendarDetails.wednesday.at18}}
-
-              <p>{{className}}</p>
-            {{/each}}
-
-            {{#each professorWednesdayAt18}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesWednesdayAt18}}</p>
-          </button></td>
-        <td><button>
-            {{#each calendarDetails.thursday.at18}}
-
-              <p>{{className}}</p>
-            {{/each}}
-
-            {{#each professorThursdayAt18}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesThursdayAt18}}</p>
-          </button></td>
-        <td><button>
-            {{#each calendarDetails.friday.at18}}
-
-              <p>{{className}}</p>
-            {{/each}}
-
-            {{#each professorFridayAt18}}
-              <p>Profesor: {{name}}</p>
-            {{/each}}
-            <p>Plazas restantes: {{vacanciesFridayAt18}}</p>
-          </button></td>
-      </tr>
-    </tbody>
-  </table>
+              <p>{{weekDetails.friday.at18.className}}</p>
+              <p>Profesor: {{weekDetails.friday.at18.teacher.name}}</p>
+              <p>Plazas restantes: {{weekDetails.friday.at18.capacity}}</p>
+            </button></td>
+        </tr>
+      </tbody>
+    </table>
 
     {{#if errorMessage}}
       <p>{{errorMessage}}</p>
     {{/if}}
-</form>
+
 </div>

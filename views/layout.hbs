@@ -13,15 +13,15 @@
 
       <nav>
  <a href="/">Inicio</a>
- <a href="">Nuestras Clases</a>
- <a href="">Nuestros Profresores</a>
+ <a href="/client/classes">Nuestras Clases</a>
+ <a href="/client/teachers">Nuestros Profresores</a>
  {{#if isUserNotLoggedIn}}
  <a href="/auth/signup">Regístrate</a>
  <a href="/auth/login">Accede</a>
  {{/if}}
 {{#if isUserClient}}
 <a href="/client/main">Area Personal</a>
-<a href="">Calendario</a>
+<a href="/client/calendar">Calendario</a>
 <a href="/auth/logout">Cerrar sesión</a>
 {{/if}}
         

@@ -1,6 +1,8 @@
 <div>
 
-  <h3>Tus datos personales:</h3>
+  {{!-- <h3>Tus datos personales:</h3>
+
+   <br>
 
   <form action="/teachers/edit-profile" method="post">
 
@@ -16,11 +18,6 @@
 
     <label for="email">Correo electrónico</label>
     <input type="text" name="email" value="{{teacherId.email}}" />
-
-    <br />
-
-    <label for="profilePic">Cambiar foto de perfil</label>
-    <input type="file" name="movie-cover-image">
 
     <br>
 
@@ -51,6 +48,23 @@
       <p>{{this.errorMessage}}</p>
     {{/if}}
 
-  </form>
+  </form> --}}
+
+ <h5>Cambiar foto de perfil</h5>
+
+     <form action="/teachers/edit-profile" method="post" enctype="multipart/form-data">
+
+    <br />
+
+    <label for="profilePic">Cambiar foto de perfil</label>
+    <input type="file" name="profilePic">
+
+    <br>
+
+    <button>Agregar foto</button>
+
+    </form>
+
+  <img src"{{teacherId.profilePic}}" alt="image-perfil" width="100px">
 
 </div>

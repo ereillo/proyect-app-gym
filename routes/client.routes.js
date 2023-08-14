@@ -44,7 +44,15 @@ router.get("/main", isLoggedIn, async (req, res, next) => {
 });
 
 
+//GET ("/client/classes") => página con nuestras clases
+router.get("/classes", (req, res, next) => {
+  res.render("client-views/classes-view.hbs")
+})
 
+//GET ("/client/classes") => página con nuestras clases
+router.get("/teachers", (req, res, next) => {
+  res.render("client-views/teachers-view.hbs")
+})
 
 
 

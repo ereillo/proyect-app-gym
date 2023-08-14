@@ -8,6 +8,7 @@ const Class = require("../models/Class.model.js");
 
 const { isLoggedIn, isTeacher } = require("../middlewares/auth.middlewares.js");
 
+const uploader = require("../middlewares/cloudinary.middleware.js")
 
 //TODO: RUTAS TEACHERS
 //GET ("/teachers/main") = página principal del profesor
@@ -48,6 +49,22 @@ try {
 
 })
 
+//POST ("/teachers/main") => ruta que recibe la imagen para subirla a cloudinary
+router.post("/edit-profile", isLoggedIn, isTeacher, uploader.single("profilePic"), (req, res, next) => {
+
+  console.log(req.file)
+
+  User.findByIdAndUpdate(req.session.loggedUser._id, {
+    profilePic: req.file.path
+  })
+  .then(() => {
+    res.redirect("/teachers/main")
+  })
+  .catch((error) => {
+    next(error)
+  })
+})
+
 
 //POST ("/teachers/edit-profile") => Renderiza la información del formulario y lo edita
 router.post("/edit-profile", isLoggedIn, isTeacher, async (req, res, next) => {
@@ -70,36 +87,32 @@ if (
 
 //validación requisitos del formulario
 
-
-
-
-
 //! newPassword y confirmPassword tienen que ser la misma
 if (newPassword !== "") {
 
 
   //! validación contraseña correcta
 
-  const isPasswordCorrect = await bcrypt.compare(
-    password,
-    teacherId.password
-  );
-  //  console.log(isPasswordCorrect);
-  if (isPasswordCorrect === false) {
-    res.status(400).render("teachers-views/teachers-edit-profile.hbs", {
-      teacherId,
-      errorMessage: "La contraseña no es correcta",
-    });
-    return;
-  }
+//   const isPasswordCorrect = await bcrypt.compare(
+//     password,
+//     teacherId.password
+//   );
+//   //  console.log(isPasswordCorrect);
+//   if (isPasswordCorrect === false) {
+//     res.status(400).render("teachers-views/teachers-edit-profile.hbs", {
+//       teacherId,
+//       errorMessage: "La contraseña no es correcta",
+//     });
+//     return;
+//   }
 
-if (newPassword !== confirmNewPassword) {
-  res.status(400).render("teachers-views/teachers-edit-profile.hbs", {
-    teacherId,
-    errorMessage: "La nueva contraseña no coincide",
-  });
-  return;
-}
+// if (newPassword !== confirmNewPassword) {
+//   res.status(400).render("teachers-views/teachers-edit-profile.hbs", {
+//     teacherId,
+//     errorMessage: "La nueva contraseña no coincide",
+//   });
+//   return;
+// }
 
 //! Validacion de requisitos contraseña segura
 

@@ -40,6 +40,7 @@ router.get("/edit-profile", isLoggedIn, isTeacher, async (req, res, next) => {
 
 try {
   const teacherId = await User.findById(req.session.loggedUser._id)
+  console.log(teacherId + "ESTE CONSOLE.LOG")
   res.render("teachers-views/teachers-edit-profile.hbs", {
     teacherId
   })

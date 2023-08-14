@@ -17,7 +17,7 @@
           <h4>9:00</h4>
         </td>
         <td>
-          <button onclick="joinAClass()">
+          <button onclick="joinAClass()" name="boton1">
             {{#each calendarDetails.monday.at9}}
 
               <p>{{className}}</p>
@@ -31,7 +31,7 @@
         </td>
 
         <td>
-          <button>
+          <button name="boton2">
             {{#each calendarDetails.tuesday.at9}}
 
               <p>{{className}}</p>

@@ -250,13 +250,17 @@ router.post("/calendar", isLoggedIn, async (req, res, next)=> {
 try {
   const calendarDetails = await Calendar.findById("64d797df1365c0b4f43508c2")
 
+  let populateMonday = await calendarDetails.monday.populate("at9")
+ 
+  
+
   const clientSessionId =  req.session.loggedUser._id
-  console.log(clientSessionId + "ESTO QUIERO")
+//  console.log(clientSessionId + "ESTO QUIERO")
 
   const mondayClassAt9Id = calendarDetails.monday.at9[0]._id
-  console.log(mondayClassAt9Id)
 
-
+  const mondayClassAt9 = await Class.findById(mondayClassAt9Id)
+  console.log("ID DE CLASE " +mondayClassAt9)
   // function updateDB(id, capacity2) {
 
   //   await Class.findByIdAndUpdate(id, {
@@ -264,13 +268,34 @@ try {
 
   // }
 
-  let newCapacity = calendarDetails.monday.at9[0].capacity - 1
-  
-    mondayClassAt9Id.students.push(clientSessionId)  
+ 
+console.log("LSITA ESTUDIANTES" + mondayClassAt9.students)
+
+if (mondayClassAt9.students.includes(clientSessionId)) {
+
+  res.status(400).redirect("/client/calendar", {
+    errorMessage: "Ya estas apuntado a esta clase"})
+return
+} else {
+
+  mondayClassAt9.students.push(clientSessionId)  
+
+}
+
+
+console.log("LSITA ESTUDIANTES ACTUALIZADA" + mondayClassAt9.students)
+let newStudentList = mondayClassAt9.students
+console.log("ID DE CLASE ACTUAL" +mondayClassAt9)
+//console.log("ARRAY DE ESTUDIANTES" + mondayClassAt9.students)
+
+    let newCapacity = calendarDetails.monday.at9[0].capacity - newStudentList.length
 
 
   await Class.findByIdAndUpdate(mondayClassAt9Id, {
-    capacity : newCapacity })
+
+    students :newStudentList,
+    capacity : newCapacity
+   })
 
 
 

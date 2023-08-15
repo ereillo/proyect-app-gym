@@ -30,9 +30,6 @@
             <input type="text" name="className" value="{{weekDetails.monday.at9.className}}" style="display:none;">
             <input type="text" name="weekDay" value="{{weekDetails.monday.at9.weekDay}}" style="display:none;">
 
-
-
-              {{!-- <p>{{weekDetails.monday.at9._id}}</p> --}}
             </button>
           </form> 
           </td>
@@ -286,6 +283,11 @@
 
     {{#if errorMessage}}
       <p>{{errorMessage}}</p>
+    {{/if}}
+
+    {{#if errorMessageSuscription}}
+      <p>{{errorMessageSuscription}}</p>
+      <a href="/client/main"><button>Suscríbete aquí</button> </a>
     {{/if}}
 
 </div>

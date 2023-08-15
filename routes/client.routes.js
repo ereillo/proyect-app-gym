@@ -41,6 +41,20 @@ router.get("/main", isLoggedIn, async (req, res, next) => {
   }
 });
 
+//POST ("/client/main") => cambia el estado de la suscripción de true a false
+router.post("/main/:userId/:userSuscription", isLoggedIn, async(req, res, next) => {
+
+  //! ESTAMOS INTENTANDO QUE EL BOTÓN CAMBIE LA SUSCRIPCIÓN
+
+  try {
+    console.log("ESTE CONSOLE" + req.params)
+    res.redirect("/client/main")
+  } catch (error) {
+    next(error)
+  }
+})
+
+
 //GET ("/client/classes") => página con nuestras clases
 router.get("/classes", (req, res, next) => {
   res.render("client-views/classes-view.hbs");
@@ -58,7 +72,7 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
 
   try {
     const weekDetails = await Week.findById(
-      "64da35b47a1247b56b3042b4"
+      "64da46b6f1fd57abc7f34356"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -81,14 +95,18 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
 // POST ("/client/calendar") => renderizar los datos del calendario y añadirlos a la DB
 router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
   const { capacity, students, className, weekDay } = req.body;
-  // let mondayAt9Id = req.body.weekDetails.monday.at9._id
-  // console.log("ESTE CONSOLELOG" + mondayAt9Id)
 
   const clientSessionId = req.session.loggedUser._id;
 
+  const userId = await User
+  .findById(clientSessionId)
+  .select({suscriptionActive: 1})
+  
+  console.log("ESTE CONSOLE USER" + userId)
+
   try {
     const weekDetails = await Week.findById(
-      "64da35b47a1247b56b3042b4"
+      "64da46b6f1fd57abc7f34356"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -101,13 +119,15 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
       },
     });
 
-    //! CON ESTO HE CONSEGUIDO QUE SE AÑADA AL USUARIO LOGEADO EN CLASES DIFERENTES. LA DE ZUMBA DEL LUNES A LAS 9 Y LA DE YOGA DEL MARTES A LAS 9.
-
-    if (capacity > 0 && students.includes(clientSessionId) === false) {
+    if (capacity > 0 && students.includes(clientSessionId) === false && userId.suscriptionActive === true) {
       await Class.findByIdAndUpdate(
         { _id: req.params.classId },
         { $push: { students: clientSessionId }, $inc: { capacity: -1 } }
+        
       );
+      res.redirect("/client/main");
+      return;
+
     } else if (students.includes(clientSessionId) === true) {
       res.status(400).render("client-views/calendar-view.hbs", {
         weekDetails,
@@ -116,15 +136,22 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
       });
       return;
       
-    } else if ( capacity < 1 && students.includes(clientSessionId) === false) {
+    } else if ( capacity < 1 && students.includes(clientSessionId) === false && userId.suscriptionActive === true) {
       res.status(400).render("client-views/calendar-view.hbs", {
         weekDetails,
         errorMessage: `No quedan plazas disponibles para ${className} el ${weekDay}`
     })
     return
-  }
-
+ 
+}   else if ( userId.suscriptionActive === false ) {
+  res.status(400).render("client-views/calendar-view.hbs", {
+    weekDetails,
+    errorMessageSuscription: `Suscríbete para apuntarte a una clase`
+})
+return
+}
     
+
     res.redirect("/client/calendar");
   } catch (error) {
     next(error);

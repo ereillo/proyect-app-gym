@@ -5,7 +5,7 @@
   {{#if suscriptionTrue}}
 
     <p>{{suscriptionTrue}}</p>
-    <button>Apúntate a una clase</button>
+    <a href="/client/calendar"><button>Apúntate a una clase</button> </a>
 
     <h3>Estas son tus clases</h3>
     {{#each classInfo}}
@@ -17,10 +17,11 @@
 
   {{/if}}
 
+<form action="/client/main/{{user._id}}/{{user.suscriptionActive}}"></form>
   {{#if suscriptionFalse}}
     <p>{{suscriptionFalse}}</p>
-
     <button>Suscríbete</button>
   {{/if}}
+ </form> 
 
 </div>

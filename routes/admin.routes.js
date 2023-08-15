@@ -26,7 +26,7 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     try {
     
         const weekDetails = await Week.findById(
-            "64da46b6f1fd57abc7f34356"
+            "64da35b47a1247b56b3042b4"
           ).populate({
             path: "monday tuesday wednesday thursday friday",
             populate: {
@@ -113,7 +113,24 @@ fridayAt15, fridayAt15Teacher,
 fridayAt18, fridayAt18Teacher,
 } = req.body
 
+try {
+    
+await Week.findByIdAndUpdate("64da35b47a1247b56b3042b4", {
 
+monday: {at9:mondayAt9,at12:mondayAt12, at15:mondayAt15, at18: mondayAt18 }
+
+
+
+
+
+
+})
+
+
+res.redirect("/admin/edit-calendar")
+} catch (error) {
+    next(error)
+}
 
 })
 

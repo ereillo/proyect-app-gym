@@ -2,4 +2,148 @@
 
 <h3>Vista del calendario</h3>
 
+<form action="/admin/edit-calendar" method="post">
+
+<label for="mondayAt9">Lunes a las 9:00</label>
+<select name="mondayAt9" >
+{{#each mondayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+
+<label for="mondayAt12">Lunes a las 12:00</label>
+<select name="mondayAt12" >
+{{#each mondayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+<br>
+<label for="mondayAt15">Lunes a las 15:00</label>
+<select name="mondayAt9" >
+{{#each mondayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+
+<label for="mondayAt18">Lunes a las 18:00</label>
+<select name="mondayAt18" >
+{{#each mondayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+<br>
+<label for="tuesdayAt9">Martes a las 9:00</label>
+<select name="tuesdayAt9" >
+{{#each tuesdayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+
+<label for="tuesdayAt12">Martes a las 12:00</label>
+<select name="tuesdayAt12" >
+{{#each tuesdayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+<br>
+<label for="tuesdayAt15">Martes a las 15:00</label>
+<select name="tuesdayAt9" >
+{{#each tuesdayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+
+<label for="tuesdayAt18">Martes a las 18:00</label>
+<select name="tuesdayAt18" >
+{{#each tuesdayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+<br>
+<label for="wednesdayAt9">Miércoles a las 9:00</label>
+<select name="wednesdayAt9" >
+{{#each wednesdayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+
+<label for="wednesdayAt12">Miércoles a las 12:00</label>
+<select name="wednesdayAt12" >
+{{#each wednesdayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+<br>
+<label for="wednesdayAt15">Miércoles a las 15:00</label>
+<select name="wednesdayAt9" >
+{{#each wednesdayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+
+<label for="wednesdayAt18">Miércoles a las 18:00</label>
+<select name="wednesdayAt18" >
+{{#each wednesdayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+
+<br>
+<label for="thursdayAt9">Jueves a las 9:00</label>
+<select name="thursdayAt9" >
+{{#each thursdayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+
+<label for="thursdayAt12">Jueves a las 12:00</label>
+<select name="thursdayAt12" >
+{{#each thursdayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+<br>
+<label for="thursdayAt15">Jueves a las 15:00</label>
+<select name="thursdayAt15" >
+{{#each thursdayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+
+<label for="thursdayAt18">Jueves a las 18:00</label>
+<select name="thursdayAt18" >
+{{#each thursdayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+<br>
+<label for="fridayAt9">Viernes a las 9:00</label>
+<select name="fridayAt9" >
+{{#each fridayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+
+<label for="fridayAt12">Viernes a las 12:00</label>
+<select name="fridayAt12" >
+{{#each fridayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+<br>
+<label for="fridayAt15">Viernes a las 15:00</label>
+<select name="fridayAt15" >
+{{#each fridayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+
+<label for="fridayAt18">Viernes a las 18:00</label>
+<select name="fridayAt18" >
+{{#each fridayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+</form>
+
 </div>

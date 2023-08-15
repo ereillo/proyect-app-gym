@@ -5,7 +5,7 @@
   {{#if suscriptionTrue}}
 
     <p>Tu suscripción está activa</p>
-    <form action="/client/main" method="post">
+    <form action="/client/main/" method="post">
     <button>Darse de baja</button>
     <input type="text" name="suscription" value="true" style="display: none;">
     </form>
@@ -29,7 +29,7 @@
   {{/if}}
 
   {{#unless suscriptionTrue}}
-  <form action="/client/main" method="post">
+  <form action="/client/main/" method="post">
     <p>Tu suscripción está inactiva</p>
     <button>Suscríbete</button>
     <input type="text" name="suscription" value="false" style="display: none;">

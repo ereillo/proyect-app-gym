@@ -35,7 +35,7 @@ router.get("/main", isLoggedIn, async (req, res, next) => {
 });
 
 //POST ("/client/main") => cambia el estado de la suscripción de true a false
-router.post("/main/:classId", isLoggedIn, async (req, res, next) => {
+router.post("/main", isLoggedIn, async (req, res, next) => {
 
   const {suscription} = req.body
   console.log(suscription)
@@ -50,15 +50,31 @@ router.post("/main/:classId", isLoggedIn, async (req, res, next) => {
         suscriptionActive: false,
       });
     }
-    await Class.findByIdAndUpdate(
-      { _id: req.params.classId  },
-      { $pull: {students: req.session.loggedUser._id}, $inc: {capacity: +1}}
-    )
+   
     res.redirect("/client/main");
   } catch (error) {
     next(error);
   }
 });
+
+router.post("/main/:classId", isLoggedIn, async (req, res, next) => {
+
+try {
+  
+  await Class.findByIdAndUpdate(
+    { _id: req.params.classId  },
+    { $pull: {students: req.session.loggedUser._id}, $inc: {capacity: +1}}
+  )
+  res.redirect("/client/main");
+} catch (error) {
+  next(error)
+}
+
+
+})
+
+
+
 
 //GET ("/client/classes") => página con nuestras clases
 router.get("/classes", (req, res, next) => {
@@ -77,7 +93,7 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
 
   try {
     const weekDetails = await Week.findById(
-      "64da46b6f1fd57abc7f34356"
+      "64da35b47a1247b56b3042b4"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -111,7 +127,7 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
 
   try {
     const weekDetails = await Week.findById(
-      "64da46b6f1fd57abc7f34356"
+      "64da35b47a1247b56b3042b4"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {

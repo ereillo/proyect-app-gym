@@ -4,146 +4,313 @@
 
 <form action="/admin/edit-calendar" method="post">
 
+<div>
 <label for="mondayAt9">Lunes a las 9:00</label>
 <select name="mondayAt9" >
 {{#each mondayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
+<label for="mondayAt9Teacher">Profesor: </label>
+<select name="mondayAt9Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
 
+
+<div>
 <label for="mondayAt12">Lunes a las 12:00</label>
 <select name="mondayAt12" >
 {{#each mondayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
-<br>
+<label for="mondayAt12Teacher">Profesor: </label>
+<select name="mondayAt12Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
+
+<div>
 <label for="mondayAt15">Lunes a las 15:00</label>
-<select name="mondayAt9" >
+<select name="mondayAt15" >
 {{#each mondayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
+<label for="mondayAt15Teacher">Profesor: </label>
+<select name="mondayAt15Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
 
+<div>
 <label for="mondayAt18">Lunes a las 18:00</label>
 <select name="mondayAt18" >
 {{#each mondayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
+<label for="mondayAt18Teacher">Profesor: </label>
+<select name="mondayAt18Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
+
 <br>
+
+<div>
 <label for="tuesdayAt9">Martes a las 9:00</label>
 <select name="tuesdayAt9" >
-{{#each tuesdayClasses}}
+{{#each mondayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
+<label for="tuesdayAt9Teacher">Profesor: </label>
+<select name="tuesdayAt9Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
 
+<div>
 <label for="tuesdayAt12">Martes a las 12:00</label>
 <select name="tuesdayAt12" >
-{{#each tuesdayClasses}}
+{{#each mondayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
-<br>
-<label for="tuesdayAt15">Martes a las 15:00</label>
-<select name="tuesdayAt9" >
-{{#each tuesdayClasses}}
-<option value="{{_id}}">{{className}}</option>
-{{/each}}
+<label for="tuesdayAt12Teacher">Profesor: </label>
+<select name="tuesdayAt12Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
 </select>
+</div>
 
+<div>
+<label for="tuesdayAt15">Martes a las 15:00</label>
+<select name="tuesdayAt15" >
+{{#each mondayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+<label for="tuesdayAt15Teacher">Profesor: </label>
+<select name="tuesdayAt15Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
+
+<div>
 <label for="tuesdayAt18">Martes a las 18:00</label>
 <select name="tuesdayAt18" >
-{{#each tuesdayClasses}}
+{{#each mondayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
+<label for="tuesdayAt18Teacher">Profesor: </label>
+<select name="tuesdayAt18Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
+
 <br>
+
+<div>
 <label for="wednesdayAt9">Miércoles a las 9:00</label>
 <select name="wednesdayAt9" >
-{{#each wednesdayClasses}}
+{{#each mondayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
+<label for="wednesdayAt9Teacher">Profesor: </label>
+<select name="wednesdayAt9Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
 
+<div>
 <label for="wednesdayAt12">Miércoles a las 12:00</label>
 <select name="wednesdayAt12" >
-{{#each wednesdayClasses}}
+{{#each mondayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
-<br>
-<label for="wednesdayAt15">Miércoles a las 15:00</label>
-<select name="wednesdayAt9" >
-{{#each wednesdayClasses}}
-<option value="{{_id}}">{{className}}</option>
-{{/each}}
+<label for="wednesdayAt12Teacher">Profesor: </label>
+<select name="wednesdayAt12Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
 </select>
+</div>
 
+<div>
+<label for="wednesdayAt15">Miércoles a las 15:00</label>
+<select name="wednesdayAt15" >
+{{#each mondayClasses}}
+<option value="{{_id}}">{{className}}</option>
+{{/each}}
+</select>
+<label for="wednesdayAt15Teacher">Profesor: </label>
+<select name="wednesdayAt15Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
+
+<div>
 <label for="wednesdayAt18">Miércoles a las 18:00</label>
 <select name="wednesdayAt18" >
-{{#each wednesdayClasses}}
+{{#each mondayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
+<label for="wednesdayAt18Teacher">Profesor: </label>
+<select name="wednesdayAt18Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
 
 <br>
+
+<div>
 <label for="thursdayAt9">Jueves a las 9:00</label>
 <select name="thursdayAt9" >
 {{#each thursdayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
+<label for="thursdayAt9Teacher">Profesor: </label>
+<select name="thursdayAt9Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
 
-<label for="thursdayAt12">Jueves a las 12:00</label>
+<div>
+<label for="thursdayAt12">Jueves a las 9:00</label>
 <select name="thursdayAt12" >
 {{#each thursdayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
-<br>
-<label for="thursdayAt15">Jueves a las 15:00</label>
+<label for="thursdayAt12Teacher">Profesor: </label>
+<select name="thursdayAt12Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
+
+<div>
+<label for="thursdayAt15">Jueves a las 9:00</label>
 <select name="thursdayAt15" >
 {{#each thursdayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
+<label for="thursdayAt15Teacher">Profesor: </label>
+<select name="thursdayAt15Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
 
-<label for="thursdayAt18">Jueves a las 18:00</label>
+<div>
+<label for="thursdayAt18">Jueves a las 9:00</label>
 <select name="thursdayAt18" >
 {{#each thursdayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
+<label for="thursdayAt18Teacher">Profesor: </label>
+<select name="thursdayAt18Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
+
 <br>
+
+<div>
 <label for="fridayAt9">Viernes a las 9:00</label>
 <select name="fridayAt9" >
 {{#each fridayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
+<label for="fridayAt9Teacher">Profesor: </label>
+<select name="fridayAt9Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
 
+<div>
 <label for="fridayAt12">Viernes a las 12:00</label>
 <select name="fridayAt12" >
 {{#each fridayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
-<br>
+<label for="fridayAt12Teacher">Profesor: </label>
+<select name="fridayAt12Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
+
+<div>
 <label for="fridayAt15">Viernes a las 15:00</label>
 <select name="fridayAt15" >
 {{#each fridayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
+<label for="fridayAt15Teacher">Profesor: </label>
+<select name="fridayAt15Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
 
+<div>
 <label for="fridayAt18">Viernes a las 18:00</label>
 <select name="fridayAt18" >
 {{#each fridayClasses}}
 <option value="{{_id}}">{{className}}</option>
 {{/each}}
 </select>
-</form>
+<label for="fridayAt18Teacher">Profesor: </label>
+<select name="fridayAt18Teacher"> 
+{{#each teachers}}
+<option value="{{_id}}">{{name}}</option>
+{{/each}}   
+</select>
+</div>
 
 </div>

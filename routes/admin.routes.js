@@ -17,13 +17,16 @@ router.get("/main" , isLoggedIn, isAdmin, (req, res, next) => {
     res.render("admin-views/admin-main.hbs")
 })
 
+//weekId Eve: 64da46b6f1fd57abc7f34356
+//weekId Lucas: 64da35b47a1247b56b3042b4
+
 //GET ("/admin/edit-calendar") => muestra el formulario de edición del calendario
 router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     
     try {
     
         const weekDetails = await Week.findById(
-            "64da35b47a1247b56b3042b4"
+            "64da46b6f1fd57abc7f34356"
           ).populate({
             path: "monday tuesday wednesday thursday friday",
             populate: {
@@ -65,16 +68,16 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
         } 
         })
     
+        // console.log(mondayClasses)
 
-        console.log(mondayClasses)
-    
     res.render("admin-views/admin-edit-calendar.hbs", {
         weekDetails,
         mondayClasses,
         tuesdayClasses,
         wednesdayClasses,
         thursdayClasses,
-        fridayClasses
+        fridayClasses,
+        teachers: cloneallTeachers
         
     })
     } catch (error) {
@@ -87,6 +90,29 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
 
 router.post("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     
+const 
+{mondayAt9, mondayAt9Teacher, 
+mondayAt12, mondayAt12Teacher,
+mondayAt15, mondayAt15Teacher,
+mondayAt18, mondayAt18Teacher,
+tuesdayAt9, tuesdayAt9Teacher,
+tuesdayAt12, tuesdayAt12Teacher,
+tuesdayAt15, tuesdayAt15Teacher,
+tuesdayAt18, tuesdayAt18Teacher,
+wednesdayAt9, wednesdayAt9Teacher,
+wednesdayAt12, wednesdayAt12Teacher,
+wednesdayAt15, wednesdayAt15Teacher,
+wednesdayAt18, wednesdayAt18Teacher,
+thursdayAt9, thursdayAt9Teacher,
+thursdayAt12, thursdayAt12Teacher,
+thursdayAt15, thursdayAt15Teacher,
+thursdayAt18, thursdayAt18Teacher,
+fridayAt9, fridayAt9Teacher,
+fridayAt12, fridayAt12Teacher,
+fridayAt15, fridayAt15Teacher,
+fridayAt18, fridayAt18Teacher,
+} = req.body
+
 
 
 })

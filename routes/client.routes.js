@@ -24,36 +24,41 @@ router.get("/main", isLoggedIn, async (req, res, next) => {
     }).select({ className: 1, weekDay: 1 });
     //  console.log(classInfo)
 
-    if (userId.suscriptionActive === true) {
-      res.render("client-views/client-main.hbs", {
-        user: userId,
-        suscriptionTrue: "Tu suscripción esta activa",
-        classInfo,
-      });
-    } else {
-      res.render("client-views/client-main.hbs", {
-        user: userId,
-        suscriptionFalse: "Tu suscripcion esta inactiva",
-      });
-    }
+    res.render("client-views/client-main.hbs", {
+      user: userId,
+      suscriptionTrue: userId.suscriptionActive,
+      classInfo,
+    });
   } catch (error) {
     next(error);
   }
 });
 
 //POST ("/client/main") => cambia el estado de la suscripción de true a false
-router.post("/main/:userId/:userSuscription", isLoggedIn, async(req, res, next) => {
+router.post("/main/:classId", isLoggedIn, async (req, res, next) => {
 
-  //! ESTAMOS INTENTANDO QUE EL BOTÓN CAMBIE LA SUSCRIPCIÓN
+  const {suscription} = req.body
+  console.log(suscription)
 
   try {
-    console.log("ESTE CONSOLE" + req.params)
-    res.redirect("/client/main")
+    if (suscription === "false") {
+      await User.findByIdAndUpdate(req.session.loggedUser._id, {
+        suscriptionActive: true,
+      });
+    } else if (suscription === "true"){
+      await User.findByIdAndUpdate(req.session.loggedUser._id, {
+        suscriptionActive: false,
+      });
+    }
+    await Class.findByIdAndUpdate(
+      { _id: req.params.classId  },
+      { $pull: {students: req.session.loggedUser._id}, $inc: {capacity: +1}}
+    )
+    res.redirect("/client/main");
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
-
+});
 
 //GET ("/client/classes") => página con nuestras clases
 router.get("/classes", (req, res, next) => {
@@ -98,11 +103,11 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
 
   const clientSessionId = req.session.loggedUser._id;
 
-  const userId = await User
-  .findById(clientSessionId)
-  .select({suscriptionActive: 1})
-  
-  console.log("ESTE CONSOLE USER" + userId)
+  const userId = await User.findById(clientSessionId).select({
+    suscriptionActive: 1,
+  });
+
+  console.log("ESTE CONSOLE USER" + userId);
 
   try {
     const weekDetails = await Week.findById(
@@ -119,38 +124,40 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
       },
     });
 
-    if (capacity > 0 && students.includes(clientSessionId) === false && userId.suscriptionActive === true) {
+    if (
+      capacity > 0 &&
+      students.includes(clientSessionId) === false &&
+      userId.suscriptionActive === true
+    ) {
       await Class.findByIdAndUpdate(
         { _id: req.params.classId },
         { $push: { students: clientSessionId }, $inc: { capacity: -1 } }
-        
       );
       res.redirect("/client/main");
       return;
-
     } else if (students.includes(clientSessionId) === true) {
       res.status(400).render("client-views/calendar-view.hbs", {
         weekDetails,
-        errorMessage: `Ya estas apuntado a ${className} el ${weekDay}`
-       
+        errorMessage: `Ya estas apuntado a ${className} el ${weekDay}`,
       });
       return;
-      
-    } else if ( capacity < 1 && students.includes(clientSessionId) === false && userId.suscriptionActive === true) {
+    } else if (
+      capacity < 1 &&
+      students.includes(clientSessionId) === false &&
+      userId.suscriptionActive === true
+    ) {
       res.status(400).render("client-views/calendar-view.hbs", {
         weekDetails,
-        errorMessage: `No quedan plazas disponibles para ${className} el ${weekDay}`
-    })
-    return
- 
-}   else if ( userId.suscriptionActive === false ) {
-  res.status(400).render("client-views/calendar-view.hbs", {
-    weekDetails,
-    errorMessageSuscription: `Suscríbete para apuntarte a una clase`
-})
-return
-}
-    
+        errorMessage: `No quedan plazas disponibles para ${className} el ${weekDay}`,
+      });
+      return;
+    } else if (userId.suscriptionActive === false) {
+      res.status(400).render("client-views/calendar-view.hbs", {
+        weekDetails,
+        errorMessageSuscription: `Suscríbete para apuntarte a una clase`,
+      });
+      return;
+    }
 
     res.redirect("/client/calendar");
   } catch (error) {

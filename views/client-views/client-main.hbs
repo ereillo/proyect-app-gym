@@ -4,7 +4,11 @@
 
   {{#if suscriptionTrue}}
 
-    <p>{{suscriptionTrue}}</p>
+    <p>Tu suscripción está activa</p>
+    <form action="/client/main" method="post">
+    <button>Darse de baja</button>
+    <input type="text" name="suscription" value="true" style="display: none;">
+    </form>
     <a href="/client/calendar"><button>Apúntate a una clase</button> </a>
 
     <h3>Estas son tus clases</h3>
@@ -12,16 +16,25 @@
 
       <li>{{className}}</li>
       <li>{{weekDay}}</li>
+      <form action="/client/main/{{_id}}" method="post">
+    
+      
+      <button>Desapúntate de la clase</button>
+      <input type="text" name="students" value="{{students}}" style="display:none;">
+
+      </form>
 
     {{/each}}
 
   {{/if}}
 
-<form action="/client/main/{{user._id}}/{{user.suscriptionActive}}"></form>
-  {{#if suscriptionFalse}}
-    <p>{{suscriptionFalse}}</p>
+  {{#unless suscriptionTrue}}
+  <form action="/client/main" method="post">
+    <p>Tu suscripción está inactiva</p>
     <button>Suscríbete</button>
-  {{/if}}
- </form> 
-
+    <input type="text" name="suscription" value="false" style="display: none;">
+    </form>
+  {{/unless}}
+  
+    
 </div>

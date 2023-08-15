@@ -53,119 +53,78 @@ router.get("/teachers", (req, res, next) => {
 
 // GET ("/client/calendar") => pagina calendario con las clases
 router.get("/calendar", isLoggedIn, async (req, res, next) => {
-
-// week Lucas: 64da35b47a1247b56b3042b4
-// week Eve: 64da46b6f1fd57abc7f34356
+  // week Lucas: 64da35b47a1247b56b3042b4
+  // week Eve: 64da46b6f1fd57abc7f34356
 
   try {
-    const weekDetails = await Week.findById("64da46b6f1fd57abc7f34356").populate({
+    const weekDetails = await Week.findById(
+      "64da35b47a1247b56b3042b4"
+    ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
-          
-          path: "at9 at12 at15 at18",
-          model: "Class",
-          populate: {
-            
-           path: "teacher students",
-           model: "User"
+        path: "at9 at12 at15 at18",
+        model: "Class",
+        populate: {
+          path: "teacher students",
+          model: "User",
+        },
+      },
+    });
 
-          },
-        }
-    })
-  
-  // console.log(weekDetails.monday.at9.className)
-  res.render("client-views/calendar-view.hbs",{ weekDetails})
+    // console.log(weekDetails.monday.at9.className)
+    res.render("client-views/calendar-view.hbs", { weekDetails });
   } catch (error) {
     next(error);
   }
 });
 
-
-
-
-
 // POST ("/client/calendar") => renderizar los datos del calendario y añadirlos a la DB
-router.post("/calendar", isLoggedIn, async (req, res, next) => {
+router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
+  const { capacity, students, className, weekDay } = req.body;
+  // let mondayAt9Id = req.body.weekDetails.monday.at9._id
+  // console.log("ESTE CONSOLELOG" + mondayAt9Id)
 
-// const {name} = req.body
-// let mondayAt9Id = req.body.weekDetails.monday.at9._id
-// console.log("ESTE CONSOLELOG" + mondayAt9Id)
-
-const clientSessionId = req.session.loggedUser._id;
+  const clientSessionId = req.session.loggedUser._id;
 
   try {
-    
-    const weekDetails = await Week.findById("64da46b6f1fd57abc7f34356").populate({
+    const weekDetails = await Week.findById(
+      "64da35b47a1247b56b3042b4"
+    ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
-          
-          path: "at9 at12 at15 at18",
-          model: "Class",
-          populate: {
-            
-           path: "teacher students",
-           model: "User"
-
-          },
-        }
-    })
+        path: "at9 at12 at15 at18",
+        model: "Class",
+        populate: {
+          path: "teacher students",
+          model: "User",
+        },
+      },
+    });
 
     //! CON ESTO HE CONSEGUIDO QUE SE AÑADA AL USUARIO LOGEADO EN CLASES DIFERENTES. LA DE ZUMBA DEL LUNES A LAS 9 Y LA DE YOGA DEL MARTES A LAS 9.
-    const classMondayAt9ToUpdate = await Class.findById(weekDetails.monday.at9._id);
-    classMondayAt9ToUpdate.students.push(clientSessionId);
-    console.log("ESTE CONSOLE" + clientSessionId)
-    await classMondayAt9ToUpdate.save()
 
-    const classTuesdayAt9ToUpdate = await Class.findById(weekDetails.tuesday.at9._id);
-    classTuesdayAt9ToUpdate.students.push(clientSessionId);
-    console.log("ESTE CONSOLE" + weekDetails.tuesday.at9.className)
-    await classTuesdayAt9ToUpdate.save()
+    if (capacity > 0 && students.includes(clientSessionId) === false) {
+      await Class.findByIdAndUpdate(
+        { _id: req.params.classId },
+        { $push: { students: clientSessionId }, $inc: { capacity: -1 } }
+      );
+    } else if (students.includes(clientSessionId) === true) {
+      res.status(400).render("client-views/calendar-view.hbs", {
+        weekDetails,
+        errorMessage: `Ya estas apuntado a ${className} el ${weekDay}`
+       
+      });
+      return;
+      
+    } else if ( capacity < 1 && students.includes(clientSessionId) === false) {
+      res.status(400).render("client-views/calendar-view.hbs", {
+        weekDetails,
+        errorMessage: `No quedan plazas disponibles para ${className} el ${weekDay}`
+    })
+    return
+  }
 
-  //   let newCapacity = weekDetails.monday.at9.capacity -1
     
-  //   weekDetails.monday.at9.students.push(clientSessionId)
-   
-  //   await Class.findByIdAndUpdate(mondayAt9Id, {
-
-  //   })
-
-  //   await Class.findByIdAndUpdate(weekDetails.monday.at9._id, {
-  //     capacity: newCapacity
-  //   })
-    
-    
-  //  console.log(weekDetails.monday.at9.students)
-  //  console.log("ESTO ES" + clientSessionId)
-
-  //   if (weekDetails.students.includes(clientSessionId)) {
-  //     res.status(400).render("client-views/calendar-view.hbs", {
-  //       errorMessage: "Ya estas apuntado a esta clase",
-  //     });
-  //     return;
-  //   } else {
-  //     mondayClassAt9.students.push(clientSessionId);
-  //   }
-
-  //   console.log("LSITA ESTUDIANTES ACTUALIZADA" + mondayClassAt9.students);
-  //   let newStudentList = mondayClassAt9.students;
-  //   console.log("ID DE CLASE ACTUAL" + mondayClassAt9);
-  //   //console.log("ARRAY DE ESTUDIANTES" + mondayClassAt9.students)
-
-  //   let newCapacit = calendarDetails.monday.at9[0].capacity - newStudentList.length;
-
-  //   await Class.findByIdAndUpdate(mondayClassAt9Id, {
-  //     students: newStudentList,
-  //     capacity: newCapacity,
-  //   });
-
-  //     //!queremos comprobar si metiéndole a joinAClass los parámetros adecuados, el botón funciona
-  //    function joinAClass(mondayClassAt9Id, clientSessionId) {
-
-  //     let newCapacity = calendarDetails.monday.at9[0].capacity - 1
-  //     mondayClassAt9Id.students.push(clientSessionId)
-
-  //     realizarCosa
-  //   }
     res.redirect("/client/calendar");
   } catch (error) {
     next(error);

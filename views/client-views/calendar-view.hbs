@@ -3,7 +3,7 @@
   <h2>CALENDARIO</h2>
     <table>
       <tbody>
-        <script src="routes/client.routes.js"></script>
+      
         <tr>
           <td></td>
           <td>Lunes</td>
@@ -17,25 +17,40 @@
             <h4>9:00</h4>
           </td>
           <td>
-         <form action="/client/calendar" method="post">
+         <form action="/client/calendar/{{weekDetails.monday.at9._id}}" method="post">
 
            <button class="boton" id="mondayAt9">
 
               <p>{{weekDetails.monday.at9.className}}</p>
               <p>Profesor: {{weekDetails.monday.at9.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.monday.at9.capacity}}</p>
+                
+            <input type="text" name="capacity" value="{{weekDetails.monday.at9.capacity}}" style="display:none;">
+            <input type="text" name="students" value="{{weekDetails.monday.at9.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.monday.at9.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.monday.at9.weekDay}}" style="display:none;">
+
+
+
               {{!-- <p>{{weekDetails.monday.at9._id}}</p> --}}
             </button>
           </form> 
           </td>
 
           <td>
-            <form action="/client/calendar" method="post">
+            <form action="/client/calendar/{{weekDetails.tuesday.at9._id}}" method="post">
             <button>
 
               <p>{{weekDetails.tuesday.at9.className}}</p>
               <p>Profesor: {{weekDetails.tuesday.at9.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.tuesday.at9.capacity}}</p>
+
+              <input type="text" name="capacity" value="{{weekDetails.tuesday.at9.capacity}}" style="display:none;">
+              <input type="text" name="students" value="{{weekDetails.tuesday.at9.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.tuesday.at9.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.tuesday.at9.weekDay}}" style="display:none;">
+
+
             </button>
             </form>
             </td>
@@ -46,6 +61,12 @@
               <p>{{weekDetails.wednesday.at9.className}}</p>
               <p>Profesor: {{weekDetails.wednesday.at9.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.wednesday.at9.capacity}}</p>
+
+              <input type="text" name="capacity" value="{{weekDetails.wednesday.at9.capacity}}" style="display:none;">
+              <input type="text" name="students" value="{{weekDetails.wednesday.at9.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.wednesday.at9.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.wednesday.at9.weekDay}}" style="display:none;">
+
             </button>
           </td>
           <td>
@@ -54,6 +75,11 @@
               <p>{{weekDetails.thursday.at9.className}}</p>
               <p>Profesor: {{weekDetails.thursday.at9.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.thursday.at9.capacity}}</p>
+
+              <input type="text" name="capacity" value="{{weekDetails.thursday.at9.capacity}}" style="display:none;">
+              <input type="text" name="students" value="{{weekDetails.thursday.at9.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.thursday.at9.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.thursday.at9.weekDay}}" style="display:none;">
             </button>
           </td>
           <td>
@@ -62,6 +88,13 @@
               <p>{{weekDetails.friday.at9.className}}</p>
               <p>Profesor: {{weekDetails.friday.at9.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.friday.at9.capacity}}</p>
+
+                  <input type="text" name="capacity" value="{{weekDetails.friday.at9.capacity}}" style="display:none;">
+              <input type="text" name="students" value="{{weekDetails.friday.at9.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.friday.at9.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.friday.at9.weekDay}}" style="display:none;">
+
+
             </button>
           </td>
         </tr>
@@ -74,30 +107,56 @@
               <p>{{weekDetails.monday.at12.className}}</p>
               <p>Profesor: {{weekDetails.monday.at12.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.monday.at12.capacity}}</p>
+
+                <input type="text" name="capacity" value="{{weekDetails.monday.at12.capacity}}" style="display:none;">
+              <input type="text" name="students" value="{{weekDetails.monday.at12.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.monday.at12.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.monday.at12.weekDay}}" style="display:none;">
+
             </button></td>
           <td><button>
 
               <p>{{weekDetails.tuesday.at12.className}}</p>
               <p>Profesor: {{weekDetails.tuesday.at12.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.tuesday.at12.capacity}}</p>
+
+            <input type="text" name="capacity" value="{{weekDetails.tuesday.at12.capacity}}" style="display:none;">
+            <input type="text" name="students" value="{{weekDetails.tuesday.at12.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.tuesday.at12.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.tuesday.at12.weekDay}}" style="display:none;">
             </button></td>
           <td><button>
 
               <p>{{weekDetails.wednesday.at12.className}}</p>
               <p>Profesor: {{weekDetails.wednesday.at12.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.wednesday.at12.capacity}}</p>
+
+            <input type="text" name="capacity" value="{{weekDetails.wednesday.at12.capacity}}" style="display:none;">
+            <input type="text" name="students" value="{{weekDetails.wednesday.at12.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.wednesday.at12.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.wednesday.at12.weekDay}}" style="display:none;">
             </button></td>
           <td><button>
 
               <p>{{weekDetails.thursday.at12.className}}</p>
               <p>Profesor: {{weekDetails.thursday.at12.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.thursday.at12.capacity}}</p>
+
+            <input type="text" name="capacity" value="{{weekDetails.thursday.at12.capacity}}" style="display:none;">
+            <input type="text" name="students" value="{{weekDetails.thursday.at12.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.thursday.at12.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.thursday.at12.weekDay}}" style="display:none;">
             </button></td>
           <td><button>
 
               <p>{{weekDetails.friday.at12.className}}</p>
               <p>Profesor: {{weekDetails.friday.at12.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.friday.at12.capacity}}</p>
+
+              <input type="text" name="capacity" value="{{weekDetails.friday.at12.capacity}}" style="display:none;">
+            <input type="text" name="students" value="{{weekDetails.friday.at12.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.friday.at12.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.friday.at12.weekDay}}" style="display:none;">
             </button></td>
         </tr>
         <tr>
@@ -109,30 +168,57 @@
               <p>{{weekDetails.monday.at15.className}}</p>
               <p>Profesor: {{weekDetails.monday.at15.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.monday.at15.capacity}}</p>
+
+                <input type="text" name="capacity" value="{{weekDetails.monday.at15.capacity}}" style="display:none;">
+            <input type="text" name="students" value="{{weekDetails.monday.at15.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.monday.at15.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.monday.at15.weekDay}}" style="display:none;">
             </button></td>
           <td><button>
 
               <p>{{weekDetails.tuesday.at15.className}}</p>
               <p>Profesor: {{weekDetails.tuesday.at15.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.tuesday.at15.capacity}}</p>
+
+                  <input type="text" name="capacity" value="{{weekDetails.tuesday.at15.capacity}}" style="display:none;">
+            <input type="text" name="students" value="{{weekDetails.tuesday.at15.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.tuesday.at15.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.tuesday.at15.weekDay}}" style="display:none;">
             </button></td>
           <td><button>
 
               <p>{{weekDetails.wednesday.at15.className}}</p>
               <p>Profesor: {{weekDetails.wednesday.at15.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.wednesday.at15.capacity}}</p>
+
+                       <input type="text" name="capacity" value="{{weekDetails.wednesday.at15.capacity}}" style="display:none;">
+            <input type="text" name="students" value="{{weekDetails.wednesday.at15.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.wednesday.at15.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.wednesday.at15.weekDay}}" style="display:none;">
+
+              
             </button></td>
           <td><button>
 
               <p>{{weekDetails.thursday.at15.className}}</p>
               <p>Profesor: {{weekDetails.thursday.at15.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.thursday.at15.capacity}}</p>
+
+              <input type="text" name="capacity" value="{{weekDetails.thursday.at15.capacity}}" style="display:none;">
+              <input type="text" name="students" value="{{weekDetails.thursday.at15.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.thursday.at15.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.thursday.at15.weekDay}}" style="display:none;">
             </button></td>
           <td><button>
 
               <p>{{weekDetails.friday.at15.className}}</p>
               <p>Profesor: {{weekDetails.friday.at15.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.friday.at15.capacity}}</p>
+
+              <input type="text" name="capacity" value="{{weekDetails.friday.at15.capacity}}" style="display:none;">
+              <input type="text" name="students" value="{{weekDetails.friday.at15.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.friday.at15.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.friday.at15.weekDay}}" style="display:none;">
             </button></td>
         </tr>
         <tr>
@@ -144,31 +230,56 @@
               <p>{{weekDetails.monday.at18.className}}</p>
               <p>Profesor: {{weekDetails.monday.at18.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.monday.at18.capacity}}</p>
+
+              <input type="text" name="capacity" value="{{weekDetails.monday.at18.capacity}}" style="display:none;">
+              <input type="text" name="students" value="{{weekDetails.monday.at18.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.monday.at18.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.monday.at18.weekDay}}" style="display:none;">
             </button></td>
           <td><button>
 
               <p>{{weekDetails.tuesday.at18.className}}</p>
               <p>Profesor: {{weekDetails.tuesday.at18.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.tuesday.at18.capacity}}</p>
+
+              <input type="text" name="capacity" value="{{weekDetails.tuesday.at18.capacity}}" style="display:none;">
+              <input type="text" name="students" value="{{weekDetails.tuesday.at18.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.tuesday.at18.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.tuesday.at18.weekDay}}" style="display:none;">
             </button></td>
           <td><button>
 
               <p>{{weekDetails.wednesday.at18.className}}</p>
               <p>Profesor: {{weekDetails.wednesday.at18.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.wednesday.at18.capacity}}</p>
+
+<input type="text" name="capacity" value="{{weekDetails.wednesday.at18.capacity}}" style="display:none;">
+              <input type="text" name="students" value="{{weekDetails.wednesday.at18.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.wednesday.at18.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.wednesday.at18.weekDay}}" style="display:none;">
             </button></td>
           <td><button>
 
               <p>{{weekDetails.thursday.at18.className}}</p>
               <p>Profesor: {{weekDetails.thursday.at18.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.thursday.at18.capacity}}</p>
+
+              <input type="text" name="capacity" value="{{weekDetails.thursday.at18.capacity}}" style="display:none;">
+              <input type="text" name="students" value="{{weekDetails.thursday.at18.students}}" style="display:none;">
+            <input type="text" name="className" value="{{weekDetails.thursday.at18.className}}" style="display:none;">
+            <input type="text" name="weekDay" value="{{weekDetails.thursday.at18.weekDay}}" style="display:none;">
             </button></td>
           <td><button>
 
               <p>{{weekDetails.friday.at18.className}}</p>
               <p>Profesor: {{weekDetails.friday.at18.teacher.name}}</p>
               <p>Plazas restantes: {{weekDetails.friday.at18.capacity}}</p>
-            </button></td>
+
+              <input type="text" name="capacity" value="{{weekDetails.friday.at18.capacity}}" style="display:none;">
+              <input type="text" name="students" value="{{weekDetails.friday.at18.students}}" style="display:none;">
+              <input type="text" name="className" value="{{weekDetails.friday.at18.className}}" style="display:none;">
+              <input type="text" name="weekDay" value="{{weekDetails.friday.at18.weekDay}}" style="display:none;">
+              </button></td>
         </tr>
       </tbody>
     </table>

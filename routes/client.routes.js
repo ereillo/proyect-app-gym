@@ -5,6 +5,7 @@ const router = express.Router();
 const User = require("../models/User.model.js");
 const Class = require("../models/Class.model.js");
 const Week = require("../models/Week.model.js");
+const Comment = require("../models/comment.model.js")
 
 const { isLoggedIn, isClient } = require("../middlewares/auth.middlewares.js");
 
@@ -17,6 +18,7 @@ router.get("/main", isLoggedIn, isClient, async (req, res, next) => {
       name: 1,
       suscriptionActive: 1,
       email: 1,
+      profilePic:1
     });
 
     const classInfo = await Class.find({
@@ -56,6 +58,43 @@ router.post("/main", isLoggedIn, isClient, async (req, res, next) => {
     next(error);
   }
 });
+
+router.post("/main/comment", isLoggedIn, isClient, async (req, res, next) => {
+
+  console.log(req.session.loggedUser)
+
+const { comment , userName} = req.body
+
+
+
+  try {
+
+  
+    if (comment !== "") {
+
+    await Comment.create({
+    
+     client: userName,
+     note: comment
+    
+    })
+    
+  res.render("client-views/comment-succed.hbs",{
+    userName
+
+  })
+  return;
+
+}
+
+res.redirect("/client/main")
+} catch (error) {
+  next(error)
+}
+
+
+})
+
 
 //POST ("/client/main") => te borra de una clase
 router.post("/main/:classId", isLoggedIn,isClient, async (req, res, next) => {

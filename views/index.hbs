@@ -1,2 +1,12 @@
 <h1>{{appTitle}} 🚀</h1>
 <p>Welcome Ironhacker!</p>
+
+
+
+{{#each comentarios}}
+
+<h3>{{comentarios.client.name}}</h3>
+<p>{{comentarios.note}}</p>
+
+
+{{/each}}

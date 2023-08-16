@@ -2,13 +2,38 @@
 
   <h2>Hola, {{user.name}} ¡bienvenid@!</h2>
 
+  <img src="{{user.profilePic}}" alt="image-perfil" width="100px" />
+  <a href="/client/edit-profile"><button> Editar perfil</button></a>
+
   {{#if suscriptionTrue}}
 
     <p>Tu suscripción está activa</p>
     <form action="/client/main/" method="post">
-    <button>Darse de baja</button>
-    <input type="text" name="suscription" value="true" style="display: none;">
+      <button>Darse de baja</button>
+      <input
+        type="text"
+        name="suscription"
+        value="true"
+        style="display: none;"
+      />
     </form>
+
+    <form action="/client/main/comment" method="post">
+      <input
+        type="text"
+        name="userName"
+        value="{{user.name}}"
+        style="display: none;"
+      />
+      <label for="comment">!Deja tu opinión sobre el gimnasio!</label>
+      <input type="text" name="comment" />
+      <button>Enviar comentario</button>
+
+      {{#if commentSucces}}
+        {{commentSucces}}
+      {{/if}}
+    </form>
+
     <a href="/client/calendar"><button>Apúntate a una clase</button> </a>
 
     <h3>Estas son tus clases</h3>
@@ -17,10 +42,14 @@
       <li>{{className}}</li>
       <li>{{weekDay}}</li>
       <form action="/client/main/{{_id}}" method="post">
-    
-      
-      <button>Desapúntate de la clase</button>
-      <input type="text" name="students" value="{{students}}" style="display:none;">
+
+        <button>Desapúntate de la clase</button>
+        <input
+          type="text"
+          name="students"
+          value="{{students}}"
+          style="display:none;"
+        />
 
       </form>
 
@@ -29,12 +58,16 @@
   {{/if}}
 
   {{#unless suscriptionTrue}}
-  <form action="/client/main/" method="post">
-    <p>Tu suscripción está inactiva</p>
-    <button>Suscríbete</button>
-    <input type="text" name="suscription" value="false" style="display: none;">
+    <form action="/client/main/" method="post">
+      <p>Tu suscripción está inactiva</p>
+      <button>Suscríbete</button>
+      <input
+        type="text"
+        name="suscription"
+        value="false"
+        style="display: none;"
+      />
     </form>
   {{/unless}}
-  
-    
+
 </div>

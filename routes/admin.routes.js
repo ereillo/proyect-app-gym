@@ -22,7 +22,7 @@ router.get("/main", isLoggedIn, isAdmin, (req, res, next) => {
 router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
     const weekDetails = await Week.findById(
-      "64da35b47a1247b56b3042b4"
+      "64dc95976b6542feadca9bc7"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -186,7 +186,7 @@ router.post("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     Class.findByIdAndUpdate(fridayAt18, {
       teacher: fridayAt18Teacher,
     }),
-    Week.findByIdAndUpdate("64da35b47a1247b56b3042b4", {
+    Week.findByIdAndUpdate("64dc95976b6542feadca9bc7", {
       monday: {
         at9: mondayAt9,
         at12: mondayAt12,
@@ -233,7 +233,7 @@ router.post("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
 router.get("/class-list", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
     const weekDetails = await Week.findById(
-      "64da35b47a1247b56b3042b4"
+      "64dc95976b6542feadca9bc7"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {

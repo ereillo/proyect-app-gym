@@ -44,7 +44,7 @@ router.get("/edit-profile", isLoggedIn, isTeacher, async (req, res, next) => {
   }
 });
 
-//POST ("/teachers/main") => ruta que recibe la imagen para subirla a cloudinary
+//POST ("/teachers/edit-profile-img") => ruta que recibe la imagen para subirla a cloudinary
 router.post(
   "/edit-profile-img",
   isLoggedIn,

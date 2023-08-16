@@ -39,20 +39,9 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     const allTeachers = await User.find({ role: { $in: "teacher" } });
     //console.log(allClasses)
     // console.log(allTeachers)
-    const cloneAllClasses = JSON.parse(JSON.stringify(allClasses));
+    const cloneAllClases = JSON.parse(JSON.stringify(allClasses));
     const cloneallTeachers = JSON.parse(JSON.stringify(allTeachers));
-    
-    cloneAllClasses.forEach((cadaClase) => {
-
-    if (weekDetails.monday.at9.toString() === cadaClase._id.toString()) {
-      cadaClase.isSelected = true
-    }
-    })
-
-
-
-
-
+  
 
     const mondayClasses = [];
     const tuesdayClasses = [];
@@ -60,7 +49,20 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     const thursdayClasses = [];
     const fridayClasses = [];
 
-    cloneAllClasses.forEach((cadaClase) => {
+    const cloneMondayClasses = JSON.parse(JSON.stringify(mondayClasses));
+    const cloneTuesdayClasses = JSON.parse(JSON.stringify(tuesdayClasses));
+    const cloneWednesdayClasses = JSON.parse(JSON.stringify(wednesdayClasses));
+    const cloneThursdayClasses = JSON.parse(JSON.stringify(thursdayClasses));
+    const cloneFridayClasses = JSON.parse(JSON.stringify(fridayClasses));
+
+    cloneMondayClasses.forEach((cadaClase) => {
+
+      if (weekDetails.monday.at9.toString() === cadaClase._id.toString()) {
+        cadaClase.isSelected = true
+      }
+      })
+
+    cloneAllClases.forEach((cadaClase) => {
       console.log(cadaClase.weekDay);
       if (cadaClase.weekDay === "lunes") {
         mondayClasses.push(cadaClase);
@@ -79,7 +81,7 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
 
     res.render("admin-views/admin-edit-calendar.hbs", {
       weekDetails,
-      mondayClasses,
+      cloneMondayClasses,
       tuesdayClasses,
       wednesdayClasses,
       thursdayClasses,

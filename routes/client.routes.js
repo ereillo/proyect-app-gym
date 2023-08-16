@@ -6,11 +6,11 @@ const User = require("../models/User.model.js");
 const Class = require("../models/Class.model.js");
 const Week = require("../models/Week.model.js");
 
-const { isLoggedIn } = require("../middlewares/auth.middlewares.js");
+const { isLoggedIn, isClient } = require("../middlewares/auth.middlewares.js");
 
 //TODO: RUTAS
 //GET ("/client/main") => página personal del cliente
-router.get("/main", isLoggedIn, async (req, res, next) => {
+router.get("/main", isLoggedIn, isClient, async (req, res, next) => {
   // console.log(req.session.loggedUser._id)
   try {
     const userId = await User.findById(req.session.loggedUser._id).select({
@@ -35,7 +35,7 @@ router.get("/main", isLoggedIn, async (req, res, next) => {
 });
 
 //POST ("/client/main") => cambia el estado de la suscripción de true a false
-router.post("/main", isLoggedIn, async (req, res, next) => {
+router.post("/main", isLoggedIn, isClient, async (req, res, next) => {
 
   const {suscription} = req.body
   console.log(suscription)
@@ -57,7 +57,8 @@ router.post("/main", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post("/main/:classId", isLoggedIn, async (req, res, next) => {
+//POST ("/client/main") => te borra de una clase
+router.post("/main/:classId", isLoggedIn,isClient, async (req, res, next) => {
 
 try {
   
@@ -93,7 +94,7 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
 
   try {
     const weekDetails = await Week.findById(
-      "64da46b6f1fd57abc7f34356"
+      "64da35b47a1247b56b3042b4"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -127,7 +128,7 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
 
   try {
     const weekDetails = await Week.findById(
-      "64da46b6f1fd57abc7f34356"
+      "64da35b47a1247b56b3042b4"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -141,7 +142,7 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
     });
 
     if (
-      capacity > 0 &&
+      capacity > 0 && res.locals.isUserClient === true &&
       students.includes(clientSessionId) === false &&
       userId.suscriptionActive === true
     ) {

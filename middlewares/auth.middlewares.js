@@ -6,6 +6,14 @@ function isLoggedIn(req, res, next) {
   }
 }
 
+function isClient(req, res, next) {
+  if (req.session.loggedUser.role === "client") {
+    next();
+  } else {
+    res.redirect("/auth/login");
+  }
+}
+
 function isTeacher(req, res, next) {
   if (req.session.loggedUser.role === "teacher") {
     next();
@@ -49,6 +57,7 @@ res.locals.isUserNotLoggedIn = true;
 
 module.exports = {
   isLoggedIn,
+  isClient,
   isTeacher,
   isAdmin,
   updateLocals,

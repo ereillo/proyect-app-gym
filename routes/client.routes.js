@@ -74,7 +74,20 @@ try {
 
 })
 
+//GET (/client/edit-profile") =>  Página edición perfil de usuario
+router.get("/edit-profile", isLoggedIn, async (req, res, next) => {
 
+try {
+  const userId = await User.findById(req.session.loggedUser._id);
+  console.log(userId + "CONSOLE USERID")
+  res.render("client-views/client-edit-profile.hbs", {
+    userId,
+  })
+} catch (error) {
+  next(error)
+}
+
+})
 
 
 //GET ("/client/classes") => página con nuestras clases
@@ -82,7 +95,7 @@ router.get("/classes", (req, res, next) => {
   res.render("client-views/classes-view.hbs");
 });
 
-//GET ("/client/classes") => página con nuestras clases
+//GET ("/client/classes") => página con nuestros profesores
 router.get("/teachers", (req, res, next) => {
   res.render("client-views/teachers-view.hbs");
 });

@@ -1,6 +1,76 @@
 <div>
 
-<h3>Edición da tus datos </h3>
+    <h3>Tus datos personales</h3>
+
+    <br>
+
+    <img src="" alt="image-perfil" width="100p">
+
+    <h5>Cambiar foto de perfil</h5>
+
+    <form action="/client/edit-profile-img" method="post" enctype="multipart/form-data"></form>
+
+    <br>
+
+    <label for="profilePic">Cambiar foto de perfil</label>
+    <input type="file" name="profilePic">
+
+    <br>
+
+    <button>Agregar foto</button>
+
+    </form>
+
+    <form action="/client/edit-profile" method="post">
 
 
+
+        <br>
+
+        <label for="name">Nombre</label>
+        <input type="text" name="name" value="{{userId.name}}" />
+
+        <br>
+
+        <label for="surname">Apellido</label>
+        <input type="text" name="surname" value="{{userId.surname}}" />
+
+        <br>
+
+        <label for="email">Correo electrónico</label>
+        <input type="text" name="email" value="{{userId.email}}" />
+
+        <br>
+
+        <h5>Cambiar contraseña</h5>
+
+
+
+        <br>
+
+        <label for="newPassword">Nueva contraseña</label>
+        <input type="password" name="newPassword" />
+
+        <br>
+
+        <label for="confirmPassword">Confirmar nueva contraseña</label>
+        <input type="password" name="confirmNewPassword" />
+
+
+        <br>
+
+        </p><label for="password">Contraseña actual para realizar cambios</label>
+        <input type="password" name="password" />
+        <br>
+        <button>Actualizar perfil</button>
+
+        <br />
+
+        {{#if this.errorMessage}}
+        <p>{{this.errorMessage}}</p>
+        {{/if}}
+
+
+
+    </form>
 </div>

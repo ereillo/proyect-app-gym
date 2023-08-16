@@ -14,7 +14,11 @@
 <label for="mondayAt9Teacher">Profesor: </label>
 <select name="mondayAt9Teacher"> 
 {{#each teachers}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
+{{/if}}
 {{/each}}   
 </select>
 </div>

@@ -41,6 +41,18 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     // console.log(allTeachers)
     const cloneAllClasses = JSON.parse(JSON.stringify(allClasses));
     const cloneallTeachers = JSON.parse(JSON.stringify(allTeachers));
+    
+    cloneAllClasses.forEach((cadaClase) => {
+
+    if (weekDetails.monday.at9.toString() === cadaClase._id.toString()) {
+      cadaClase.isSelected = true
+    }
+    })
+
+
+
+
+
 
     const mondayClasses = [];
     const tuesdayClasses = [];

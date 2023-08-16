@@ -261,7 +261,7 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
 
   try {
     const weekDetails = await Week.findById(
-      "64dc95976b6542feadca9bc7"
+      "64da35b47a1247b56b3042b4"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -295,7 +295,7 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
 
   try {
     const weekDetails = await Week.findById(
-      "64dc95976b6542feadca9bc7"
+      "64da35b47a1247b56b3042b4"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {

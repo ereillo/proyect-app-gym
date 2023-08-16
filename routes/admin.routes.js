@@ -11,8 +11,23 @@ const { isLoggedIn, isAdmin } = require("../middlewares/auth.middlewares.js");
 
 //TODO: RUTAS ADMIN
 //GET ("/admin/main") =>  página principal del admin
-router.get("/main", isLoggedIn, isAdmin, (req, res, next) => {
-  res.render("admin-views/admin-main.hbs");
+router.get("/main", isLoggedIn, isAdmin, async (req, res, next) => {
+
+
+  try {
+  
+    const userName = await User.findById(req.session.loggedUser._id).select({name:1})
+    res.render("admin-views/admin-main.hbs", {
+      userName
+    });
+} catch (error) {
+  next(error)
+}
+
+  
+
+
+
 });
 
 //weekId Eve: 64da46b6f1fd57abc7f34356
@@ -22,7 +37,7 @@ router.get("/main", isLoggedIn, isAdmin, (req, res, next) => {
 router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
     const weekDetails = await Week.findById(
-      "64dc95976b6542feadca9bc7"
+      "64da35b47a1247b56b3042b4"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -39,9 +54,8 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     const allTeachers = await User.find({ role: { $in: "teacher" } });
     //console.log(allClasses)
     // console.log(allTeachers)
-    const cloneAllClases = JSON.parse(JSON.stringify(allClasses));
+    const cloneAllClasses = JSON.parse(JSON.stringify(allClasses));
     const cloneallTeachers = JSON.parse(JSON.stringify(allTeachers));
-  
 
     const mondayClasses = [];
     const tuesdayClasses = [];
@@ -49,21 +63,8 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     const thursdayClasses = [];
     const fridayClasses = [];
 
-    const cloneMondayClasses = JSON.parse(JSON.stringify(mondayClasses));
-    const cloneTuesdayClasses = JSON.parse(JSON.stringify(tuesdayClasses));
-    const cloneWednesdayClasses = JSON.parse(JSON.stringify(wednesdayClasses));
-    const cloneThursdayClasses = JSON.parse(JSON.stringify(thursdayClasses));
-    const cloneFridayClasses = JSON.parse(JSON.stringify(fridayClasses));
-
-    cloneMondayClasses.forEach((cadaClase) => {
-
-      if (weekDetails.monday.at9.toString() === cadaClase._id.toString()) {
-        cadaClase.isSelected = true
-      }
-      })
-
-    cloneAllClases.forEach((cadaClase) => {
-      console.log(cadaClase.weekDay);
+    cloneAllClasses.forEach((cadaClase) => {
+      //console.log(cadaClase.weekDay);
       if (cadaClase.weekDay === "lunes") {
         mondayClasses.push(cadaClase);
       } else if (cadaClase.weekDay === "martes") {
@@ -77,11 +78,13 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
       }
     });
 
+
+
     // console.log(mondayClasses)
 
     res.render("admin-views/admin-edit-calendar.hbs", {
       weekDetails,
-      cloneMondayClasses,
+      mondayClasses,
       tuesdayClasses,
       wednesdayClasses,
       thursdayClasses,
@@ -200,7 +203,7 @@ router.post("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     Class.findByIdAndUpdate(fridayAt18, {
       teacher: fridayAt18Teacher,
     }),
-    Week.findByIdAndUpdate("64dc95976b6542feadca9bc7", {
+    Week.findByIdAndUpdate("64da35b47a1247b56b3042b4", {
       monday: {
         at9: mondayAt9,
         at12: mondayAt12,
@@ -247,7 +250,7 @@ router.post("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
 router.get("/class-list", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
     const weekDetails = await Week.findById(
-      "64dc95976b6542feadca9bc7"
+      "64da35b47a1247b56b3042b4"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {

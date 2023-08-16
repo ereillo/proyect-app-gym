@@ -7,14 +7,8 @@
 <div>
 <label for="mondayAt9">Lunes a las 9:00</label>
 <select name="mondayAt9" >
-{{#each cloneMondayClasses}}
-{{#if isSelected}}
-
-<option value="{{_id}}" selected>{{className}}</option>
-{{else}}
+{{#each mondayClasses}}
 <option value="{{_id}}">{{className}}</option>
-{{/if}}
-
 {{/each}}
 </select>
 <label for="mondayAt9Teacher">Profesor: </label>
@@ -213,7 +207,7 @@
 </div>
 
 <div>
-<label for="thursdayAt12">Jueves a las 9:00</label>
+<label for="thursdayAt12">Jueves a las 12:00</label>
 <select name="thursdayAt12" >
 {{#each thursdayClasses}}
 <option value="{{_id}}">{{className}}</option>
@@ -228,7 +222,7 @@
 </div>
 
 <div>
-<label for="thursdayAt15">Jueves a las 9:00</label>
+<label for="thursdayAt15">Jueves a las 15:00</label>
 <select name="thursdayAt15" >
 {{#each thursdayClasses}}
 <option value="{{_id}}">{{className}}</option>
@@ -243,7 +237,7 @@
 </div>
 
 <div>
-<label for="thursdayAt18">Jueves a las 9:00</label>
+<label for="thursdayAt18">Jueves a las 18:00</label>
 <select name="thursdayAt18" >
 {{#each thursdayClasses}}
 <option value="{{_id}}">{{className}}</option>

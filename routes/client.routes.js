@@ -12,6 +12,9 @@ const { isLoggedIn, isClient } = require("../middlewares/auth.middlewares.js");
 
 const uploader = require("../middlewares/cloudinary.middleware.js");
 
+//weekId Eve: 64da46b6f1fd57abc7f34356
+//weekId Lucas: 64da35b47a1247b56b3042b4
+
 //TODO: RUTAS
 //GET ("/client/main") => página personal del cliente
 router.get("/main", isLoggedIn, isClient, async (req, res, next) => {
@@ -261,7 +264,7 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
 
   try {
     const weekDetails = await Week.findById(
-      "64da35b47a1247b56b3042b4"
+      "64da46b6f1fd57abc7f34356"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -295,7 +298,7 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
 
   try {
     const weekDetails = await Week.findById(
-      "64da35b47a1247b56b3042b4"
+      "64da46b6f1fd57abc7f34356"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {

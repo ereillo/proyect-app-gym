@@ -9,6 +9,9 @@ const Week = require("../models/Week.model.js");
 
 const { isLoggedIn, isAdmin } = require("../middlewares/auth.middlewares.js");
 
+//weekId Eve: 64da46b6f1fd57abc7f34356
+//weekId Lucas: 64da35b47a1247b56b3042b4
+
 //TODO: RUTAS ADMIN
 //GET ("/admin/main") =>  página principal del admin
 router.get("/main", isLoggedIn, isAdmin, async (req, res, next) => {
@@ -24,20 +27,14 @@ router.get("/main", isLoggedIn, isAdmin, async (req, res, next) => {
   next(error)
 }
 
-  
-
-
 
 });
-
-//weekId Eve: 64da46b6f1fd57abc7f34356
-//weekId Lucas: 64da35b47a1247b56b3042b4
 
 //GET ("/admin/edit-calendar") => muestra el formulario de edición del calendario
 router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
     const weekDetails = await Week.findById(
-      "64da35b47a1247b56b3042b4"
+      "64da46b6f1fd57abc7f34356"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -203,7 +200,7 @@ router.post("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     Class.findByIdAndUpdate(fridayAt18, {
       teacher: fridayAt18Teacher,
     }),
-    Week.findByIdAndUpdate("64da35b47a1247b56b3042b4", {
+    Week.findByIdAndUpdate("64da46b6f1fd57abc7f34356", {
       monday: {
         at9: mondayAt9,
         at12: mondayAt12,
@@ -250,7 +247,7 @@ router.post("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
 router.get("/class-list", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
     const weekDetails = await Week.findById(
-      "64da35b47a1247b56b3042b4"
+      "64da46b6f1fd57abc7f34356"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {

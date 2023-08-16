@@ -16,32 +16,33 @@
 
   <body>
 
-    <nav>
-      <a href="/">Inicio</a>
-      <a href="/client/classes">Nuestras Clases</a>
-      <a href="/client/teachers">Nuestros Profresores</a>
+    <nav class="navbar sticky-top bg-body-tertiary">
+      <div class="container-fluid">
+      <a class="navbar-brand"  href="/">Inicio</a>
+      <a class="navbar-brand"  href="/client/classes">Nuestras Clases</a>
+      <a class="navbar-brand"  href="/client/teachers">Nuestros Profresores</a>
       {{#if isUserNotLoggedIn}}
-        <a href="/auth/signup">Regístrate</a>
-        <a href="/auth/login">Accede</a>
+        <a class="navbar-brand" href="/auth/signup">Regístrate</a>
+        <a class="navbar-brand" href="/auth/login">Accede</a>
       {{/if}}
       {{#if isUserClient}}
-        <a href="/client/main">Area Personal</a>
-        <a href="/client/calendar">Calendario</a>
-        <a href="/auth/logout">Cerrar sesión</a>
+        <a class="navbar-brand" href="/client/main">Area Personal</a>
+        <a class="navbar-brand" href="/client/calendar">Calendario</a>
+        <a class="navbar-brand" href="/auth/logout">Cerrar sesión</a>
       {{/if}}
 
       {{#if isUserTeacher}}
-        <a href="/teachers/main">Area Personal</a>
-        <a href="/client/calendar">Calendario</a>
-        <a href="/auth/logout">Cerrar sesión</a>
+        <a class="navbar-brand" href="/teachers/main">Area Personal</a>
+        <a class="navbar-brand" href="/client/calendar">Calendario</a>
+        <a class="navbar-brand" href="/auth/logout">Cerrar sesión</a>
       {{/if}}
 
       {{#if isUserAdmin}}
-        <a href="/admin/main">Area Personal</a>
-        <a href="/client/calendar">Calendario</a>
-        <a href="/auth/logout">Cerrar sesión</a>
+        <a class="navbar-brand" href="/admin/main">Area Personal</a>
+        <a class="navbar-brand" href="/client/calendar">Calendario</a>
+        <a class="navbar-brand" href="/auth/logout">Cerrar sesión</a>
       {{/if}}
-
+      </div>
     </nav>
 
     {{{body}}}

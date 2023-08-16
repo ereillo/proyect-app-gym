@@ -1,15 +1,16 @@
 <div>
+   
+   <div>
+  <img src="{{user.profilePic}}" class="card-img-top" alt="image-perfil" width="50px">
+  <h2 class="card-title">Hola, {{user.name}} ¡bienvenid@!</h2>
 
-  <h2>Hola, {{user.name}} ¡bienvenid@!</h2>
-
-  <img src="{{user.profilePic}}" alt="image-perfil" width="100px" />
-  <a href="/client/edit-profile"><button> Editar perfil</button></a>
+  <a href="/client/edit-profile" class="btn btn-primary">Editar perfil</a>
 
   {{#if suscriptionTrue}}
 
     <p>Tu suscripción está activa</p>
     <form action="/client/main/" method="post">
-      <button>Darse de baja</button>
+      <button class="btn btn-primary btn-lg">Darse de baja</button>
       <input
         type="text"
         name="suscription"
@@ -18,6 +19,8 @@
       />
     </form>
 
+</div>
+
     <form action="/client/main/comment" method="post">
       <input
         type="text"
@@ -25,7 +28,7 @@
         value="{{user.name}}"
         style="display: none;"
       />
-      <label for="comment">!Deja tu opinión sobre el gimnasio!</label>
+      <label for="comment">¿Quieres dejarnos algún comentario?</label>
       <input type="text" name="comment" />
       <button>Enviar comentario</button>
 
@@ -36,14 +39,15 @@
 
     <a href="/client/calendar"><button>Apúntate a una clase</button> </a>
 
+<div class="card" style="width: 18rem;">
     <h3>Estas son tus clases</h3>
     {{#each classInfo}}
-
-      <li>{{className}}</li>
-      <li>{{weekDay}}</li>
+      <ul class="list-group list-group-flush"></ul>
+      <li class="list-group-item">{{className}}</li>
+      <li class="list-group-item">{{weekDay}}</li>
       <form action="/client/main/{{_id}}" method="post">
 
-        <button>Desapúntate de la clase</button>
+        <button>Borrate de una clase</button>
         <input
           type="text"
           name="students"
@@ -56,11 +60,12 @@
     {{/each}}
 
   {{/if}}
+   </div>
 
   {{#unless suscriptionTrue}}
     <form action="/client/main/" method="post">
       <p>Tu suscripción está inactiva</p>
-      <button>Suscríbete</button>
+      <button class="link-danger">Suscríbete</button>
       <input
         type="text"
         name="suscription"

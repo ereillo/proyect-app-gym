@@ -1,6 +1,20 @@
 <div>
 
-<h3>Lista de clases</h3>
+<h2>Estas son las clases de esta semana</h2>
+
+<div>
+
+<h3>Lunes a las 9: {{weekDetails.monday.at9.className}}</h3>
+<h4>Profesor: {{weekDetails.monday.at9.teacher.name}}</h4>
+<p>Alumnos apuntados:</p>
+{{#each weekDetails.monday.at9.students}}
+<ul>
+<li>{{name}}</li>
+</ul>
+{{/each}}
+
+
+</div>
 
 
 </div>

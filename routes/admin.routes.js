@@ -26,7 +26,7 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     try {
     
         const weekDetails = await Week.findById(
-            "64da35b47a1247b56b3042b4"
+            "64da46b6f1fd57abc7f34356"
           ).populate({
             path: "monday tuesday wednesday thursday friday",
             populate: {
@@ -115,7 +115,7 @@ fridayAt18, fridayAt18Teacher,
 
 try {
     
-await Week.findByIdAndUpdate("64da35b47a1247b56b3042b4", {
+await Week.findByIdAndUpdate("64da46b6f1fd57abc7f34356", {
 
 monday: {at9:mondayAt9,at12:mondayAt12, at15:mondayAt15, at18: mondayAt18 }
 
@@ -137,7 +137,33 @@ res.redirect("/admin/edit-calendar")
 
 
 
+//GET ("/admin/class-list") => Mostrar una lista de todas las clases de la semana
+router.get("/class-list", isLoggedIn, isAdmin, async (req, res, next) => {
 
+    try {
+        
+        const weekDetails = await Week.findById(
+            "64da46b6f1fd57abc7f34356"
+          ).populate({
+            path: "monday tuesday wednesday thursday friday",
+            populate: {
+              path: "at9 at12 at15 at18",
+              model: "Class",
+              populate: {
+                path: "teacher students",
+                model: "User",
+              },
+            },
+          });
+
+         res.render("admin-views/admin-class-list.hbs", {
+            weekDetails
+         })
+    } catch (error) {
+        next(error)
+    }
+
+})
 
 
 

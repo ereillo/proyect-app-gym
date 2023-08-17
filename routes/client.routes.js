@@ -7,6 +7,7 @@ const User = require("../models/User.model.js");
 const Class = require("../models/Class.model.js");
 const Week = require("../models/Week.model.js");
 const Comment = require("../models/comment.model.js");
+const getWeekDetails = require("../utils/weekFunction.js");
 
 const { isLoggedIn, isClient } = require("../middlewares/auth.middlewares.js");
 

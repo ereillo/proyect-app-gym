@@ -7,14 +7,24 @@
 <div>
 <label for="mondayAt9">Lunes a las 9:00</label>
 <select name="mondayAt9" >
-{{#each mondayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each mondayClassAt9}}
+ {{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="mondayAt9Teacher">Profesor: </label>
 <select name="mondayAt9Teacher"> 
-{{#each teachers}}
+{{#each mondayTeacherAt9}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
+{{/if}}
 {{/each}}   
 </select>
 </div>
@@ -23,14 +33,24 @@
 <div>
 <label for="mondayAt12">Lunes a las 12:00</label>
 <select name="mondayAt12" >
-{{#each mondayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each mondayClassAt12}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="mondayAt12Teacher">Profesor: </label>
 <select name="mondayAt12Teacher"> 
-{{#each teachers}}
+{{#each mondayTeacherAt12}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
+{{/if}}
 {{/each}}   
 </select>
 </div>
@@ -38,14 +58,24 @@
 <div>
 <label for="mondayAt15">Lunes a las 15:00</label>
 <select name="mondayAt15" >
-{{#each mondayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each mondayClassAt15}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="mondayAt15Teacher">Profesor: </label>
 <select name="mondayAt15Teacher"> 
-{{#each teachers}}
+{{#each mondayTeacherAt15}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
+{{/if}}
 {{/each}}   
 </select>
 </div>
@@ -53,14 +83,24 @@
 <div>
 <label for="mondayAt18">Lunes a las 18:00</label>
 <select name="mondayAt18" >
-{{#each mondayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each mondayClassAt18}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="mondayAt18Teacher">Profesor: </label>
 <select name="mondayAt18Teacher"> 
-{{#each teachers}}
+{{#each mondayTeacherAt18}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
+{{/if}}
 {{/each}}   
 </select>
 </div>
@@ -70,14 +110,24 @@
 <div>
 <label for="tuesdayAt9">Martes a las 9:00</label>
 <select name="tuesdayAt9" >
-{{#each tuesdayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each tuesdayClassAt9}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="tuesdayAt9Teacher">Profesor: </label>
 <select name="tuesdayAt9Teacher"> 
-{{#each teachers}}
+{{#each tuesdayTeacherAt9}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
+{{/if}}
 {{/each}}   
 </select>
 </div>
@@ -85,29 +135,49 @@
 <div>
 <label for="tuesdayAt12">Martes a las 12:00</label>
 <select name="tuesdayAt12" >
-{{#each tuesdayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each tuesdayClassAt12}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="tuesdayAt12Teacher">Profesor: </label>
 <select name="tuesdayAt12Teacher"> 
-{{#each teachers}}
+{{#each tuesdayTeacherAt12}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
-{{/each}}   
+{{/if}}
+{{/each}}    
 </select>
 </div>
 
 <div>
 <label for="tuesdayAt15">Martes a las 15:00</label>
 <select name="tuesdayAt15" >
-{{#each tuesdayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each tuesdayClassAt15}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="tuesdayAt15Teacher">Profesor: </label>
 <select name="tuesdayAt15Teacher"> 
-{{#each teachers}}
+{{#each tuesdayTeacherAt15}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
+{{/if}}
 {{/each}}   
 </select>
 </div>
@@ -115,15 +185,25 @@
 <div>
 <label for="tuesdayAt18">Martes a las 18:00</label>
 <select name="tuesdayAt18" >
-{{#each tuesdayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each tuesdayClassAt18}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="tuesdayAt18Teacher">Profesor: </label>
 <select name="tuesdayAt18Teacher"> 
-{{#each teachers}}
+{{#each tuesdayTeacherAt18}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
-{{/each}}   
+{{/if}}
+{{/each}}    
 </select>
 </div>
 
@@ -132,14 +212,24 @@
 <div>
 <label for="wednesdayAt9">Miércoles a las 9:00</label>
 <select name="wednesdayAt9" >
-{{#each wednesdayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each wednesdayClassAt9}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="wednesdayAt9Teacher">Profesor: </label>
 <select name="wednesdayAt9Teacher"> 
-{{#each teachers}}
+{{#each wednesdayTeacherAt9}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
+{{/if}}
 {{/each}}   
 </select>
 </div>
@@ -147,45 +237,75 @@
 <div>
 <label for="wednesdayAt12">Miércoles a las 12:00</label>
 <select name="wednesdayAt12" >
-{{#each wednesdayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each wednesdayClassAt12}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="wednesdayAt12Teacher">Profesor: </label>
 <select name="wednesdayAt12Teacher"> 
-{{#each teachers}}
+{{#each wednesdayTeacherAt12}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
-{{/each}}   
+{{/if}}
+{{/each}}      
 </select>
 </div>
 
 <div>
 <label for="wednesdayAt15">Miércoles a las 15:00</label>
 <select name="wednesdayAt15" >
-{{#each wednesdayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each wednesdayClassAt15}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="wednesdayAt15Teacher">Profesor: </label>
 <select name="wednesdayAt15Teacher"> 
-{{#each teachers}}
+{{#each wednesdayTeacherAt15}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
-{{/each}}   
+{{/if}}
+{{/each}}     
 </select>
 </div>
 
 <div>
 <label for="wednesdayAt18">Miércoles a las 18:00</label>
 <select name="wednesdayAt18" >
-{{#each wednesdayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each wednesdayClassAt18}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="wednesdayAt18Teacher">Profesor: </label>
 <select name="wednesdayAt18Teacher"> 
-{{#each teachers}}
+{{#each wednesdayTeacherAt18}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
-{{/each}}   
+{{/if}}
+{{/each}}     
 </select>
 </div>
 
@@ -194,60 +314,100 @@
 <div>
 <label for="thursdayAt9">Jueves a las 9:00</label>
 <select name="thursdayAt9" >
-{{#each thursdayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each thursdayClassAt9}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="thursdayAt9Teacher">Profesor: </label>
 <select name="thursdayAt9Teacher"> 
-{{#each teachers}}
+{{#each thursdayTeacherAt9}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
-{{/each}}   
+{{/if}}
+{{/each}}    
 </select>
 </div>
 
 <div>
 <label for="thursdayAt12">Jueves a las 12:00</label>
 <select name="thursdayAt12" >
-{{#each thursdayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each thursdayClassAt12}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="thursdayAt12Teacher">Profesor: </label>
 <select name="thursdayAt12Teacher"> 
-{{#each teachers}}
+{{#each thursdayTeacherAt12}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
-{{/each}}   
+{{/if}}
+{{/each}}    
 </select>
 </div>
 
 <div>
 <label for="thursdayAt15">Jueves a las 15:00</label>
 <select name="thursdayAt15" >
-{{#each thursdayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each thursdayClassAt15}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="thursdayAt15Teacher">Profesor: </label>
 <select name="thursdayAt15Teacher"> 
-{{#each teachers}}
+{{#each thursdayTeacherAt15}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
-{{/each}}   
+{{/if}}
+{{/each}}    
 </select>
 </div>
 
 <div>
 <label for="thursdayAt18">Jueves a las 18:00</label>
 <select name="thursdayAt18" >
-{{#each thursdayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each thursdayClassAt18}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="thursdayAt18Teacher">Profesor: </label>
 <select name="thursdayAt18Teacher"> 
-{{#each teachers}}
+{{#each thursdayTeacherAt18}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
-{{/each}}   
+{{/if}}
+{{/each}}      
 </select>
 </div>
 
@@ -256,59 +416,99 @@
 <div>
 <label for="fridayAt9">Viernes a las 9:00</label>
 <select name="fridayAt9" >
-{{#each fridayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each fridayClassAt9}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="fridayAt9Teacher">Profesor: </label>
 <select name="fridayAt9Teacher"> 
-{{#each teachers}}
+{{#each fridayTeacherAt9}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
-{{/each}}   
+{{/if}}
+{{/each}}      
 </select>
 </div>
 
 <div>
 <label for="fridayAt12">Viernes a las 12:00</label>
 <select name="fridayAt12" >
-{{#each fridayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each fridayClassAt12}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="fridayAt12Teacher">Profesor: </label>
 <select name="fridayAt12Teacher"> 
-{{#each teachers}}
+{{#each fridayTeacherAt12}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
-{{/each}}   
+{{/if}}
+{{/each}}  
 </select>
 </div>
 
 <div>
 <label for="fridayAt15">Viernes a las 15:00</label>
 <select name="fridayAt15" >
-{{#each fridayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each fridayClassAt15}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="fridayAt15Teacher">Profesor: </label>
 <select name="fridayAt15Teacher"> 
-{{#each teachers}}
+{{#each fridayTeacherAt15}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
-{{/each}}   
+{{/if}}
+{{/each}}  
 </select>
 </div>
 
 <div>
 <label for="fridayAt18">Viernes a las 18:00</label>
 <select name="fridayAt18" >
-{{#each fridayClasses}}
-<option value="{{_id}}">{{className}}</option>
+{{#each fridayClassAt18}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{className}}</option>
+<option disabled>──────────</option>
+ {{else}}
+<option value="{{_id}}" >{{className}}</option>
+ {{/if}}
 {{/each}}
 </select>
 <label for="fridayAt18Teacher">Profesor: </label>
 <select name="fridayAt18Teacher"> 
-{{#each teachers}}
+{{#each fridayTeacherAt18}}
+{{#if isSelected}}
+<option value="{{_id}}" selected>{{name}}</option>
+<option disabled>──────────</option>
+{{else}}
 <option value="{{_id}}">{{name}}</option>
+{{/if}}
 {{/each}}   
 </select>
 </div>

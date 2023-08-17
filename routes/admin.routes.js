@@ -6,6 +6,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/User.model.js");
 const Class = require("../models/Class.model.js");
 const Week = require("../models/Week.model.js");
+const getWeekDetails = require("../utils/weekFunction.js")
 
 const { isLoggedIn, isAdmin } = require("../middlewares/auth.middlewares.js");
 
@@ -33,19 +34,8 @@ router.get("/main", isLoggedIn, isAdmin, async (req, res, next) => {
 //GET ("/admin/edit-calendar") => muestra el formulario de edición del calendario
 router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
-    const weekDetails = await Week.findById(
-      "64da35b47a1247b56b3042b4"
-    ).populate({
-      path: "monday tuesday wednesday thursday friday",
-      populate: {
-        path: "at9 at12 at15 at18",
-        model: "Class",
-        populate: {
-          path: "teacher students",
-          model: "User",
-        },
-      },
-    });
+    const weekDetails = await getWeekDetails()
+    console.log(weekDetails)
 
     const allClasses = await Class.find().select({ className: 1, weekDay: 1 });
     const allTeachers = await User.find({ role: { $in: "teacher" } });
@@ -54,39 +44,291 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     const cloneAllClasses = JSON.parse(JSON.stringify(allClasses));
     const cloneallTeachers = JSON.parse(JSON.stringify(allTeachers));
 
-    const mondayClasses = [];
-    const tuesdayClasses = [];
-    const wednesdayClasses = [];
-    const thursdayClasses = [];
-    const fridayClasses = [];
 
-    cloneAllClasses.forEach((cadaClase) => {
+// todo  Arrays clases ---------------------------------------------------------
+
+  const mondayClassAt9 =[]
+  mondayClassAt9.push(weekDetails.monday.at9)
+  mondayClassAt9[0].isSelected = true
+
+  const mondayClassAt12 =[]
+  mondayClassAt12.push(weekDetails.monday.at12)
+  mondayClassAt12[0].isSelected = true
+
+  const mondayClassAt15 =[]
+  mondayClassAt15.push(weekDetails.monday.at15)
+  mondayClassAt15[0].isSelected = true
+
+   const mondayClassAt18 =[]
+  mondayClassAt18.push(weekDetails.monday.at18)
+  mondayClassAt18[0].isSelected = true
+//--------------------------------------------------
+  const tuesdayClassAt9 =[]
+  tuesdayClassAt9.push(weekDetails.tuesday.at9)
+  tuesdayClassAt9[0].isSelected = true
+
+const tuesdayClassAt12 =[]
+  tuesdayClassAt12.push(weekDetails.tuesday.at12)
+  tuesdayClassAt12[0].isSelected = true
+
+const tuesdayClassAt15 =[]
+  tuesdayClassAt15.push(weekDetails.tuesday.at15)
+  tuesdayClassAt15[0].isSelected = true
+
+const tuesdayClassAt18 =[]
+  tuesdayClassAt18.push(weekDetails.tuesday.at18)
+  tuesdayClassAt18[0].isSelected = true
+//--------------------------------------------------  
+const wednesdayClassAt9 =[]
+  wednesdayClassAt9.push(weekDetails.wednesday.at9)
+  wednesdayClassAt9[0].isSelected = true
+
+const wednesdayClassAt12 =[]
+  wednesdayClassAt12.push(weekDetails.wednesday.at12)
+  wednesdayClassAt12[0].isSelected = true
+
+const wednesdayClassAt15 =[]
+  wednesdayClassAt15.push(weekDetails.wednesday.at15)
+  wednesdayClassAt15[0].isSelected = true
+
+const wednesdayClassAt18 =[]
+  wednesdayClassAt18.push(weekDetails.wednesday.at18)
+  wednesdayClassAt18[0].isSelected = true
+//--------------------------------------------------  
+const thursdayClassAt9 =[]
+  thursdayClassAt9.push(weekDetails.thursday.at9)
+  thursdayClassAt9[0].isSelected = true
+
+const thursdayClassAt12 =[]
+  thursdayClassAt12.push(weekDetails.thursday.at12)
+  thursdayClassAt12[0].isSelected = true
+
+const thursdayClassAt15 =[]
+  thursdayClassAt15.push(weekDetails.thursday.at15)
+  thursdayClassAt15[0].isSelected = true
+
+const thursdayClassAt18 =[]
+  thursdayClassAt18.push(weekDetails.thursday.at18)
+  thursdayClassAt18[0].isSelected = true
+//--------------------------------------------------  
+const fridayClassAt9 =[]
+  fridayClassAt9.push(weekDetails.friday.at9)
+  fridayClassAt9[0].isSelected = true
+
+const fridayClassAt12 =[]
+  fridayClassAt12.push(weekDetails.friday.at12)
+  fridayClassAt12[0].isSelected = true
+
+const fridayClassAt15 =[]
+  fridayClassAt15.push(weekDetails.friday.at15)
+  fridayClassAt15[0].isSelected = true
+
+const fridayClassAt18 =[]
+  fridayClassAt18.push(weekDetails.friday.at18)
+  fridayClassAt18[0].isSelected = true
+//--------------------------------------------------  
+
+  cloneAllClasses.forEach((cadaClase) => {
       //console.log(cadaClase.weekDay);
       if (cadaClase.weekDay === "lunes") {
-        mondayClasses.push(cadaClase);
+        mondayClassAt9.push(cadaClase);
+        mondayClassAt12.push(cadaClase);
+        mondayClassAt15.push(cadaClase);
+        mondayClassAt18.push(cadaClase);
       } else if (cadaClase.weekDay === "martes") {
-        tuesdayClasses.push(cadaClase);
+        tuesdayClassAt9.push(cadaClase);
+        tuesdayClassAt12.push(cadaClase);
+        tuesdayClassAt15.push(cadaClase);
+        tuesdayClassAt18.push(cadaClase);
       } else if (cadaClase.weekDay === "miercoles") {
-        wednesdayClasses.push(cadaClase);
+        wednesdayClassAt9.push(cadaClase);
+        wednesdayClassAt12.push(cadaClase);
+        wednesdayClassAt15.push(cadaClase);
+        wednesdayClassAt18.push(cadaClase);
       } else if (cadaClase.weekDay === "jueves") {
-        thursdayClasses.push(cadaClase);
+        thursdayClassAt9.push(cadaClase);
+        thursdayClassAt12.push(cadaClase);
+        thursdayClassAt15.push(cadaClase);
+        thursdayClassAt18.push(cadaClase);
       } else if (cadaClase.weekDay === "viernes") {
-        fridayClasses.push(cadaClase);
+        fridayClassAt9.push(cadaClase);
+        fridayClassAt12.push(cadaClase);
+        fridayClassAt15.push(cadaClase);
+        fridayClassAt18.push(cadaClase);
       }
     });
 
+// todo --------------------------------------------------------------------------
 
+//todo Arrays Profesores ---------------------------------------------------------
+
+const mondayTeacherAt9 =[]
+mondayTeacherAt9.push(weekDetails.monday.at9.teacher)
+mondayTeacherAt9[0].isSelected = true
+
+console.log(mondayTeacherAt9)
+const mondayTeacherAt12 =[]
+mondayTeacherAt12.push(weekDetails.monday.at12.teacher)
+mondayTeacherAt12[0].isSelected = true
+
+const mondayTeacherAt15 =[]
+mondayTeacherAt15.push(weekDetails.monday.at15.teacher)
+mondayTeacherAt15[0].isSelected = true
+
+const mondayTeacherAt18 =[]
+mondayTeacherAt18.push(weekDetails.monday.at18.teacher)
+mondayTeacherAt18[0].isSelected = true
+//--------------------------------------------------
+const tuesdayTeacherAt9 =[]
+tuesdayTeacherAt9.push(weekDetails.tuesday.at9.teacher)
+tuesdayTeacherAt9[0].isSelected = true
+
+const tuesdayTeacherAt12 =[]
+tuesdayTeacherAt12.push(weekDetails.tuesday.at12.teacher)
+tuesdayTeacherAt12[0].isSelected = true
+
+const tuesdayTeacherAt15 =[]
+tuesdayTeacherAt15.push(weekDetails.tuesday.at15.teacher)
+tuesdayTeacherAt15[0].isSelected = true
+
+const tuesdayTeacherAt18 =[]
+tuesdayTeacherAt18.push(weekDetails.tuesday.at18.teacher)
+tuesdayTeacherAt18[0].isSelected = true
+const wednesdayTeacherAt9 =[]
+wednesdayTeacherAt9.push(weekDetails.wednesday.at9.teacher)
+wednesdayTeacherAt9[0].isSelected = true
+
+const wednesdayTeacherAt12 =[]
+wednesdayTeacherAt12.push(weekDetails.wednesday.at12.teacher)
+wednesdayTeacherAt12[0].isSelected = true
+
+const wednesdayTeacherAt15 =[]
+wednesdayTeacherAt15.push(weekDetails.wednesday.at15.teacher)
+wednesdayTeacherAt15[0].isSelected = true
+const wednesdayTeacherAt18 =[]
+wednesdayTeacherAt18.push(weekDetails.wednesday.at18.teacher)
+wednesdayTeacherAt18[0].isSelected = true
+const thursdayTeacherAt9 =[]
+thursdayTeacherAt9.push(weekDetails.thursday.at9.teacher)
+thursdayTeacherAt9[0].isSelected = true
+
+const thursdayTeacherAt12 =[]
+thursdayTeacherAt12.push(weekDetails.thursday.at12.teacher)
+thursdayTeacherAt12[0].isSelected = true
+
+const thursdayTeacherAt15 =[]
+thursdayTeacherAt15.push(weekDetails.thursday.at15.teacher)
+thursdayTeacherAt15[0].isSelected = true
+
+const thursdayTeacherAt18 =[]
+thursdayTeacherAt18.push(weekDetails.thursday.at18.teacher)
+thursdayTeacherAt18[0].isSelected = true
+
+
+
+const fridayTeacherAt9 =[]
+fridayTeacherAt9.push(weekDetails.friday.at9.teacher)
+fridayTeacherAt9[0].isSelected = true
+
+const fridayTeacherAt12 =[]
+fridayTeacherAt12.push(weekDetails.friday.at12.teacher)
+fridayTeacherAt12[0].isSelected = true
+
+const fridayTeacherAt15 =[]
+fridayTeacherAt15.push(weekDetails.friday.at15.teacher)
+fridayTeacherAt15[0].isSelected = true
+
+const fridayTeacherAt18 =[]
+fridayTeacherAt18.push(weekDetails.friday.at18.teacher)
+fridayTeacherAt18[0].isSelected = true
+
+
+
+
+cloneallTeachers.forEach((teacher)=> {
+  mondayTeacherAt9.push(teacher)
+  mondayTeacherAt12.push(teacher)
+  mondayTeacherAt15.push(teacher)
+  mondayTeacherAt18.push(teacher)
+
+  tuesdayTeacherAt9.push(teacher)
+  tuesdayTeacherAt12.push(teacher)
+  tuesdayTeacherAt15.push(teacher)
+  tuesdayTeacherAt18.push(teacher)
+
+  wednesdayTeacherAt9.push(teacher)
+  wednesdayTeacherAt12.push(teacher)
+  wednesdayTeacherAt15.push(teacher)
+  wednesdayTeacherAt18.push(teacher)
+
+  thursdayTeacherAt9.push(teacher)
+  thursdayTeacherAt12.push(teacher)
+  thursdayTeacherAt15.push(teacher)
+  thursdayTeacherAt18.push(teacher)
+
+  fridayTeacherAt9.push(teacher)
+  fridayTeacherAt12.push(teacher)
+  fridayTeacherAt15.push(teacher)
+  fridayTeacherAt18.push(teacher)
+
+})
+
+// todo -----------------------------------------------------
 
     // console.log(mondayClasses)
 
     res.render("admin-views/admin-edit-calendar.hbs", {
-      weekDetails,
-      mondayClasses,
-      tuesdayClasses,
-      wednesdayClasses,
-      thursdayClasses,
-      fridayClasses,
-      teachers: cloneallTeachers,
+
+      mondayClassAt9,
+      mondayClassAt12,
+      mondayClassAt15,
+      mondayClassAt18,
+      
+      tuesdayClassAt9,
+      tuesdayClassAt12,
+      tuesdayClassAt15,
+      tuesdayClassAt18,
+
+      wednesdayClassAt9,
+      wednesdayClassAt12,
+      wednesdayClassAt15,
+      wednesdayClassAt18,
+
+      thursdayClassAt9,
+      thursdayClassAt12,
+      thursdayClassAt15,
+      thursdayClassAt18,
+
+      fridayClassAt9,
+      fridayClassAt12,
+      fridayClassAt15,
+      fridayClassAt18,
+    
+      mondayTeacherAt9,
+      mondayTeacherAt12,
+      mondayTeacherAt15,
+      mondayTeacherAt18,
+
+      tuesdayTeacherAt9,
+      tuesdayTeacherAt12,
+      tuesdayTeacherAt15,
+      tuesdayTeacherAt18,
+
+      wednesdayTeacherAt9,
+      wednesdayTeacherAt12,
+      wednesdayTeacherAt15,
+      wednesdayTeacherAt18,
+
+      thursdayTeacherAt9,
+      thursdayTeacherAt12,
+      thursdayTeacherAt15,
+      thursdayTeacherAt18,
+
+      fridayTeacherAt9,
+      fridayTeacherAt12,
+      fridayTeacherAt15,
+      fridayTeacherAt18,
+      
     });
   } catch (error) {
     next(error);

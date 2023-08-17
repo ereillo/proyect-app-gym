@@ -7,7 +7,7 @@ const Week = require("../models/Week.model.js");
 function getWeekDetails() {
 
    return Week.findById(
-    "64dc95976b6542feadca9bc7"
+    "64da35b47a1247b56b3042b4"
   ).populate({
     path: "monday tuesday wednesday thursday friday",
     populate: {
@@ -24,4 +24,4 @@ function getWeekDetails() {
 
 
 
-  module.exports = getWeekDetails
+  module.exports = getWeekDetails()

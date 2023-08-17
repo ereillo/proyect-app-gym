@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/User.model.js");
 const Class = require("../models/Class.model.js");
 const Week = require("../models/Week.model.js");
-const getWeekDetails = require("../utils/weekFunction.js");
+
 
 const { isLoggedIn, isAdmin } = require("../middlewares/auth.middlewares.js");
 
@@ -31,7 +31,18 @@ router.get("/main", isLoggedIn, isAdmin, async (req, res, next) => {
 //GET ("/admin/edit-calendar") => muestra el formulario de edición del calendario
 router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
-    const weekDetails = await getWeekDetails();
+    const weekDetails =  await Week.findById(
+      "64dc95976b6542feadca9bc7").populate({
+      path: "monday tuesday wednesday thursday friday",
+      populate: {
+        path: "at9 at12 at15 at18",
+        model: "Class",
+        populate: {
+          path: "teacher students",
+          model: "User",
+        },
+      },
+    });
     console.log(weekDetails);
 
     const allClasses = await Class.find().select({ className: 1, weekDay: 1 });
@@ -476,7 +487,21 @@ router.post("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
 //GET ("/admin/class-list") => Mostrar una lista de todas las clases de la semana
 router.get("/class-list", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
-    const weekDetails = await getWeekDetails();
+    const weekDetails = await  Week.findById(
+      "64dc95976b6542feadca9bc7"
+    ).populate({
+      path: "monday tuesday wednesday thursday friday",
+      populate: {
+        path: "at9 at12 at15 at18",
+        model: "Class",
+        populate: {
+          path: "teacher students",
+          model: "User",
+        },
+      },
+    });
+    
+    console.log(weekDetails)
     res.render("admin-views/admin-class-list.hbs", {
       weekDetails,
     });

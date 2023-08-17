@@ -7,7 +7,7 @@ const User = require("../models/User.model.js");
 const Class = require("../models/Class.model.js");
 const Week = require("../models/Week.model.js");
 const Comment = require("../models/comment.model.js");
-const getWeekDetails = require("../utils/weekFunction.js");
+
 
 const { isLoggedIn, isClient } = require("../middlewares/auth.middlewares.js");
 
@@ -286,7 +286,20 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
   // week Eve: 64da46b6f1fd57abc7f34356
 
   try {
-    const weekDetails = await getWeekDetails()
+    const weekDetails = await  Week.findById(
+      "64dc95976b6542feadca9bc7"
+    ).populate({
+      path: "monday tuesday wednesday thursday friday",
+      populate: {
+        path: "at9 at12 at15 at18",
+        model: "Class",
+        populate: {
+          path: "teacher students",
+          model: "User",
+        },
+      },
+    });
+    console.log("ESTO"+weekDetails)
     // console.log(weekDetails.monday.at9.className)
     res.render("client-views/calendar-view.hbs", { weekDetails });
   } catch (error) {
@@ -307,7 +320,19 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
   console.log("ESTE CONSOLE USER" + userId);
 
   try {
-    const weekDetails = await getWeekDetails()
+    const weekDetails = await  Week.findById(
+      "64dc95976b6542feadca9bc7"
+    ).populate({
+      path: "monday tuesday wednesday thursday friday",
+      populate: {
+        path: "at9 at12 at15 at18",
+        model: "Class",
+        populate: {
+          path: "teacher students",
+          model: "User",
+        },
+      },
+    });
     if (
       capacity > 0 &&
       res.locals.isUserClient === true &&

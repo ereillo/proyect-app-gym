@@ -64,6 +64,7 @@ router.post("/main", isLoggedIn, isClient, async (req, res, next) => {
   }
 });
 
+//POST ("client/main/cooment") => formulario de creacion de comentario
 router.post("/main/comment", isLoggedIn, isClient, async (req, res, next) => {
   console.log(req.session.loggedUser);
 
@@ -139,7 +140,7 @@ router.post(
 );
 
 //POST ("/client/edit-profile") => Renderiza la información del formulario y lo edita
-router.post("/edit-profile", isLoggedIn, async (req, res, next) => {
+router.post("/edit-profile", isLoggedIn, isClient, async (req, res, next) => {
   const {
     name,
     surname,
@@ -247,6 +248,27 @@ router.post("/edit-profile", isLoggedIn, async (req, res, next) => {
   }
 });
 
+
+//GET ("client/delete-profile") => redirecciona al usuario despues de eliminarlo
+router.get("/delete-profile", (req, res, next) => {
+res.render("client-views/deleted-account.hbs")
+  
+})
+//POST ("/client/delete-profile") => elimina al usuario de la DB
+router.post("/delete-profile", isLoggedIn, isClient, async (req, res, next) => {
+
+try {
+  
+await User.findByIdAndDelete(req.session.loggedUser._id)
+
+req.session.destroy(()=> {
+  res.redirect("/client/delete-profile")})
+} catch (error) {
+  next(error)
+}
+
+})
+
 //GET ("/client/classes") => página con nuestras clases
 router.get("/classes", (req, res, next) => {
   res.render("client-views/classes-view.hbs");
@@ -264,7 +286,7 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
 
   try {
     const weekDetails = await Week.findById(
-      "64da46b6f1fd57abc7f34356"
+      "64da35b47a1247b56b3042b4"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -298,7 +320,7 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
 
   try {
     const weekDetails = await Week.findById(
-      "64da46b6f1fd57abc7f34356"
+      "64da35b47a1247b56b3042b4"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {

@@ -430,7 +430,7 @@ router.post("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     Class.findByIdAndUpdate(fridayAt18, {
       teacher: fridayAt18Teacher,
     }),
-    Week.findByIdAndUpdate("64da46b6f1fd57abc7f34356", {
+    Week.findByIdAndUpdate("64dc95976b6542feadca9bc7", {
       monday: {
         at9: mondayAt9,
         at12: mondayAt12,

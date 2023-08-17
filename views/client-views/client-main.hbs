@@ -1,16 +1,18 @@
 <div>
    
-   <div>
-  <img src="{{user.profilePic}}" class="card-img-top" alt="image-perfil" width="50px">
-  <h2 class="card-title">Hola, {{user.name}} ¡bienvenid@!</h2>
 
-  <a href="/client/edit-profile" class="btn btn-primary">Editar perfil</a>
+<div class="card" style="width: 18rem;">
+<img src="{{user.profilePic}}" class="card-img-top" alt="image-perfil" width="100px">
+<div class="card-body">
+<h5 class="card-title">Hola, {{user.name}} ¡bienvenid@!</h5>
+<a href="/client/edit-profile"><button class="btn btn-outline-primary">Editar perfil</button></a>
+
 
   {{#if suscriptionTrue}}
 
     <p>Tu suscripción está activa</p>
     <form action="/client/main/" method="post">
-      <button class="btn btn-primary btn-lg">Darse de baja</button>
+      <button class="btn btn-outline-danger">Darse de baja</button>
       <input
         type="text"
         name="suscription"
@@ -20,17 +22,15 @@
     </form>
 
 </div>
+</div>
+</div>
 
     <form action="/client/main/comment" method="post">
-      <input
-        type="text"
-        name="userName"
-        value="{{user.name}}"
-        style="display: none;"
-      />
-      <label for="comment">¿Quieres dejarnos algún comentario?</label>
-      <input type="text" name="comment" />
-      <button>Enviar comentario</button>
+    <div class="mb-3">
+      <input type="text" name="userName" value="{{user.name}}" style="display: none;"/>
+      <label for="comment" class="form-label">¿Quieres dejarnos algún comentario?</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="comment" />
+      <button class="btn btn-primary">Enviar comentario</button>
 
       {{#if commentSucces}}
         {{commentSucces}}
@@ -63,9 +63,10 @@
    </div>
 
   {{#unless suscriptionTrue}}
+  <div style="margin-left: 15px;">
     <form action="/client/main/" method="post">
       <p>Tu suscripción está inactiva</p>
-      <button class="link-danger">Suscríbete</button>
+      <button class="btn btn-outline-success">Suscríbete</button>
       <input
         type="text"
         name="suscription"
@@ -73,6 +74,7 @@
         style="display: none;"
       />
     </form>
+    </div>
   {{/unless}}
 
 </div>

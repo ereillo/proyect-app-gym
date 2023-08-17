@@ -1,83 +1,79 @@
 <div>
 
-  <h3>Tus datos personales:</h3>
-
-   <br>
- 
 
 
-<img src="{{teacherId.profilePic}}" alt="image-perfil" width="100px">
-
-<h5>Cambiar foto de perfil</h5>
-
-     <form action="/teachers/edit-profile-img" method="post" enctype="multipart/form-data">
-
-    <br />
-
-    <label for="profilePic">Cambiar foto de perfil</label>
-    <input type="file" name="profilePic">
-
-    <br>
-
-    <button>Agregar foto</button>
-
-
-    </form>
-
-  <form action="/teachers/edit-profile" method="post">
-
-  
-
-  <br>
-
-    <label for="name">Nombre</label>
-    <input type="text" name="name" value="{{teacherId.name}}" />
-
-    <br>
-
-    <label for="surname">Apellido</label>
-    <input type="text" name="surname" value="{{teacherId.surname}}" />
-
-    <br>
-
-    <label for="email">Correo electrónico</label>
-    <input type="text" name="email" value="{{teacherId.email}}" />
-
-    <br>
-
-    <h5>Cambiar contraseña</h5>
-
-    
-
-    <br>
-
-    <label for="newPassword">Nueva contraseña</label>
-    <input type="password" name="newPassword" />
-
-    <br>
-
-    <label for="confirmPassword">Confirmar nueva contraseña</label>
-    <input type="password" name="confirmNewPassword" />
-
-
-    <br>
-
-    </p><label for="password">Contraseña actual para realizar cambios</label>
-    <input type="password" name="password" />
-<br>
-    <button>Actualizar perfil</button>
-
-    <br />
-    
-    {{#if this.errorMessage}}
-      <p>{{this.errorMessage}}</p>
-    {{/if}}
-
-     
-
+  <form action="/teachers/edit-profile-img" method="post" enctype="multipart/form-data" margin-top: "4px;">
+    <div class="card" style="width: 20rem">
+      <img src="{{teacherId.profilePic}}" class="card-img-top" alt="image-pic" style="width: 20rem; margin-top: 4px;">
+      <div class="card-body">
+        <h5 class="card-title">Tu foto de perfil</h5>
+        <input type="file" class="form-control" name="userProfilePic">
+        <button class="btn btn-outline-primary">Agregar foto</button>
+      </div>
+    </div>
   </form>
 
 
 
+  <div class="d-flex justify-content-center" style="margin-top: -36%; margin-right: 25%;">
+    <form action="/teachers/edit-profile" method="post">
 
+      <br>
+      <div class="mb-3" style="margin: -1.5%; margin-top: 3%; margin-left: 3%; ">
+        <label for="name" class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="name" value="{{teacherId.name}}"
+          style="width : 220px; heigth : 2px" />
+      </div>
+
+
+      <br>
+
+      <div class="mb-3" style="margin: -1.5%; margin-left: 3%; ">
+        <label for="email" class="form-label">Apellido</label>
+        <input type="text" class="form-control" name="surname" value="{{teacherId.surname}}"
+          style="width : 220px; heigth : 2px" />
+      </div>
+
+      <br>
+
+      <div class="mb-3" style="margin: -1.5%; margin-left: 3%; ">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input type="text" class="form-control" name="email" value="{{teacherId.email}}"
+          style="width : 220px; heigth : 2px" />
+      </div>
+      <br>
+  </div>
+
+  <div style="margin-top: -16%; margin-left: 50%">
+    <h5>Cambiar contraseña</h5>
+
+    <br>
+
+    <label for="newPassword">Nueva contraseña</label>
+    <input type="password" class="form-control" name="newPassword" style="width : 220px; heigth : 2px" />
+
+    <br>
+
+    <label for="confirmPassword">Confirmar nueva contraseña</label>
+    <input type="password" class="form-control" name="confirmNewPassword" style="width : 220px; heigth : 2px" />
+
+  </div>
+  <br>
+
+  <div style="margin-top: 6%; margin-left: 30%">
+    </p><label for="password">Contraseña actual para realizar cambios</label>
+    <input type="password" class="form-control" name="password" style="width : 280px; heigth : 2px" />
+    <br>
+    <button class="btn btn-outline-primary">Actualizar perfil</button>
+  </div>
+
+
+  <br />
+
+  {{#if this.errorMessage}}
+  <p>{{this.errorMessage}}</p>
+  {{/if}}
+
+  </form>
+</div>
 </div>

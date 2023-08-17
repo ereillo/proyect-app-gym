@@ -1,22 +1,27 @@
 <div>
 
-<div>
-<h2>Hola, {{teacher.name}} ¡bienvenid@!</h2>
-<img src="{{teacher.profilePic}}" alt="image-perfil" width="100px">
 
-<a href="/teachers/edit-profile"><button>Editar perfil</button></a>
+<div class="card" style="width: 18rem;">
+<img src="{{teacher.profilePic}}" class="card-img-top" alt="image-perfil" width="100px">
+<div class="card-body">
+<h5 class="card-title">Hola, {{teacher.name}} ¡bienvenid@!</h5>
+<a href="/teachers/edit-profile" class="btn btn-primary"><button>Editar perfil</button></a>
 
 </div>
+</div>
 
+<div style="margin-left: 30%;">
 <h3>Esta semana tienes estas clases</h3>
 {{#each classInfo}}
 
-<li>{{className}}</li>
-<li>{{weekDay}}</li>
+<ul class="list-group">
+<li class="list-group-item list-group-item-light" style="width: 220px; margin : 3px">{{className}}</li>
+<li class="list-group-item list-group-item-light" style="width: 220px; margin : 3px">{{weekDay}}</li>
+</ul>
 
 {{/each}}
 
-
+</div>
 
 
 </div>

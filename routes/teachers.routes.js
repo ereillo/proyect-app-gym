@@ -49,9 +49,9 @@ router.post(
   "/edit-profile-img",
   isLoggedIn,
   isTeacher,
-  uploader.single("profilePic"),
+  uploader.single("userProfilePic"),
   (req, res, next) => {
-    console.log(req.file);
+    // console.log(req.file);
 
     User.findByIdAndUpdate(req.session.loggedUser._id, {
       profilePic: req.file.path,

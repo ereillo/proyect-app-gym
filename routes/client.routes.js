@@ -285,19 +285,7 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
   // week Eve: 64da46b6f1fd57abc7f34356
 
   try {
-    const weekDetails = await Week.findById(
-      "64da35b47a1247b56b3042b4"
-    ).populate({
-      path: "monday tuesday wednesday thursday friday",
-      populate: {
-        path: "at9 at12 at15 at18",
-        model: "Class",
-        populate: {
-          path: "teacher students",
-          model: "User",
-        },
-      },
-    });
+    const weekDetails = await getWeekDetails()
 
     // console.log(weekDetails.monday.at9.className)
     res.render("client-views/calendar-view.hbs", { weekDetails });
@@ -319,19 +307,7 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
   console.log("ESTE CONSOLE USER" + userId);
 
   try {
-    const weekDetails = await Week.findById(
-      "64da35b47a1247b56b3042b4"
-    ).populate({
-      path: "monday tuesday wednesday thursday friday",
-      populate: {
-        path: "at9 at12 at15 at18",
-        model: "Class",
-        populate: {
-          path: "teacher students",
-          model: "User",
-        },
-      },
-    });
+    const weekDetails = await getWeekDetails()
 
     if (
       capacity > 0 &&

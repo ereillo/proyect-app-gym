@@ -488,19 +488,7 @@ router.post("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
 //GET ("/admin/class-list") => Mostrar una lista de todas las clases de la semana
 router.get("/class-list", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
-    const weekDetails = await Week.findById(
-      "64da35b47a1247b56b3042b4"
-    ).populate({
-      path: "monday tuesday wednesday thursday friday",
-      populate: {
-        path: "at9 at12 at15 at18",
-        model: "Class",
-        populate: {
-          path: "teacher students",
-          model: "User",
-        },
-      },
-    });
+    const weekDetails = await getWeekDetails()
 
     res.render("admin-views/admin-class-list.hbs", {
       weekDetails,

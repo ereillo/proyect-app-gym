@@ -10,3 +10,15 @@ a {
 h1 {
   color: 15px;
 }
+
+
+#comentCarr {
+  background: radial-gradient(#f0aec2 30px, #816de6 30%, #695fed 50%);
+  width: 800px;
+  height: 500px;
+}
+
+.shadowText {
+
+  text-shadow: black 0.1em 0.1em 0.2em
+}

@@ -6,7 +6,7 @@
     class="carousel slide"
     data-bs-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
+      <div class="carousel-item active" >
         <img
           src="https://res.cloudinary.com/dj9npvnlg/image/upload/v1692175406/fotos-de-clases/zumba_qe1kc9.jpg"
           class="d-block w-100"
@@ -81,34 +81,36 @@
    </div>
 
 
-     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" class="d-flex p-2">
      <div class="carousel-inner">
-  <div class="carousel-item active" style="width: 800px;" style="height: 500px;">
-        <img src="https://res.cloudinary.com/dj9npvnlg/image/upload/v1692175406/fotos-de-clases/zumba_qe1kc9.jpg" class="d-block w-100" alt="class-image"/>
-        <div class="carousel-caption d-none d-md-block">
+  <div class="carousel-item active" id="comentCarr">
+       <img
+          src="https://res.cloudinary.com/dj9npvnlg/image/upload/v1692268868/fotos-de-perfiles/E576E658-663E-4968-8DAB-F67E584BD90E_a4uuec.jpg"
+          class="d-block w-100"
+          alt="..."
+        />
+        <div class="carousel-caption d-none d-md-block" class="d-flex justify-content-center"  class="d-flex align-items-center">
+           <h3 class="shadowText" style="margin-bottom: 150px;">¡No pases por alto los comentarios de nuestros clientes!</h3>
+          
         </div>
         </div>
 
      {{#each coments}}
 
-        <div class="carousel-item" >
-        <img src="https://res.cloudinary.com/dj9npvnlg/image/upload/v1692175406/fotos-de-clases/zumba_qe1kc9.jpg" class="d-block w-100" alt="class-image"/>
-        <div class="carousel-caption d-none d-md-block">
-          <h3>{{client}}</h3>
-          <p>{{note}}</p>
+        <div class="carousel-item" id="comentCarr" class="d-flex p-2">
+         <img
+          src="https://res.cloudinary.com/dj9npvnlg/image/upload/v1692268868/fotos-de-perfiles/E576E658-663E-4968-8DAB-F67E584BD90E_a4uuec.jpg"
+          class="d-block w-100"
+          alt="..."
+        />
+        <div class="carousel-caption d-none d-md-block" class="d-flex justify-content-center"  class="d-flex align-items-center">
+          <h4 style="margin-bottom: 20px;">{{client}}</h4>
+          <h3 class="shadowText" style="margin-bottom: 165px;">{{note}}</h3>
         </div>
         </div>
       {{/each}}
 
-      
-     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-     </button>
-     <button class="carousel-control-next" type="button"  data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-      </button>
+  
   
     </div>
 </div>

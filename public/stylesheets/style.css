@@ -11,6 +11,14 @@ h1 {
   color: 15px;
 }
 
+
+
+#comentarios {
+
+ 
+  margin-bottom: 200px;
+}
+
 #box {
   box-shadow: 5px 5px 15px gray;
   margin-bottom: 100px;
@@ -33,4 +41,18 @@ h1 {
 }
 
 
+#buttonCalendar {
 
+  width: 190px;
+  height: 150px;
+}
+
+td {
+  text-align: center;
+
+}
+
+footer {
+  box-shadow: 5px 5px 15px gray;
+  border-radius: 5px
+}

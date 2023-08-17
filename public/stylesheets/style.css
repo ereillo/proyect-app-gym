@@ -11,14 +11,22 @@ h1 {
   color: 15px;
 }
 
+#carrousel {
+  box-shadow: 5px 5px 15px gray;
+  margin-bottom: 100px;
+}
 
-#comentCarr {
+#carrousel img {
+
+  border-radius: 5px;
+}
+
+.comentCarr {
   background: radial-gradient(#f0aec2 30px, #816de6 30%, #695fed 50%);
-  width: 800px;
-  height: 500px;
+  /* max-width: 800px;
+  max-height: 500px; */
 }
 
 .shadowText {
-
-  text-shadow: black 0.1em 0.1em 0.2em
+  text-shadow: black 0.1em 0.1em 0.2em;
 }

@@ -1,23 +1,31 @@
-<div>
+<div class="d-flex justify-content-center">
 
-  <h3>Vista del login</h3>
+  <form action="/auth/login" method="post" style="margin-top: 10%;">
 
-  <form action="/auth/login" method="post">
 
-    <label for="email">Email</label>
-    <input type="text" name="email" value="{{previousEmail}}" />
-
-    <br />
-
-    <label for="password">Contraseña</label>
-    <input type="password" name="password" />
+    <div class="mb-3" style="margin: -1.5%; margin-left: 3%; ">
+    <label for="email" class="form-label">Correo electrónico</label>
+    <input type="text"  class="form-control" name="email" value="{{previousEmail}}"style="width : 220px; heigth : 2px"/>
+    </div>
 
     <br />
 
-    <button>Accede</button>
+    <div class="mb-3" style="margin: -1.5%; margin-left: 3%; ">
+    <label for="password" class="form-label">Contraseña</label>
+    <input type="password" class="form-control" name="password"style="width : 220px; heigth : 2px" />
+    </div>
+
     <br />
 
+    <div class="d-grid gap-2" style="margin: -1.5%; margin-left: 3%;">
+    <button class="btn btn-primary" style="width : 220px; heigth : 2px">Accede</button>
+    </div>
+
+    <br />
+
+    <div style="margin: -3%; margin-top: 2%; margin-left: 3%;">
     <a href="/auth/signup">¿Aun no eres usuario? Registrate</a>
+    </div>
 
     {{#if errorMessage}}
       <p>{{errorMessage}}</p>

@@ -1,52 +1,55 @@
-<div>
+<div class="d-flex justify-content-center">
 
-  <h3>Formulario de registro</h3>
 
-  <form action="/auth/signup" method="post">
 
-    <div class="mb-3">
+
+  <form action="/auth/signup" method="post" style="margin-top: 4%;">
+
+    <div class="mb-3" style="margin: -1.5%; margin-top: 3%; margin-left: 3%; ">
     <label for="name" class="form-label">Nombre</label>
-    <input type="text" class="form-control" name="name" value="{{previousName}}" />
+    <input type="text" class="form-control" name="name" value="{{previousName}}" style="width : 220px; heigth : 2px"/>
     </div>
 
 
     <br />
 
-    <div class="mb-3">
+    <div class="mb-3" style="margin: -1.5%; margin-left: 3%; ">
     <label for="surname" class="form-label">Apellido</label>
-    <input type="text" class="form-control" name="surname" value="{{previousSurname}}" />
+    <input type="text" class="form-control" name="surname" value="{{previousSurname}}" style="width : 220px; heigth : 2px" />
     </div>
 
     <br />
     
-    <div class="mb-3">
+    <div class="mb-3" style="margin: -1.5%; margin-left: 3%; ">
     <label for="email" class="form-label">Correo electrónico</label>
-    <input type="text"  class="form-control" name="email" value="{{previousEmail}}" />
+    <input type="text"  class="form-control" name="email" value="{{previousEmail}}"style="width : 220px; heigth : 2px"/>
     </div>
  
     <br />
 
-    <div class="mb-3">
+    <div class="mb-3" style="margin: -1.5%; margin-left: 3%; ">
     <label for="password" class="form-label">Contraseña</label>
-    <input type="password" class="form-control" name="password" />
+    <input type="password" class="form-control" name="password"style="width : 220px; heigth : 2px" />
     </div>
 
     <br />
 
-    <div class="mb-3">
+    <div class="mb-3" style="margin: -1.5%; margin-left: 3%; ">
     <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
-    <input type="password" class="form-control" name="confirmPassword" />
+    <input type="password" class="form-control" name="confirmPassword" style="width : 220px; heigth : 2px" />
     </div>
 
     <br />
 
-    <div class="d-grid gap-2" >
-    <button class="btn btn-primary" type="button">Registro</button>
+    <div class="d-grid gap-2" style="margin: -1.5%; margin-left: 3%;">
+    <button class="btn btn-primary" style="width : 220px; heigth : 2px">Registro</button>
     </div>
 
     <br />
     
+    <div style="margin: -3%; margin-top: 2%; margin-left: 3%;">
     <a href="/auth/login">¿Ya eres usuario? Inicia sesión</a>
+    </div>
 
     {{#if this.errorMessage}}
       <p>{{this.errorMessage}}</p>

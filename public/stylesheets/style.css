@@ -29,7 +29,8 @@ h1 {
   border-radius: 5px;
 }
 
-.comentCarr {
+.cabecera {
+  padding: 15px;
   background: linear-gradient( #816de6 30%, #695fed 50%);
   /* max-width: 800px;
   max-height: 500px; */

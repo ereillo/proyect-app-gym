@@ -19,14 +19,14 @@ const userSchema = new Schema(
       unique: true,
       lowercase: true,
       trim: true
-    },
+    }, 
     password: {
       type: String,
       required: true
     },
     profilePic: {
       type: String,
-      default: ""
+      default: "https://res.cloudinary.com/dj9npvnlg/image/upload/v1692279121/fotos-de-clases/blank-profile-picture-973460_960_720_yjznxh.webp"
     },
     role: {
       type: String,

@@ -1,5 +1,6 @@
 <div>
 
+<div class="d-flex flex-wrap">
 
 <div class="card" style="width: 18rem;">
 <img src="{{teacher.profilePic}}" class="card-img-top" alt="image-perfil" width="100px">
@@ -10,18 +11,18 @@
 </div>
 </div>
 
-<div style="margin-left: 30%;">
-<h3>Esta semana tienes estas clases</h3>
-{{#each classInfo}}
-
-<ul class="list-group">
-<li class="list-group-item list-group-item-light" style="width: 220px; margin : 3px">{{className}}</li>
-<li class="list-group-item list-group-item-light" style="width: 220px; margin : 3px">{{weekDay}}</li>
-</ul>
-
-{{/each}}
-
-</div>
-
-
+<div>
+    <h3 style="text-align: center; margin-top: -1%;">Esta semana tienes estas clases</h3>
+    
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 2%;">
+        {{#each classInfo}}
+        <div class="card" style="width: 15rem; margin-top: 10%;">
+            <div class="card-body">
+                <p>{{className}}</p>
+                <p>{{weekDay}}</p>
+                <img src="{{classPic}}" alt="classPic" width="275px">
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </div>

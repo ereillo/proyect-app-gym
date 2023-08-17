@@ -21,7 +21,7 @@ router.get("/main", isLoggedIn, isTeacher, async (req, res, next) => {
 
     const classInfo = await Class.find({
       teacher: { $in: req.session.loggedUser._id },
-    }).select({ className: 1, weekDay: 1 });
+    }).select({ className: 1, weekDay: 1, classPic: 1 });
     res.render("teachers-views/teachers-main.hbs", {
       classInfo,
       teacher: teacherId,

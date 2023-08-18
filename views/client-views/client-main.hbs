@@ -6,7 +6,8 @@
       <h5 class="card-title">Hola, {{user.name}} ¡bienvenid@!</h5>
       <a href="/client/edit-profile"><button class="btn btn-outline-primary">Editar perfil</button></a>
 
-
+    </div>
+  </div>
       {{#if suscriptionTrue}}
 
       <p>Tu suscripción está activa</p>
@@ -15,8 +16,7 @@
         <input type="text" name="suscription" value="true" style="display: none;" />
       </form>
 
-    </div>
-  </div>
+
 
   <div style="margin-top: 10px; margin-left: 0%">
     <form action="/client/main/comment" method="post">

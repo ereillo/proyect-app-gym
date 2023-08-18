@@ -256,4 +256,4 @@ note: String
 
 ### Slides
 
-[Slides Link](www.your-slides-url-here.com)
+(https://www.canva.com/design/DAFr4XmsEk0/z4_cgASkNdgPjR_DnO1Qsw/view?utm_content=DAFr4XmsEk0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)

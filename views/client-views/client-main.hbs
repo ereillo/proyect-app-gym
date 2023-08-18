@@ -1,7 +1,5 @@
 <div>
 
-  <div>
-
     <div class="card" style="width: 18rem;">
       <img src="{{user.profilePic}}" class="card-img-top" alt="image-perfil" width="100px">
       <div class="card-body">
@@ -19,8 +17,8 @@
 
       </div>
     </div>
-    
-<div style="margin-top: 10px; margin-left: 0%">
+
+    <div style="margin-top: 10px; margin-left: 0%">
       <form action="/client/main/comment" method="post">
         <div class="mb-3">
           <input type="text" name="userName" value="{{user.name}}" style="display: none;" />
@@ -32,34 +30,35 @@
           {{#if commentSucces}}
           {{commentSucces}}
           {{/if}}
+        </div>
       </form>
     </div>
 
 
-  <div class="d-flex flex-wrap">
-  <h3 style="text-align: center; margin-top: 50px;">Estas son tus clases</h3>
-  <div style="text-align: center; margin-top: 10px;">
-    <a href="/client/calendar"><button>Apúntate a una clase</button></a>
-  </div>
-  <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 2%;">
-    {{#each classInfo}}
-    <div class="card" style="width: 15rem; margin-top: 10%; margin: 10px;">
-      <div class="card-body">
-        <p style="text-align: center;">{{className}}</p>
-        <p style="text-align: center;">{{weekDay}}</p>
-        <img src="{{classPic}}" alt="classPic" width="215px">
-        <form action="/client/main/{{_id}}" method="post">
-          <button class="btn btn-outline-danger" style="width: 200px;">Borrarse de esta clase</button>
-          <input type="text" name="students" value="{{students}}" style="display:none;" />
-        </form>
+    <div class="d-flex flex-wrap">
+      <h3 style="text-align: center; margin-top: 50px;">Estas son tus clases</h3>
+      <div style="text-align: center; margin-top: 10px;">
+        <a href="/client/calendar"><button>Apúntate a una clase</button></a>
+      </div>
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 2%;">
+        {{#each classInfo}}
+        <div class="card" style="width: 15rem; margin-top: 10%; margin: 10px;">
+          <div class="card-body">
+            <p style="text-align: center;">{{className}}</p>
+            <p style="text-align: center;">{{weekDay}}</p>
+            <img src="{{classPic}}" alt="classPic" width="215px">
+            <form action="/client/main/{{_id}}" method="post">
+              <button class="btn btn-outline-danger" style="width: 200px;">Borrarse de esta clase</button>
+              <input type="text" name="students" value="{{students}}" style="display:none;" />
+            </form>
+          </div>
+        </div>
+        {{/each}}
       </div>
     </div>
-    {{/each}}
-  </div>
-</div>
 
-  {{/if}}
-    
+    {{/if}}
+
 
     {{#unless suscriptionTrue}}
     <div style="margin-left: 15px;">
@@ -70,6 +69,5 @@
       </form>
     </div>
     {{/unless}}
-  </div>
 
 </div>

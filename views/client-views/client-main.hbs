@@ -19,6 +19,22 @@
 
       </div>
     </div>
+    
+<div style="margin-top: 10px; margin-left: 0%">
+      <form action="/client/main/comment" method="post">
+        <div class="mb-3">
+          <input type="text" name="userName" value="{{user.name}}" style="display: none;" />
+          <label for="comment" class="form-label">¿Quieres dejarnos algún comentario?</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="comment"
+            style="width: 500px; heigh : 200px" />
+          <button class="btn btn-primary">Enviar comentario</button>
+
+          {{#if commentSucces}}
+          {{commentSucces}}
+          {{/if}}
+      </form>
+    </div>
+
 
   <div class="d-flex flex-wrap">
   <h3 style="text-align: center; margin-top: 50px;">Estas son tus clases</h3>
@@ -43,20 +59,7 @@
 </div>
 
   {{/if}}
-    <div style="margin-top: 10px; margin-left: 0%">
-      <form action="/client/main/comment" method="post">
-        <div class="mb-3">
-          <input type="text" name="userName" value="{{user.name}}" style="display: none;" />
-          <label for="comment" class="form-label">¿Quieres dejarnos algún comentario?</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="comment"
-            style="width: 500px; heigh : 200px" />
-          <button class="btn btn-primary">Enviar comentario</button>
-
-          {{#if commentSucces}}
-          {{commentSucces}}
-          {{/if}}
-      </form>
-    </div>
+    
 
     {{#unless suscriptionTrue}}
     <div style="margin-left: 15px;">

@@ -40,7 +40,7 @@ res.locals.isUserNotLoggedIn = true;
     res.locals.isUserAdmin = false;
 
   } else if (req.session.loggedUser.role === "client") {
-    console.log("SESION" + req.session.loggedUser.role)
+    // console.log("SESION" + req.session.loggedUser.role)
     res.locals.isUserClient = true;
     res.locals.isUserNotLoggedIn = false;
 

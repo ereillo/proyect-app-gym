@@ -11,7 +11,7 @@ router.get("/", async (req, res, next) => {
 
   try {
     const coments = await Comment.find();
-    console.log(coments)
+    // console.log(coments)
     res.render("index", {
       coments,
     });

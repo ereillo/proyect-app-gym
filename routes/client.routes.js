@@ -46,7 +46,7 @@ router.get("/main", isLoggedIn, isClient, async (req, res, next) => {
 //POST ("/client/main") => cambia el estado de la suscripción de true a false
 router.post("/main", isLoggedIn, isClient, async (req, res, next) => {
   const { suscription } = req.body;
-  console.log(suscription);
+  // console.log(suscription);
 
   try {
     if (suscription === "false") {
@@ -67,7 +67,7 @@ router.post("/main", isLoggedIn, isClient, async (req, res, next) => {
 
 //POST ("client/main/cooment") => formulario de creacion de comentario
 router.post("/main/comment", isLoggedIn, isClient, async (req, res, next) => {
-  console.log(req.session.loggedUser);
+  // console.log(req.session.loggedUser);
 
   const { comment, userName } = req.body;
 
@@ -110,7 +110,7 @@ router.post("/main/:classId", isLoggedIn, isClient, async (req, res, next) => {
 router.get("/edit-profile", isLoggedIn, isClient, async (req, res, next) => {
   try {
     const userId = await User.findById(req.session.loggedUser._id);
-    console.log(userId + "CONSOLE USERID");
+    // console.log(userId + "CONSOLE USERID");
     res.render("client-views/client-edit-profile.hbs", {
       userId,
     });
@@ -126,7 +126,7 @@ router.post(
   isClient,
   uploader.single("userProfilePic"),
   (req, res, next) => {
-    console.log(req.file);
+    // console.log(req.file);
 
     User.findByIdAndUpdate(req.session.loggedUser._id, {
       profilePic: req.file.path,
@@ -287,7 +287,7 @@ router.get("/calendar", isLoggedIn, async (req, res, next) => {
 
   try {
     const weekDetails = await  Week.findById(
-      "64da46b6f1fd57abc7f34356"
+      "64dc95976b6542feadca9bc7"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -317,11 +317,11 @@ router.post("/calendar/:classId", isLoggedIn, async (req, res, next) => {
     suscriptionActive: 1,
   });
 
-  console.log("ESTE CONSOLE USER" + userId);
+  // console.log("ESTE CONSOLE USER" + userId);
 
   try {
     const weekDetails = await  Week.findById(
-      "64da46b6f1fd57abc7f34356"
+      "64dc95976b6542feadca9bc7"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {

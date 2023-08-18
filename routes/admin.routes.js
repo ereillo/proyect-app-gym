@@ -32,7 +32,7 @@ router.get("/main", isLoggedIn, isAdmin, async (req, res, next) => {
 router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
     const weekDetails =  await Week.findById(
-      "64da46b6f1fd57abc7f34356").populate({
+      "64dc95976b6542feadca9bc7").populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
         path: "at9 at12 at15 at18",
@@ -43,7 +43,7 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
         },
       },
     });
-    console.log(weekDetails);
+    // console.log(weekDetails);
 
     const allClasses = await Class.find().select({ className: 1, weekDay: 1 });
     const allTeachers = await User.find({ role: { $in: "teacher" } });
@@ -173,7 +173,7 @@ router.get("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     mondayTeacherAt9.push(weekDetails.monday.at9.teacher);
     mondayTeacherAt9[0].isSelected = true;
 
-    console.log(mondayTeacherAt9);
+    // console.log(mondayTeacherAt9);
     const mondayTeacherAt12 = [];
     mondayTeacherAt12.push(weekDetails.monday.at12.teacher);
     mondayTeacherAt12[0].isSelected = true;
@@ -441,7 +441,7 @@ router.post("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
     Class.findByIdAndUpdate(fridayAt18, {
       teacher: fridayAt18Teacher,
     }),
-    Week.findByIdAndUpdate("64da46b6f1fd57abc7f34356", {
+    Week.findByIdAndUpdate("64dc95976b6542feadca9bc7", {
       monday: {
         at9: mondayAt9,
         at12: mondayAt12,
@@ -488,7 +488,7 @@ router.post("/edit-calendar", isLoggedIn, isAdmin, async (req, res, next) => {
 router.get("/class-list", isLoggedIn, isAdmin, async (req, res, next) => {
   try {
     const weekDetails = await  Week.findById(
-      "64da46b6f1fd57abc7f34356"
+      "64dc95976b6542feadca9bc7"
     ).populate({
       path: "monday tuesday wednesday thursday friday",
       populate: {
@@ -501,7 +501,7 @@ router.get("/class-list", isLoggedIn, isAdmin, async (req, res, next) => {
       },
     });
     
-    console.log(weekDetails)
+    // console.log(weekDetails)
     res.render("admin-views/admin-class-list.hbs", {
       weekDetails,
     });
